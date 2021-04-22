@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kkxu.demo.mapper.PassengerMapper">
+  <resultMap id="BaseResultMap" type="com.kkxu.demo.common.domain.Passenger">
+    <id column="passenger_phone_number" jdbcType="VARCHAR" property="passengerPhoneNumber" />
+    <result column="user_phone_number" jdbcType="VARCHAR" property="userPhoneNumber" />
+    <result column="passenger_real_name" jdbcType="VARCHAR" property="passengerRealName" />
+    <result column="passenger_id_number" jdbcType="VARCHAR" property="passengerIdNumber" />
+    <result column="passenger_type" jdbcType="INTEGER" property="passengerType" />
+    <result column="passenger_address" jdbcType="VARCHAR" property="passengerAddress" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    passenger_phone_number, user_phone_number, passenger_real_name, passenger_id_number, 
+    passenger_type, passenger_address
+  </sql>
+  <select id="selectByExample" parameterType="com.kkxu.demo.common.domain.PassengerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from passenger
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from passenger
+    where passenger_phone_number = #{passengerPhoneNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from passenger
+    where passenger_phone_number = #{passengerPhoneNumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.kkxu.demo.common.domain.PassengerExample">
+    delete from passenger
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.kkxu.demo.common.domain.Passenger">
+    insert into passenger (passenger_phone_number, user_phone_number, 
+      passenger_real_name, passenger_id_number, passenger_type, 
+      passenger_address)
+    values (#{passengerPhoneNumber,jdbcType=VARCHAR}, #{userPhoneNumber,jdbcType=VARCHAR}, 
+      #{passengerRealName,jdbcType=VARCHAR}, #{passengerIdNumber,jdbcType=VARCHAR}, #{passengerType,jdbcType=INTEGER}, 
+      #{passengerAddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kkxu.demo.common.domain.Passenger">
+    insert into passenger
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="passengerPhoneNumber != null">
+        passenger_phone_number,
+      </if>
+      <if test="userPhoneNumber != null">
+        user_phone_number,
+      </if>
+      <if test="passengerRealName != null">
+        passenger_real_name,
+      </if>
+      <if test="passengerIdNumber != null">
+        passenger_id_number,
+      </if>
+      <if test="passengerType != null">
+        passenger_type,
+      </if>
+      <if test="passengerAddress != null">
+        passenger_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="passengerPhoneNumber != null">
+        #{passengerPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhoneNumber != null">
+        #{userPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerRealName != null">
+        #{passengerRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerIdNumber != null">
+        #{passengerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerType != null">
+        #{passengerType,jdbcType=INTEGER},
+      </if>
+      <if test="passengerAddress != null">
+        #{passengerAddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.kkxu.demo.common.domain.PassengerExample" resultType="java.lang.Long">
+    select count(*) from passenger
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update passenger
+    <set>
+      <if test="record.passengerPhoneNumber != null">
+        passenger_phone_number = #{record.passengerPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPhoneNumber != null">
+        user_phone_number = #{record.userPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passengerRealName != null">
+        passenger_real_name = #{record.passengerRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passengerIdNumber != null">
+        passenger_id_number = #{record.passengerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passengerType != null">
+        passenger_type = #{record.passengerType,jdbcType=INTEGER},
+      </if>
+      <if test="record.passengerAddress != null">
+        passenger_address = #{record.passengerAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update passenger
+    set passenger_phone_number = #{record.passengerPhoneNumber,jdbcType=VARCHAR},
+      user_phone_number = #{record.userPhoneNumber,jdbcType=VARCHAR},
+      passenger_real_name = #{record.passengerRealName,jdbcType=VARCHAR},
+      passenger_id_number = #{record.passengerIdNumber,jdbcType=VARCHAR},
+      passenger_type = #{record.passengerType,jdbcType=INTEGER},
+      passenger_address = #{record.passengerAddress,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kkxu.demo.common.domain.Passenger">
+    update passenger
+    <set>
+      <if test="userPhoneNumber != null">
+        user_phone_number = #{userPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerRealName != null">
+        passenger_real_name = #{passengerRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerIdNumber != null">
+        passenger_id_number = #{passengerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerType != null">
+        passenger_type = #{passengerType,jdbcType=INTEGER},
+      </if>
+      <if test="passengerAddress != null">
+        passenger_address = #{passengerAddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where passenger_phone_number = #{passengerPhoneNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kkxu.demo.common.domain.Passenger">
+    update passenger
+    set user_phone_number = #{userPhoneNumber,jdbcType=VARCHAR},
+      passenger_real_name = #{passengerRealName,jdbcType=VARCHAR},
+      passenger_id_number = #{passengerIdNumber,jdbcType=VARCHAR},
+      passenger_type = #{passengerType,jdbcType=INTEGER},
+      passenger_address = #{passengerAddress,jdbcType=VARCHAR}
+    where passenger_phone_number = #{passengerPhoneNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

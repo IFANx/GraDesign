@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kkxu.demo.mapper.Order_ListMapper">
+  <resultMap id="BaseResultMap" type="com.kkxu.demo.common.domain.Order_List">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="user_phone_number" jdbcType="VARCHAR" property="userPhoneNumber" />
+    <result column="passenger_phone_number" jdbcType="VARCHAR" property="passengerPhoneNumber" />
+    <result column="passenger_id_number" jdbcType="VARCHAR" property="passengerIdNumber" />
+    <result column="train_no" jdbcType="VARCHAR" property="trainNo" />
+    <result column="start_station_no" jdbcType="VARCHAR" property="startStationNo" />
+    <result column="start_station_name" jdbcType="VARCHAR" property="startStationName" />
+    <result column="end_station_no" jdbcType="VARCHAR" property="endStationNo" />
+    <result column="end_station_name" jdbcType="VARCHAR" property="endStationName" />
+    <result column="carriage_no" jdbcType="VARCHAR" property="carriageNo" />
+    <result column="seat_no" jdbcType="VARCHAR" property="seatNo" />
+    <result column="order_money" jdbcType="VARCHAR" property="orderMoney" />
+    <result column="order_create_time" jdbcType="TIMESTAMP" property="orderCreateTime" />
+    <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="train_start_date" jdbcType="TIMESTAMP" property="trainStartDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    order_id, user_phone_number, passenger_phone_number, passenger_id_number, train_no, 
+    start_station_no, start_station_name, end_station_no, end_station_name, carriage_no, 
+    seat_no, order_money, order_create_time, order_status, train_start_date
+  </sql>
+  <select id="selectByExample" parameterType="com.kkxu.demo.common.domain.Order_ListExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from order_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_list
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_list
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.kkxu.demo.common.domain.Order_ListExample">
+    delete from order_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.kkxu.demo.common.domain.Order_List">
+    insert into order_list (order_id, user_phone_number, passenger_phone_number, 
+      passenger_id_number, train_no, start_station_no, 
+      start_station_name, end_station_no, end_station_name, 
+      carriage_no, seat_no, order_money, 
+      order_create_time, order_status, train_start_date
+      )
+    values (#{orderId,jdbcType=INTEGER}, #{userPhoneNumber,jdbcType=VARCHAR}, #{passengerPhoneNumber,jdbcType=VARCHAR}, 
+      #{passengerIdNumber,jdbcType=VARCHAR}, #{trainNo,jdbcType=VARCHAR}, #{startStationNo,jdbcType=VARCHAR}, 
+      #{startStationName,jdbcType=VARCHAR}, #{endStationNo,jdbcType=VARCHAR}, #{endStationName,jdbcType=VARCHAR}, 
+      #{carriageNo,jdbcType=VARCHAR}, #{seatNo,jdbcType=VARCHAR}, #{orderMoney,jdbcType=VARCHAR}, 
+      #{orderCreateTime,jdbcType=TIMESTAMP}, #{orderStatus,jdbcType=VARCHAR}, #{trainStartDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kkxu.demo.common.domain.Order_List">
+    insert into order_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="userPhoneNumber != null">
+        user_phone_number,
+      </if>
+      <if test="passengerPhoneNumber != null">
+        passenger_phone_number,
+      </if>
+      <if test="passengerIdNumber != null">
+        passenger_id_number,
+      </if>
+      <if test="trainNo != null">
+        train_no,
+      </if>
+      <if test="startStationNo != null">
+        start_station_no,
+      </if>
+      <if test="startStationName != null">
+        start_station_name,
+      </if>
+      <if test="endStationNo != null">
+        end_station_no,
+      </if>
+      <if test="endStationName != null">
+        end_station_name,
+      </if>
+      <if test="carriageNo != null">
+        carriage_no,
+      </if>
+      <if test="seatNo != null">
+        seat_no,
+      </if>
+      <if test="orderMoney != null">
+        order_money,
+      </if>
+      <if test="orderCreateTime != null">
+        order_create_time,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="trainStartDate != null">
+        train_start_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="userPhoneNumber != null">
+        #{userPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerPhoneNumber != null">
+        #{passengerPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerIdNumber != null">
+        #{passengerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trainNo != null">
+        #{trainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startStationNo != null">
+        #{startStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startStationName != null">
+        #{startStationName,jdbcType=VARCHAR},
+      </if>
+      <if test="endStationNo != null">
+        #{endStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="endStationName != null">
+        #{endStationName,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageNo != null">
+        #{carriageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="seatNo != null">
+        #{seatNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null">
+        #{orderMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCreateTime != null">
+        #{orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="trainStartDate != null">
+        #{trainStartDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.kkxu.demo.common.domain.Order_ListExample" resultType="java.lang.Long">
+    select count(*) from order_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update order_list
+    <set>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userPhoneNumber != null">
+        user_phone_number = #{record.userPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passengerPhoneNumber != null">
+        passenger_phone_number = #{record.passengerPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passengerIdNumber != null">
+        passenger_id_number = #{record.passengerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainNo != null">
+        train_no = #{record.trainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startStationNo != null">
+        start_station_no = #{record.startStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startStationName != null">
+        start_station_name = #{record.startStationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endStationNo != null">
+        end_station_no = #{record.endStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endStationName != null">
+        end_station_name = #{record.endStationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carriageNo != null">
+        carriage_no = #{record.carriageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seatNo != null">
+        seat_no = #{record.seatNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderMoney != null">
+        order_money = #{record.orderMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCreateTime != null">
+        order_create_time = #{record.orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderStatus != null">
+        order_status = #{record.orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainStartDate != null">
+        train_start_date = #{record.trainStartDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update order_list
+    set order_id = #{record.orderId,jdbcType=INTEGER},
+      user_phone_number = #{record.userPhoneNumber,jdbcType=VARCHAR},
+      passenger_phone_number = #{record.passengerPhoneNumber,jdbcType=VARCHAR},
+      passenger_id_number = #{record.passengerIdNumber,jdbcType=VARCHAR},
+      train_no = #{record.trainNo,jdbcType=VARCHAR},
+      start_station_no = #{record.startStationNo,jdbcType=VARCHAR},
+      start_station_name = #{record.startStationName,jdbcType=VARCHAR},
+      end_station_no = #{record.endStationNo,jdbcType=VARCHAR},
+      end_station_name = #{record.endStationName,jdbcType=VARCHAR},
+      carriage_no = #{record.carriageNo,jdbcType=VARCHAR},
+      seat_no = #{record.seatNo,jdbcType=VARCHAR},
+      order_money = #{record.orderMoney,jdbcType=VARCHAR},
+      order_create_time = #{record.orderCreateTime,jdbcType=TIMESTAMP},
+      order_status = #{record.orderStatus,jdbcType=VARCHAR},
+      train_start_date = #{record.trainStartDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kkxu.demo.common.domain.Order_List">
+    update order_list
+    <set>
+      <if test="userPhoneNumber != null">
+        user_phone_number = #{userPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerPhoneNumber != null">
+        passenger_phone_number = #{passengerPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerIdNumber != null">
+        passenger_id_number = #{passengerIdNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trainNo != null">
+        train_no = #{trainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startStationNo != null">
+        start_station_no = #{startStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="startStationName != null">
+        start_station_name = #{startStationName,jdbcType=VARCHAR},
+      </if>
+      <if test="endStationNo != null">
+        end_station_no = #{endStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="endStationName != null">
+        end_station_name = #{endStationName,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageNo != null">
+        carriage_no = #{carriageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="seatNo != null">
+        seat_no = #{seatNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderMoney != null">
+        order_money = #{orderMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCreateTime != null">
+        order_create_time = #{orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="trainStartDate != null">
+        train_start_date = #{trainStartDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kkxu.demo.common.domain.Order_List">
+    update order_list
+    set user_phone_number = #{userPhoneNumber,jdbcType=VARCHAR},
+      passenger_phone_number = #{passengerPhoneNumber,jdbcType=VARCHAR},
+      passenger_id_number = #{passengerIdNumber,jdbcType=VARCHAR},
+      train_no = #{trainNo,jdbcType=VARCHAR},
+      start_station_no = #{startStationNo,jdbcType=VARCHAR},
+      start_station_name = #{startStationName,jdbcType=VARCHAR},
+      end_station_no = #{endStationNo,jdbcType=VARCHAR},
+      end_station_name = #{endStationName,jdbcType=VARCHAR},
+      carriage_no = #{carriageNo,jdbcType=VARCHAR},
+      seat_no = #{seatNo,jdbcType=VARCHAR},
+      order_money = #{orderMoney,jdbcType=VARCHAR},
+      order_create_time = #{orderCreateTime,jdbcType=TIMESTAMP},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      train_start_date = #{trainStartDate,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

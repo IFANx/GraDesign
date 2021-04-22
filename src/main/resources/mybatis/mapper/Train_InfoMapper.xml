@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kkxu.demo.mapper.Train_InfoMapper">
+  <resultMap id="BaseResultMap" type="com.kkxu.demo.common.domain.Train_Info">
+    <id column="train_no" jdbcType="VARCHAR" property="trainNo" />
+    <result column="train_number" jdbcType="VARCHAR" property="trainNumber" />
+    <result column="train_type" jdbcType="VARCHAR" property="trainType" />
+    <result column="train_carriages" jdbcType="INTEGER" property="trainCarriages" />
+    <result column="train_start_station" jdbcType="VARCHAR" property="trainStartStation" />
+    <result column="train_end_station" jdbcType="VARCHAR" property="trainEndStation" />
+    <result column="train_start_time" jdbcType="VARCHAR" property="trainStartTime" />
+    <result column="train_end_time" jdbcType="VARCHAR" property="trainEndTime" />
+    <result column="train_arrive_day" jdbcType="VARCHAR" property="trainArriveDay" />
+    <result column="train_runing_time" jdbcType="VARCHAR" property="trainRuningTime" />
+    <result column="train_run_type" jdbcType="VARCHAR" property="trainRunType" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    train_no, train_number, train_type, train_carriages, train_start_station, train_end_station, 
+    train_start_time, train_end_time, train_arrive_day, train_runing_time, train_run_type
+  </sql>
+  <select id="selectByExample" parameterType="com.kkxu.demo.common.domain.Train_InfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from train_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from train_info
+    where train_no = #{trainNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from train_info
+    where train_no = #{trainNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.kkxu.demo.common.domain.Train_InfoExample">
+    delete from train_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.kkxu.demo.common.domain.Train_Info">
+    insert into train_info (train_no, train_number, train_type, 
+      train_carriages, train_start_station, train_end_station, 
+      train_start_time, train_end_time, train_arrive_day, 
+      train_runing_time, train_run_type)
+    values (#{trainNo,jdbcType=VARCHAR}, #{trainNumber,jdbcType=VARCHAR}, #{trainType,jdbcType=VARCHAR}, 
+      #{trainCarriages,jdbcType=INTEGER}, #{trainStartStation,jdbcType=VARCHAR}, #{trainEndStation,jdbcType=VARCHAR}, 
+      #{trainStartTime,jdbcType=VARCHAR}, #{trainEndTime,jdbcType=VARCHAR}, #{trainArriveDay,jdbcType=VARCHAR}, 
+      #{trainRuningTime,jdbcType=VARCHAR}, #{trainRunType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kkxu.demo.common.domain.Train_Info">
+    insert into train_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="trainNo != null">
+        train_no,
+      </if>
+      <if test="trainNumber != null">
+        train_number,
+      </if>
+      <if test="trainType != null">
+        train_type,
+      </if>
+      <if test="trainCarriages != null">
+        train_carriages,
+      </if>
+      <if test="trainStartStation != null">
+        train_start_station,
+      </if>
+      <if test="trainEndStation != null">
+        train_end_station,
+      </if>
+      <if test="trainStartTime != null">
+        train_start_time,
+      </if>
+      <if test="trainEndTime != null">
+        train_end_time,
+      </if>
+      <if test="trainArriveDay != null">
+        train_arrive_day,
+      </if>
+      <if test="trainRuningTime != null">
+        train_runing_time,
+      </if>
+      <if test="trainRunType != null">
+        train_run_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="trainNo != null">
+        #{trainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="trainNumber != null">
+        #{trainNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trainType != null">
+        #{trainType,jdbcType=VARCHAR},
+      </if>
+      <if test="trainCarriages != null">
+        #{trainCarriages,jdbcType=INTEGER},
+      </if>
+      <if test="trainStartStation != null">
+        #{trainStartStation,jdbcType=VARCHAR},
+      </if>
+      <if test="trainEndStation != null">
+        #{trainEndStation,jdbcType=VARCHAR},
+      </if>
+      <if test="trainStartTime != null">
+        #{trainStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="trainEndTime != null">
+        #{trainEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="trainArriveDay != null">
+        #{trainArriveDay,jdbcType=VARCHAR},
+      </if>
+      <if test="trainRuningTime != null">
+        #{trainRuningTime,jdbcType=VARCHAR},
+      </if>
+      <if test="trainRunType != null">
+        #{trainRunType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.kkxu.demo.common.domain.Train_InfoExample" resultType="java.lang.Long">
+    select count(*) from train_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update train_info
+    <set>
+      <if test="record.trainNo != null">
+        train_no = #{record.trainNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainNumber != null">
+        train_number = #{record.trainNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainType != null">
+        train_type = #{record.trainType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainCarriages != null">
+        train_carriages = #{record.trainCarriages,jdbcType=INTEGER},
+      </if>
+      <if test="record.trainStartStation != null">
+        train_start_station = #{record.trainStartStation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainEndStation != null">
+        train_end_station = #{record.trainEndStation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainStartTime != null">
+        train_start_time = #{record.trainStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainEndTime != null">
+        train_end_time = #{record.trainEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainArriveDay != null">
+        train_arrive_day = #{record.trainArriveDay,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainRuningTime != null">
+        train_runing_time = #{record.trainRuningTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trainRunType != null">
+        train_run_type = #{record.trainRunType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update train_info
+    set train_no = #{record.trainNo,jdbcType=VARCHAR},
+      train_number = #{record.trainNumber,jdbcType=VARCHAR},
+      train_type = #{record.trainType,jdbcType=VARCHAR},
+      train_carriages = #{record.trainCarriages,jdbcType=INTEGER},
+      train_start_station = #{record.trainStartStation,jdbcType=VARCHAR},
+      train_end_station = #{record.trainEndStation,jdbcType=VARCHAR},
+      train_start_time = #{record.trainStartTime,jdbcType=VARCHAR},
+      train_end_time = #{record.trainEndTime,jdbcType=VARCHAR},
+      train_arrive_day = #{record.trainArriveDay,jdbcType=VARCHAR},
+      train_runing_time = #{record.trainRuningTime,jdbcType=VARCHAR},
+      train_run_type = #{record.trainRunType,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kkxu.demo.common.domain.Train_Info">
+    update train_info
+    <set>
+      <if test="trainNumber != null">
+        train_number = #{trainNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="trainType != null">
+        train_type = #{trainType,jdbcType=VARCHAR},
+      </if>
+      <if test="trainCarriages != null">
+        train_carriages = #{trainCarriages,jdbcType=INTEGER},
+      </if>
+      <if test="trainStartStation != null">
+        train_start_station = #{trainStartStation,jdbcType=VARCHAR},
+      </if>
+      <if test="trainEndStation != null">
+        train_end_station = #{trainEndStation,jdbcType=VARCHAR},
+      </if>
+      <if test="trainStartTime != null">
+        train_start_time = #{trainStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="trainEndTime != null">
+        train_end_time = #{trainEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="trainArriveDay != null">
+        train_arrive_day = #{trainArriveDay,jdbcType=VARCHAR},
+      </if>
+      <if test="trainRuningTime != null">
+        train_runing_time = #{trainRuningTime,jdbcType=VARCHAR},
+      </if>
+      <if test="trainRunType != null">
+        train_run_type = #{trainRunType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where train_no = #{trainNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kkxu.demo.common.domain.Train_Info">
+    update train_info
+    set train_number = #{trainNumber,jdbcType=VARCHAR},
+      train_type = #{trainType,jdbcType=VARCHAR},
+      train_carriages = #{trainCarriages,jdbcType=INTEGER},
+      train_start_station = #{trainStartStation,jdbcType=VARCHAR},
+      train_end_station = #{trainEndStation,jdbcType=VARCHAR},
+      train_start_time = #{trainStartTime,jdbcType=VARCHAR},
+      train_end_time = #{trainEndTime,jdbcType=VARCHAR},
+      train_arrive_day = #{trainArriveDay,jdbcType=VARCHAR},
+      train_runing_time = #{trainRuningTime,jdbcType=VARCHAR},
+      train_run_type = #{trainRunType,jdbcType=VARCHAR}
+    where train_no = #{trainNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,14 +1,12 @@
 package com.kkxu.demo.controller;
 
 import com.kkxu.demo.common.domain.Goods;
-import com.kkxu.demo.common.domain.Seller;
 import com.kkxu.demo.service.IGoodsService;
-import com.kkxu.demo.service.ISellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import javax.servlet.http.HttpSession;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -16,9 +14,6 @@ import java.util.List;
 public class SearchController {
     @Autowired
     private IGoodsService iGoodsService;
-
-    @Autowired
-    private ISellerService iSellerService;
 
     //1.商品列表,不需要输入任何信息，直接显示所有商品  参数列表{无参数}
     @RequestMapping("/goodslist")
@@ -38,16 +33,6 @@ public class SearchController {
         }
             List<Goods> goods = iGoodsService.goodsSearch(name);
             Collections.sort(goods, Goods::compareTo);
-//        List<Integer> goodsid = null;
-//        for (int i = 0; i <goods.size() ; i++) {
-//            goodsid.add(i,goods.get(i).getId());
-//        }
-//        List<Integer> sellersid=null;
-//        List<String> sellername=null;
-//        for (int i = 0; i <goodsid.size(); i++) {
-//            sellersid.add(i,iGoodsService.selectById(goodsid.get(i)).getSellerId());
-//            sellername.add(i,iSellerService.selectbysellerid(sellersid.get(i)).get(i).getName());
-//        }
             modelMap.addAttribute("goods", goods);
             return "goodslist";
         }
@@ -73,37 +58,9 @@ public class SearchController {
         return "goodslist";
         }
     }
-
-
-    //4.根据名称搜索商铺  参数列表{name=??}
-    @RequestMapping("/searchstorebyname")
-    public String SearchStoreSyName(String storename, ModelMap modelMap,HttpSession session) {
-        if (storename.isEmpty()) {
-            modelMap.addAttribute("searcherror2", "没有输入关键字");
-            return "button";
-        }
-        List<Seller> sellers = iSellerService.selectbystorename(storename);
-        modelMap.addAttribute("sellers", sellers);
-        session.setAttribute("sellers",sellers);
-        return "storeslist";
     }
 
-    //5.商家查看自己商铺已有的商品或者买家选择一个商铺后，买家查看该商家商铺的所有商品
-    @RequestMapping("/store_goodslist")
-    public String StoreGoodsList(HttpSession session,ModelMap modelMap,Integer id){
-        Seller seller=null;
-        List<Goods> goods=null;
-        if(id==null) {
-             seller = (Seller) session.getAttribute("seller");
-            goods=iGoodsService.selectBySellerId(seller.getId());
-        }
-        else {
-            goods = iGoodsService.selectBySellerId(id);
-        }
-        modelMap.addAttribute("goods",goods);
-        return  "goodslist_seller";
-    }
-    }
+
 
 
 
