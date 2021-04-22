@@ -9,7 +9,7 @@ public class User {
 
     private String userRealName;
 
-    private Integer usertype;
+    private Integer usertype;
 
     private String userIdNumber;
 
@@ -49,12 +49,12 @@ public class User {
         this.userRealName = userRealName == null ? null : userRealName.trim();
     }
 
-    public Integer getUsertype() {
-        return usertype;
+    public Integer getUsertype() {
+        return usertype;
     }
 
-    public void setUsertype(Integer usertype) {
-        this.usertype = usertype;
+    public void setUsertype(Integer usertype) {
+        this.usertype = usertype;
     }
 
     public String getUserIdNumber() {
