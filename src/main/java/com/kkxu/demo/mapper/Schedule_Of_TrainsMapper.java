@@ -4,7 +4,9 @@ import com.kkxu.demo.common.domain.Schedule_Of_Trains;
 import com.kkxu.demo.common.domain.Schedule_Of_TrainsExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Schedule_Of_TrainsMapper {
     long countByExample(Schedule_Of_TrainsExample example);
 

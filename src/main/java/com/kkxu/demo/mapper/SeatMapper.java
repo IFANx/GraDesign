@@ -5,7 +5,9 @@ import com.kkxu.demo.common.domain.SeatExample;
 import com.kkxu.demo.common.domain.SeatKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface SeatMapper {
     long countByExample(SeatExample example);
 

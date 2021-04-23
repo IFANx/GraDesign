@@ -4,7 +4,9 @@ import com.kkxu.demo.common.domain.Passenger;
 import com.kkxu.demo.common.domain.PassengerExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PassengerMapper {
     long countByExample(PassengerExample example);
 

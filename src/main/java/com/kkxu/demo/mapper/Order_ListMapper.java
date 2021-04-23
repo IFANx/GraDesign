@@ -4,7 +4,9 @@ import com.kkxu.demo.common.domain.Order_List;
 import com.kkxu.demo.common.domain.Order_ListExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Order_ListMapper {
     long countByExample(Order_ListExample example);
 

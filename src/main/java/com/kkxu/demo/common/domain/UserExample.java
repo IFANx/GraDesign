@@ -384,63 +384,63 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeIsNull() {
-            addCriterion("usertype is null");
+        public Criteria andUserLeixingIsNull() {
+            addCriterion("user_leixing is null");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeIsNotNull() {
-            addCriterion("usertype is not null");
+        public Criteria andUserLeixingIsNotNull() {
+            addCriterion("user_leixing is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeEqualTo(Integer value) {
-            addCriterion("usertype =", value, "usertype");
+        public Criteria andUserLeixingEqualTo(Integer value) {
+            addCriterion("user_leixing =", value, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotEqualTo(Integer value) {
-            addCriterion("usertype <>", value, "usertype");
+        public Criteria andUserLeixingNotEqualTo(Integer value) {
+            addCriterion("user_leixing <>", value, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeGreaterThan(Integer value) {
-            addCriterion("usertype >", value, "usertype");
+        public Criteria andUserLeixingGreaterThan(Integer value) {
+            addCriterion("user_leixing >", value, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("usertype >=", value, "usertype");
+        public Criteria andUserLeixingGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_leixing >=", value, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeLessThan(Integer value) {
-            addCriterion("usertype <", value, "usertype");
+        public Criteria andUserLeixingLessThan(Integer value) {
+            addCriterion("user_leixing <", value, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeLessThanOrEqualTo(Integer value) {
-            addCriterion("usertype <=", value, "usertype");
+        public Criteria andUserLeixingLessThanOrEqualTo(Integer value) {
+            addCriterion("user_leixing <=", value, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeIn(List<Integer> values) {
-            addCriterion("usertype in", values, "usertype");
+        public Criteria andUserLeixingIn(List<Integer> values) {
+            addCriterion("user_leixing in", values, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotIn(List<Integer> values) {
-            addCriterion("usertype not in", values, "usertype");
+        public Criteria andUserLeixingNotIn(List<Integer> values) {
+            addCriterion("user_leixing not in", values, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeBetween(Integer value1, Integer value2) {
-            addCriterion("usertype between", value1, value2, "usertype");
+        public Criteria andUserLeixingBetween(Integer value1, Integer value2) {
+            addCriterion("user_leixing between", value1, value2, "userLeixing");
             return (Criteria) this;
         }
 
-        public Criteria andUsertypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("usertype not between", value1, value2, "usertype");
+        public Criteria andUserLeixingNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_leixing not between", value1, value2, "userLeixing");
             return (Criteria) this;
         }
 

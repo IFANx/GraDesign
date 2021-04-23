@@ -4,7 +4,9 @@ import com.kkxu.demo.common.domain.Train_Info;
 import com.kkxu.demo.common.domain.Train_InfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Train_InfoMapper {
     long countByExample(Train_InfoExample example);
 

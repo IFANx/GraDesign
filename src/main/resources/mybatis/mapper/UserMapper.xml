@@ -6,7 +6,7 @@
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
     <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
     <result column="user_real_name" jdbcType="VARCHAR" property="userRealName" />
-    <result column="usertype" jdbcType="INTEGER" property="usertype" />
+    <result column="user_leixing" jdbcType="INTEGER" property="userLeixing" />
     <result column="user_id_number" jdbcType="VARCHAR" property="userIdNumber" />
     <result column="user_gender" jdbcType="INTEGER" property="userGender" />
     <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_phone_number, user_password, user_email, user_real_name, usertype, user_id_number, 
+    user_phone_number, user_password, user_email, user_real_name, user_leixing, user_id_number, 
     user_gender, user_address
   </sql>
   <select id="selectByExample" parameterType="com.kkxu.demo.common.domain.UserExample" resultMap="BaseResultMap">
@@ -105,10 +105,10 @@
   </delete>
   <insert id="insert" parameterType="com.kkxu.demo.common.domain.User">
     insert into user (user_phone_number, user_password, user_email, 
-      user_real_name, usertype, user_id_number, 
+      user_real_name, user_leixing, user_id_number, 
       user_gender, user_address)
     values (#{userPhoneNumber,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, 
-      #{userRealName,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}, #{userIdNumber,jdbcType=VARCHAR}, 
+      #{userRealName,jdbcType=VARCHAR}, #{userLeixing,jdbcType=INTEGER}, #{userIdNumber,jdbcType=VARCHAR}, 
       #{userGender,jdbcType=INTEGER}, #{userAddress,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kkxu.demo.common.domain.User">
@@ -126,8 +126,8 @@
       <if test="userRealName != null">
         user_real_name,
       </if>
-      <if test="usertype != null">
-        usertype,
+      <if test="userLeixing != null">
+        user_leixing,
       </if>
       <if test="userIdNumber != null">
         user_id_number,
@@ -152,8 +152,8 @@
       <if test="userRealName != null">
         #{userRealName,jdbcType=VARCHAR},
       </if>
-      <if test="usertype != null">
-        #{usertype,jdbcType=INTEGER},
+      <if test="userLeixing != null">
+        #{userLeixing,jdbcType=INTEGER},
       </if>
       <if test="userIdNumber != null">
         #{userIdNumber,jdbcType=VARCHAR},
@@ -187,8 +187,8 @@
       <if test="record.userRealName != null">
         user_real_name = #{record.userRealName,jdbcType=VARCHAR},
       </if>
-      <if test="record.usertype != null">
-        usertype = #{record.usertype,jdbcType=INTEGER},
+      <if test="record.userLeixing != null">
+        user_leixing = #{record.userLeixing,jdbcType=INTEGER},
       </if>
       <if test="record.userIdNumber != null">
         user_id_number = #{record.userIdNumber,jdbcType=VARCHAR},
@@ -210,7 +210,7 @@
       user_password = #{record.userPassword,jdbcType=VARCHAR},
       user_email = #{record.userEmail,jdbcType=VARCHAR},
       user_real_name = #{record.userRealName,jdbcType=VARCHAR},
-      usertype = #{record.usertype,jdbcType=INTEGER},
+      user_leixing = #{record.userLeixing,jdbcType=INTEGER},
       user_id_number = #{record.userIdNumber,jdbcType=VARCHAR},
       user_gender = #{record.userGender,jdbcType=INTEGER},
       user_address = #{record.userAddress,jdbcType=VARCHAR}
@@ -230,8 +230,8 @@
       <if test="userRealName != null">
         user_real_name = #{userRealName,jdbcType=VARCHAR},
       </if>
-      <if test="usertype != null">
-        usertype = #{usertype,jdbcType=INTEGER},
+      <if test="userLeixing != null">
+        user_leixing = #{userLeixing,jdbcType=INTEGER},
       </if>
       <if test="userIdNumber != null">
         user_id_number = #{userIdNumber,jdbcType=VARCHAR},
@@ -250,7 +250,7 @@
     set user_password = #{userPassword,jdbcType=VARCHAR},
       user_email = #{userEmail,jdbcType=VARCHAR},
       user_real_name = #{userRealName,jdbcType=VARCHAR},
-      usertype = #{usertype,jdbcType=INTEGER},
+      user_leixing = #{userLeixing,jdbcType=INTEGER},
       user_id_number = #{userIdNumber,jdbcType=VARCHAR},
       user_gender = #{userGender,jdbcType=INTEGER},
       user_address = #{userAddress,jdbcType=VARCHAR}

@@ -8,19 +8,23 @@
 <table>
     <thead>
     <tr>
-        <th>名称</th>
-        <th>价格</th>
-        <th>已售出</th>
+        <th>id</th>
+        <th>train_id</th>
+        <th>trainnumber</th>
         <th>存量</th>
+        <th>存量</th>
+        <th>存量</th>
+
 
     </tr>
     </thead>
     <tbody>
-    <tr th:each="s:${goods}">
-        <td th:text="${s.getName()}"></td>
-        <td th:text="${s.getPrice()}"></td>
-        <td th:text="${s.getSoldCount()}"></td>
-        <td th:text="${s.getRestCount()}"></td>
+    <tr th:each="s:${Users}">
+        <td th:text="${s.getUserPassword()}"></td>
+        <td th:text="${s.getUserEmail()}"></td>
+        <td th:text="${s.getUserPhoneNumber()}"></td>
+        <td th:text="${s.getUserRealName()}"></td>
+
         <td ><form action="/goodsdetail" >
             <input th:value="${s.getId()}" name="id" type="hidden">
             <input type="submit" value="详情">

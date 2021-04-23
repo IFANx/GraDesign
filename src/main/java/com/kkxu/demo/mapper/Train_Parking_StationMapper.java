@@ -5,7 +5,9 @@ import com.kkxu.demo.common.domain.Train_Parking_StationExample;
 import com.kkxu.demo.common.domain.Train_Parking_StationKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface Train_Parking_StationMapper {
     long countByExample(Train_Parking_StationExample example);
 

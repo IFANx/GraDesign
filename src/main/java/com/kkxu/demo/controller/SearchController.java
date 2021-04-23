@@ -20,7 +20,7 @@ public class SearchController {
     public String GoodsList(ModelMap modelMap) {
         List<Goods> goods = iGoodsService.listAll();
         modelMap.addAttribute("goods", goods);
-        return "goodslist";
+        return "trainlist";
     }
 
 
@@ -34,7 +34,7 @@ public class SearchController {
             List<Goods> goods = iGoodsService.goodsSearch(name);
             Collections.sort(goods, Goods::compareTo);
             modelMap.addAttribute("goods", goods);
-            return "goodslist";
+            return "trainlist";
         }
 
 
@@ -55,7 +55,7 @@ public class SearchController {
         List<Goods> goods = iGoodsService.goodsSearchByName_Price(name, lowerprice, higherprice);
         Collections.sort(goods, Goods::compareTo);
         modelMap.addAttribute("goods", goods);
-        return "goodslist";
+        return "trainlist";
         }
     }
     }
