@@ -8,13 +8,27 @@
 <table>
     <thead>
     <tr>
-        <th>id</th>
-        <th>train_id</th>
-        <th>trainnumber</th>
-        <th>存量</th>
-        <th>存量</th>
-        <th>存量</th>
-        <th>存量</th>
+        <th>编号</th>
+        <th>列车号</th>
+        <th>车次</th>
+        <th>始发站</th>
+        <th>终点站</th>
+        <th>出发站</th>
+        <th>到达站</th>
+        <th>出发时间</th>
+        <th>到达时间</th>
+        <th>历时</th>
+        <th>商务座</th>
+        <th>一等座</th>
+        <th>二等座</th>
+        <th>软卧</th>
+        <th>软卧一等</th>
+        <th>动卧</th>
+        <th>硬卧</th>
+        <th>软座</th>
+        <th>硬座</th>
+        <th>无座</th>
+
 
 
     </tr>
@@ -22,16 +36,32 @@
     <tbody>
     <tr th:each="s:${trainlist}">
         <td th:text="${s.getId()}"></td>
-        <td th:text="${s.getArrivalTime()}"></td>
-        <td th:text="${s.getDepartureStation()}"></td>
-        <td th:text="${s.getDepartureTime()}"></td>
-        <td th:text="${s.getEndStation()}"></td>
-        <td th:text="${s.getUseTime()}"></td>
         <td th:text="${s.getTarinNo()}"></td>
+        <td th:text="${s.getTrainNumber()}"></td>
+        <td th:text="${s.getDepartureStation()}"></td>
+        <td th:text="${s.getEndStation()}"></td>
+        <td th:text="${s.getFromStation()}"></td>
+        <td th:text="${s.getToStation()}"></td>
+        <td th:text="${s.getDepartureTime()}"></td>
+        <td th:text="${s.getArrivalTime()}"></td>
+        <td th:text="${s.getUseTime()}"></td>
+        <td th:text="${s.getBusinessSeat()}"></td>
+        <td th:text="${s.getFirstClassSeats()}"></td>
+        <td th:text="${s.getSecondClassSeats()}"></td>
+        <td th:text="${s.getHighGradeSoftBerth()}"></td>
+        <td th:text="${s.getSoftBedFirstClassBed()}"></td>
+        <td th:text="${s.getMotorTrainBed()}"></td>
+        <td th:text="${s.hardSecondClassBed}"></td>
+        <td th:text="${s.getSoftSeats()}"></td>
+        <td th:text="${s.getHardSeat()}"></td>
+        <td th:text="${s.getSeatless()}"></td>
 
-        <td ><form action="/Trains/scheduleOfTrainsbyid" >
-            <input th:value="${s.getId()}" name="train_id" type="hidden">
-            <input type="submit" value="详情">
+
+        <td ><form action="/Seat/Seatinfo" >
+            <input th:value="${s.getTarinNo()}" name="train_no" type="hidden">
+<!--            <input th:value="${s}" name="traininfo" type="hidden">-->
+<!--            <input name="PassengerPhoneNumber" type="text" required="required">-->
+            <input type="submit" value="查看车票详情">
         </form></td>
     </tr>
     </tbody>

@@ -26,11 +26,10 @@ public class ScheduleOfTrainsController {
     }
 
     @RequestMapping("/scheduleOfTrainsbyid")
-    @ResponseBody
     public Object scheduleOfTrainsbyid(ModelMap modelMap,int train_id) {
         List<Schedule_Of_Trains> schedule_of_trains = scheduleOfTrainsService.Trainsbytrain_id(train_id);
         modelMap.addAttribute("trainlist", schedule_of_trains);
-        return schedule_of_trains;
+        return "index.html";
     }
 
     @RequestMapping("/scheduleOfTrainsbydepartureandend")
@@ -46,5 +45,4 @@ public class ScheduleOfTrainsController {
         modelMap.addAttribute("seatlist", seats);
         return seats;
     }
-
 }

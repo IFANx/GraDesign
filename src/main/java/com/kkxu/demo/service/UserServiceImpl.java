@@ -57,4 +57,10 @@ public class UserServiceImpl implements  UserService{
         return false;
         return true;
     }
+
+    @Override
+    public Integer MaxID() {
+        Integer MaxID=userMapper.selectMaxID();
+        return MaxID;
+    }
 }

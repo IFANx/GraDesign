@@ -17,5 +17,7 @@ public interface ScheduleOfTrainsService {
 
     //查询当前车次剩余所有位次信息
     List<Seat> seatTrainsbyno(String train_no);
+
+    List<Schedule_Of_Trains> selectbytrainno(String train_no);
     //列出所有列车信息
 }

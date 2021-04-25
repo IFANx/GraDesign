@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,8 +9,14 @@
 <input type="text" name="user_phone_number" required="required" value="phone_number">
 <input type="password" name="user_password1"required="required" value="user_password1">
 <input type="password" name="user_password2"required="required"  value="user_password2">
-<input type="submit" id="btn" value="注册">
+<input type="submit" id="btn1" value="注册">
+</form>
 
+
+<form action="/User/login">
+<input type="text" name="user_phone_number" required="required" value="user_phone_number">
+<input type="password" name="user_password1"required="required" value="user_password">
+<input type="submit" id="btn2" value="登录">
 </form>
 </body>
 </html>

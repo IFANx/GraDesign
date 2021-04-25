@@ -3,11 +3,13 @@ package com.kkxu.demo.mapper;
 import com.kkxu.demo.common.domain.Order_List;
 import com.kkxu.demo.common.domain.Order_ListExample;
 import java.util.List;
+
+import com.kkxu.demo.mapper.Extend.Order_ListMapperExtend;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Order_ListMapper {
+public interface Order_ListMapper extends Order_ListMapperExtend {
     long countByExample(Order_ListExample example);
 
     int deleteByExample(Order_ListExample example);
@@ -29,4 +31,8 @@ public interface Order_ListMapper {
     int updateByPrimaryKeySelective(Order_List record);
 
     int updateByPrimaryKey(Order_List record);
+
+
+    //自定义语句
+    int selectMaxID();
 }

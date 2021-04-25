@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>no</th>
+        <th>cno</th>
+        <th>type</th>
+        <th>cnt</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s:${seats}">
+        <td th:text="${s.getTrainNo()}"></td>
+        <td th:text="${s.getCarriageNo()}"></td>
+        <td th:text="${s.getSeatType()}"></td>
+        <td th:text="${s.getSeatCount()}"></td>
+
+
+        <td ><form action="/Order/insertorder" >
+            <input th:value="${s.getTrainNo()}" name="train_no" type="hidden">
+            <!--            <input th:value="${s}" name="traininfo" type="hidden">-->
+            <!--            <input name="PassengerPhoneNumber" type="text" required="required">-->
+            <input type="submit" value="预定">
+        </form></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

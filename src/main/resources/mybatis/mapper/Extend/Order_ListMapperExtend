@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kkxu.demo.mapper.Order_ListMapper">
+    <resultMap id="OrderMapExtend" type="com.kkxu.demo.common.domain.Order_List" extends="BaseResultMap">
+    </resultMap>
+        <select id="selectMaxID" resultMap="java.lang.Integer">
+            select MAX(order_id) from order_list;
+        </select>
+</mapper>

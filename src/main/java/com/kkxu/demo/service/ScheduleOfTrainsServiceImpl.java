@@ -56,4 +56,12 @@ public class ScheduleOfTrainsServiceImpl implements ScheduleOfTrainsService{
         List<Seat> seats = seatMapper.selectByExample(seatExample);
         return seats;
     }
+
+    @Override
+    public List<Schedule_Of_Trains> selectbytrainno(String train_no) {
+        Schedule_Of_TrainsExample schedule_of_trainsExample = new Schedule_Of_TrainsExample();
+        schedule_of_trainsExample.createCriteria().andTarinNoEqualTo(train_no);
+        List<Schedule_Of_Trains> trains = schedule_of_trainsMapper.selectByExample(schedule_of_trainsExample);
+        return trains;
+    }
 }
