@@ -446,4 +446,12 @@
       seatless = #{seatless,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+<!--  自建查询-->
+  <select id="selectstation" parameterType="java.lang.String" resultType="com.kkxu.demo.common.domain.Schedule_Of_Trains">
+        select * from  schedule_of_trains
+        where  departure_station=#{departure_station,jdbcType=VARCHAR}
+        and end_station=#{end_station,jdbcType=VARCHAR}
+        order by use_time desc ;
+    </select>
 </mapper>

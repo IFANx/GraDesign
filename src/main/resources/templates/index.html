@@ -41,29 +41,29 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="dropdown active">
-            <a href="index.html">Home</a>
+            <a th:href="@{/index}">Home</a>
           </li>
-          <li><a href="about.html">About </a></li>
+          <li><a th:href="@{about}">About </a></li>
           <li><a th:href="@{/contact}">Contact </a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="services.html">Services</a></li>
-              <li><a href="pricing.html">Pricing Tables</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
-              <li><a href="team.html">Our Team</a></li>
-              <li><a href="blog.html">Blog</a></li>
-              <li><a href="blog-single.html">Blog Article</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="404.html">404</a></li>
+              <li><a th:href="@{/services}">Services</a></li>
+              <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+              <li><a th:href="@{/testimonials}">Testimonials</a></li>
+              <li><a th:href="@{/team}">Our Team</a></li>
+              <li><a th:href="@{/blog}">Blog</a></li>
+              <li><a th:href="@{/blog-single}">Blog Article</a></li>
+              <li><a th:href="@{/faq}">FAQ</a></li>
+              <li><a th:href="@{/404}">404</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolios <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="portfolio.html">Portfolio</a></li>
-              <li><a href="portfolio4.html">Portfolio 4 Columns</a></li>
-              <li><a href="project-single.html">Single Project</a></li>
+              <li><a th:href="@{/portfolio}">Portfolio</a></li>
+              <li><a th:href="@{/portfolio4}">Portfolio 4 Columns</a></li>
+              <li><a th:href="@{/project-single}">Single Project</a></li>
             </ul>
           </li>
         </ul>
@@ -78,7 +78,7 @@
     <div class="container">
       <div class="row">
         <h1>Welcome to our site.<br/> <b>GOOD</b> to see you.</h1>
-        <tbody>
+        <tbody style="shape-outside: inherit">
       <tr th:each="s:${trainlist}">
         <td th:text="${s.getId()}"></td>
         <td th:text="${s.getArrivalTime()}"></td>

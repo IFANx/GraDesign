@@ -50,7 +50,7 @@ public class UserController {
     public Object userlogin(ModelMap modelMap, String user_phone_number,
                             String user_password) {
         boolean flag = userService.login(user_phone_number, user_password);
-        if (flag) {
+        if (flag==true) {
             modelMap.addAttribute("message", "登录成功");
             return "result";
         } else {

@@ -19,5 +19,7 @@ public interface ScheduleOfTrainsService {
     List<Seat> seatTrainsbyno(String train_no);
 
     List<Schedule_Of_Trains> selectbytrainno(String train_no);
+
+    List<Schedule_Of_Trains> TrainPassBy(String departure_station, String end_station);
     //列出所有列车信息
 }

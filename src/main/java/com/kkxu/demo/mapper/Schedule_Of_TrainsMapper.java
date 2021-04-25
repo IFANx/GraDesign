@@ -3,11 +3,13 @@ package com.kkxu.demo.mapper;
 import com.kkxu.demo.common.domain.Schedule_Of_Trains;
 import com.kkxu.demo.common.domain.Schedule_Of_TrainsExample;
 import java.util.List;
+
+import com.kkxu.demo.mapper.Extend.Schedule_Of_TrainsMapperExtend;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Schedule_Of_TrainsMapper {
+public interface Schedule_Of_TrainsMapper extends Schedule_Of_TrainsMapperExtend {
     long countByExample(Schedule_Of_TrainsExample example);
 
     int deleteByExample(Schedule_Of_TrainsExample example);
@@ -29,4 +31,6 @@ public interface Schedule_Of_TrainsMapper {
     int updateByPrimaryKeySelective(Schedule_Of_Trains record);
 
     int updateByPrimaryKey(Schedule_Of_Trains record);
+
+    List<Schedule_Of_Trains> selectstation(String departure_station, String end_station);
 }

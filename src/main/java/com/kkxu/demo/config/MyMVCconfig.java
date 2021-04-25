@@ -12,6 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //            registry.addViewController("SearchTrain.html").setViewName("SearchTrain");
             registry.addViewController("/").setViewName("index");
             registry.addViewController("index.html").setViewName("index");
+//            registry.addViewController("/").setViewName("register");
+//            registry.addViewController("register.html").setViewName("register");
 
 
 ////            E:\2021毕业\毕设项目\Online-Shopping-System\src\main\resources\templates\E:\2021毕业\毕设项目\Online-Shopping-System\src\main\resources\templates\TrainSchedule\SearchTrain.html

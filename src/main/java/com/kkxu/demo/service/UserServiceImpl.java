@@ -33,21 +33,19 @@ public class UserServiceImpl implements  UserService{
         user.setUserLeixing(1);
         user.setUserRealName("123");
 
-        int insert = userMapper.insert(user);
-        if (insert==0)
-        return false;
-        return  true;
+        userMapper.insert(user);
+       return true;
     }
 
     @Override
     public boolean login(String user_phone_number, String user_password) {
         User user = userMapper.selectByPrimaryKey(user_phone_number);
-        if(user==null)
-            return  false;
+        if(user==null){
+            return  false;}
         else if(user.getUserPassword().equals(user_password))
-            return true;
+        {return true;}
         else
-        return false;
+        {return false;}
     }
 
     @Override

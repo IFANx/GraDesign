@@ -18,6 +18,12 @@ public class ScheduleOfTrainsController {
     @Autowired
     private ScheduleOfTrainsService scheduleOfTrainsService;
 
+    @RequestMapping("/schedulepart")
+    public Object schedulepart(ModelMap modelMap,String train_number) {
+        List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.listpart();
+        modelMap.addAttribute("trainlist", trainlist);
+        return "trainlist";
+    }
     @RequestMapping("/scheduleOfTrainsbytrain_number")
     public Object scheduleOfTrainsbytrain_number(ModelMap modelMap,String train_number) {
         List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.Trainsbytrain_number(train_number);
@@ -44,5 +50,13 @@ public class ScheduleOfTrainsController {
         List<Seat> seats = scheduleOfTrainsService.seatTrainsbyno(train_no);
         modelMap.addAttribute("seatlist", seats);
         return seats;
+    }
+
+    //求出途径所有站点
+    @RequestMapping("/scheduleOfTrainPassBy")
+    public Object scheduleOfTrainPassBy(ModelMap modelMap,String departure_station,String end_station) {
+        List<Schedule_Of_Trains> trains = scheduleOfTrainsService.TrainPassBy(departure_station,end_station);
+        modelMap.addAttribute("trainlist", trains);
+        return "trainlist";
     }
 }

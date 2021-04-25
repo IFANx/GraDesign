@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kkxu.demo.mapper.Schedule_Of_TrainsMapper">
+    <resultMap id="Schedule_Of_TrainsMapperExtend" type="com.kkxu.demo.common.domain.Schedule_Of_Trains" extends="BaseResultMap">
+    </resultMap>
+
+    <select id="selectstation" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from  schedule_of_trains
+        where  departure_station = #{departure_station,jdbcType=VARCHAR}
+        and end_station = #{end_station,jdbcType=VARCHAR}
+        group by train_no
+        order by use_time asc ;
+    </select>
+
+    
+</mapper>
