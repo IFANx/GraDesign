@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements  UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
     @Override
     public List<User> look() {
-        UserExample userExample=new UserExample();
+        UserExample userExample = new UserExample();
         userExample.createCriteria().andUserIdNumberIsNotNull();
         List<User> users = userMapper.selectByExample(userExample);
         return users;
@@ -23,7 +23,7 @@ public class UserServiceImpl implements  UserService{
 
     @Override
     public boolean register(String user_phone_number, String user_password1) {
-        User user=new User();
+        User user = new User();
         user.setUserPhoneNumber(user_phone_number);
         user.setUserPassword(user_password1);
         user.setUserAddress("123");
@@ -34,31 +34,43 @@ public class UserServiceImpl implements  UserService{
         user.setUserRealName("123");
 
         userMapper.insert(user);
-       return true;
+        return true;
     }
 
     @Override
     public boolean login(String user_phone_number, String user_password) {
         User user = userMapper.selectByPrimaryKey(user_phone_number);
-        if(user==null){
-            return  false;}
-        else if(user.getUserPassword().equals(user_password))
-        {return true;}
-        else
-        {return false;}
+        if (user == null) {
+            return false;
+        } else if (user.getUserPassword().equals(user_password)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public boolean update(String user_phone_number, User user) {
         int i = userMapper.insertSelective(user);
-        if(i==0)
-        return false;
+        if (i == 0)
+            return false;
         return true;
     }
 
     @Override
     public Integer MaxID() {
-        Integer MaxID=userMapper.selectMaxID();
+        Integer MaxID = userMapper.selectMaxID();
         return MaxID;
+    }
+
+    @Override
+    public boolean selectprimary(String user_phone_number) {
+       User user=null;
+       user=userMapper.selectByPrimaryKey(user_phone_number);
+        if (user==null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

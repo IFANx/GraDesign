@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>列车表</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>12307</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
     <link rel="stylesheet" href="css/bootstrap.min.css"
-          th:href="@{/css/bootstrap.min.css}">
+          th:href="@{/static/css/bootstrap.min.css}">
     <link rel="stylesheet" href="static/css/font-awesome.min.css"
           th:href="@{/css/font-awesome.min.css}">
-    <link rel="stylesheet" href="css/ionicons.min.css"
-          th:href="@{/css/ionicons.min.css}">
+    <link rel="stylesheet" href="static/css/ionicons.min.css"
+          th:href="@{/static/css/ionicons.min.css}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/AdminLTE.min.css" th:href="@{/css/AdminLTE.min.css}">
+    <link rel="stylesheet" href="static/css/AdminLTE.min.css" th:href="@{/static/css/AdminLTE.min.css}">
 
-    <link rel="stylesheet" href="css/_all-skins.min.css" th:href="@{/css/_all-skins.min.css}">
-          th:href="@{css/bootstrap.min.css}"/>
-
+    <link rel="stylesheet" href="/static/css/_all-skins.min.css" th:href="@{/static/css/_all-skins.min.css}">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"
+          th:href="@{static/css/bootstrap.min.css}"/>
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/php-mail-form/validate.js"></script>
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css"
+          th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+    <!-- Libraries CSS Files -->
+    <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 
 <body class="hold-transition skin-purple sidebar-mini">
 <div class="wrapper">
@@ -39,25 +58,66 @@
     </div>
 
 </div>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">GOOD</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown active">
+                    <a th:href="@{/index}">首页</a>
+                </li>
+                <li><a th:href="@{about}">关于 </a></li>
+                <li><a th:href="@{/contact}">用户中心 </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/services}">Services</a></li>
+                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
+                        <li><a th:href="@{/faq}">FAQ</a></li>
+                        <li><a th:href="@{/404}">404</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+<!-- Headerwrap -->
+<div id="headerwrap-2">
+    <div class="container">
+        <div class="row">
+<!--            <tbody style="shape-outside: inherit" >-->
+<!--            </tbody>-->
 
-<!-- jQuery 3 -->
-<script src="js/jquery.min.js"
-        th:src="@{/js/jquery.min.js}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="js/bootstrap.min.js"
-        th:src="@{/js/bootstrap.min.js}"></script>
-<!-- AdminLTE App -->
-<script src="js/adminlte.min.js" th:src="@{/js/adminlte.min.js}"></script>
+        </div>
+    </div>
 
-<script src="js/bootstrap-table.js"
-        th:src="@{/js/bootstrap-table.js}"></script>
-<script src="js/bootstrap-table-zh-CN.js"
-        th:src="@{/js/bootstrap-table-zh-CN.js}"></script>
+</div>
 
-<script src="js/layer.js"
-        th:src="@{/js/layer.js}"></script>
-</body>
-</html>
+<!-- /Headerwrap -->
+<!-- Call To Action -->
+<div id="cta">
+    <div class="container centered">
+        <h3>Welcome to our new corporate site.</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.</p>
+        <br>
+        <a href="about.html" th:href="@{/about.html}" f>
+            <button class="btn btn-embossed btn-primary">Meet Our History</button>
+        </a>
+    </div>
+</div>
+
+<!-- /cta -->
 
 <script>
     $(function () {
@@ -194,10 +254,10 @@
                     align: 'center',
                     formatter: function (value, row, index) {
                         return [
-                            '<button  type="button" class="btn btn-danger btn-xs btn_del">',
+                            '<button  type="button" style="font-family: 楷体" class="btn btn-danger btn-xs btn_del">',
                             '删除',
                             '</button>',
-                            ' <button  type="button" class="btn btn-primary btn-xs btn_update">',
+                            ' <button  type="button" style="font-family: 楷体" class="btn btn-primary btn-xs btn_update">',
                             '更改',
                             '</button>',
                         ].join('')
@@ -248,3 +308,5 @@
         });
     })
 </script>
+</body>
+</html>

@@ -14,4 +14,6 @@ public interface UserService {
     boolean update(String user_phone_number, User user);
 
     Integer MaxID();
+
+    boolean selectprimary(String user_phone_number);
 }

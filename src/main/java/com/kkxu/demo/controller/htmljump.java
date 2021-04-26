@@ -6,32 +6,68 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class htmljump {
     @RequestMapping("/about")
-    public String about(){
+    public String about() {
         return "about";
     }
+
     @RequestMapping("/contact")
-    public String contact(){
+    public String contact() {
         return "contact";
     }
+
     @RequestMapping("/index")
-    public String index(){
+    public String index() {
         return "index";
     }
+
+    @RequestMapping("/toregister")
+    public String toregister() {
+        return "register";
+    }
+    @RequestMapping("/tologin")
+    public String tologin() {
+        return "login";
+    }
+
     @RequestMapping("/services")
-    public String services(){
+    public String services() {
         return "services";
 
-    } @RequestMapping("/pricing")
-    public String pricing(){
+    }
+
+    @RequestMapping("/pricing")
+    public String pricing() {
         return "pricing";
 
-    } @RequestMapping("/Portfolio")
-    public String Portfolio(){
+    }
+    @RequestMapping("/test")
+    public String test() {
+        return "test";
+
+    }
+
+    @RequestMapping("/Portfolio")
+    public String Portfolio() {
         return "portfolio";
     }
 
-    @RequestMapping("/jumplogin")
-    public String jumplogin(){
+    @RequestMapping("/jumpregister")
+    public String jumpregister() {
         return "register";
+    }
+
+    @RequestMapping("/jumplogin")
+    public String jumplogin() {
+        return "login";
+    }
+
+    @RequestMapping("/blogsingle")
+    public String jumpblogsingle() {
+        return "blog-single";
+    }
+
+    @RequestMapping("/faq")
+    public String jumpfaq() {
+        return "faq";
     }
 }

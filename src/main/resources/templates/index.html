@@ -1,280 +1,102 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8">
-  <title>Good - Bootstrap Corporate Template</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+    <meta charset="utf-8">
+    <title>Good - Bootstrap Corporate Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Bootstrap CSS File -->
+    <!-- Bootstrap CSS File -->
 
-  <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
-  <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-  <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css" th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css"
+          th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
 
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- Fixed navbar -->
-  <div class="navbar navbar-default navbar-fixed-top">
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        <a class="navbar-brand" href="index.html">GOOD</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="dropdown active">
-            <a th:href="@{/index}">Home</a>
-          </li>
-          <li><a th:href="@{about}">About </a></li>
-          <li><a th:href="@{/contact}">Contact </a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a th:href="@{/services}">Services</a></li>
-              <li><a th:href="@{/pricing}">Pricing Tables</a></li>
-              <li><a th:href="@{/testimonials}">Testimonials</a></li>
-              <li><a th:href="@{/team}">Our Team</a></li>
-              <li><a th:href="@{/blog}">Blog</a></li>
-              <li><a th:href="@{/blog-single}">Blog Article</a></li>
-              <li><a th:href="@{/faq}">FAQ</a></li>
-              <li><a th:href="@{/404}">404</a></li>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">GOOD</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown active">
+                    <a th:href="@{/index}">首页</a>
+                </li>
+                <li><a th:href="@{about}">关于 </a></li>
+                <li><a th:href="@{/contact}">用户中心 </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/services}">Services</a></li>
+                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
+                        <li><a th:href="@{/faq}">FAQ</a></li>
+                        <li><a th:href="@{/404}">404</a></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolios <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a th:href="@{/portfolio}">Portfolio</a></li>
-              <li><a th:href="@{/portfolio4}">Portfolio 4 Columns</a></li>
-              <li><a th:href="@{/project-single}">Single Project</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
+        </div>
+        <!--/.nav-collapse -->
     </div>
-  </div>
+</div>
 
-
-  <!-- Headerwrap -->
-  <div id="headerwrap-2">
+<!-- Headerwrap -->
+<div id="headerwrap-2">
     <div class="container">
-      <div class="row">
-        <h1>Welcome to our site.<br/> <b>GOOD</b> to see you.</h1>
-        <tbody style="shape-outside: inherit">
-      <tr th:each="s:${trainlist}">
-        <td th:text="${s.getId()}"></td>
-        <td th:text="${s.getArrivalTime()}"></td>
-        <td th:text="${s.getDepartureStation()}"></td>
-        <td th:text="${s.getDepartureTime()}"></td>
-        <td th:text="${s.getEndStation()}"></td>
-        <td th:text="${s.getUseTime()}"></td>
-        <td th:text="${s.getTarinNo()}"></td>
-      </tr>
-        </tbody>
-      </div>
+        <div class="row">
+            <tbody style="shape-outside: inherit" >
+            </tbody>
+        </div>
     </div>
-  </div>
-  <!-- /Headerwrap -->
+</div>
+<!-- /Headerwrap -->
 
-  <!-- Call To Action -->
-  <div id="cta">
+<!-- Call To Action -->
+<div id="cta">
     <div class="container centered">
-      <h3>Welcome to our new corporate site.</h3>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-      <br>
-      <a href="about.html" th:href="@{/about.html}" f><button class="btn btn-embossed btn-primary">Meet Our History</button></a>
-    </div>
-<!--    href="../static/css/style.css" th:href="@{/css/style.css}"-->
-    <!-- /container -->
-  </div>
-  <!-- /cta -->
-
-
-  <!-- Services Section -->
-  <div class="container sinfo">
-    <div class="row centered">
-      <h4>Welcome, we are <b>GOOD</b>, a flat design, responsive & super flexible theme</h4>
-      <br>
-      <br>
-      <div class="col-lg-3">
-        <p><img src="img/icons/touch.svg" alt=""></p>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-        <p><button class="btn btn-primary">Read More</button></p>
-      </div>
-      <!-- col-lg-3 -->
-
-      <div class="col-lg-3">
-        <p><img src="img/icons/spray.svg" alt=""></p>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-        <p><button class="btn btn-primary">Read More</button></p>
-      </div>
-      <!-- col-lg-3 -->
-
-      <div class="col-lg-3">
-        <p><img src="img/icons/rocket.svg" alt=""></p>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-        <p><button class="btn btn-primary">Read More</button></p>
-      </div>
-      <!-- col-lg-3 -->
-
-      <div class="col-lg-3">
-        <p><img src="img/icons/pencil.svg" alt=""></p>
-        <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-        <p><button class="btn btn-primary">Read More</button></p>
-      </div>
-      <!-- col-lg-3 -->
-
-    </div>
-    <!-- /row -->
-    <br>
-    <hr>
-  </div>
-  <!-- /container -->
-
-  <!-- container -->
-  <div class="container">
-    <div class="row">
-      <br>
-      <div class="col-lg-6">
-        <img class="img-responsive" src="img/half-mac2.png" alt="" />
-      </div>
-      <!-- /col-lg-6 -->
-
-      <div class="col-lg-6">
-        <h4>We Craft <b>Awesome</b> Sites</h4>
-        <div class="sinfo">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-          <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-        </div>
-      </div>
-      <!-- /col-lg-6 -->
-
-    </div>
-    <!-- /row -->
-    <br>
-  </div>
-  <!-- container -->
-<div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
-
-  <div id="g">
-    <div class="container">
-      <div class="row">
-        <h4 class="centered">What We Are <b>Talking?</b></h4>
+        <h3>Welcome to our new corporate site.</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.</p>
         <br>
-        <div class="col-md-4">
-          <div class="bc">
-            <img class="img-responsive" src="img/bc01.jpg" alt="">
-            <p><a href="#">Blog Post 1</a></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text...</p>
-            <p>
-              <date>Sep. 24, 2013</date>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="bc">
-            <img class="img-responsive" src="img/bc02.jpg" alt="">
-            <p><a href="#">Blog Post 2</a></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text...</p>
-            <p>
-              <date>Sep. 24, 2013</date>
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="bc">
-            <img class="img-responsive" src="img/bc03.jpg" alt="">
-            <p><a href="#">Blog Post 3</a></p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text...</p>
-            <p>
-              <date>Sep. 24, 2013</date>
-            </p>
-          </div>
-        </div>
-
-      </div>
-      <!-- /row -->
+        <a href="about.html" th:href="@{/about.html}" f>
+            <button class="btn btn-embossed btn-primary">Meet Our History</button>
+        </a>
     </div>
+    <!--    href="../static/css/style.css" th:href="@{/css/style.css}"-->
     <!-- /container -->
-  </div>
-  <!-- grey wrap -->
+</div>
+<!-- /cta -->
 
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/php-mail-form/validate.js"></script>
 
-
-  <!-- FOOTER -->
-  <div id="f">
-    <div class="container">
-      <div class="row">
-        <h5 class="centered">Contact Information</h5>
-        <br>
-
-        <div class="col-lg-4">
-          <p>ABOUT <b>GOOD</b> STUDIO</p>
-          <p><small>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</small></p>
-        </div>
-
-        <div class="col-lg-4">
-          <p>MAIN OFFICE</p>
-          <p><small>
-						Richardson Ave. 984<br/>
-						London, UK.<br/>
-						+44 3893-4904
-					</small></p>
-        </div>
-
-        <div class="col-lg-4">
-          <p>OUR NEWSLETTER</p>
-          <p><small>Each month we collect the best stuff around the design world and share it with you.</small></p>
-          <p><input type="text" placeholder="Add your email here" class="form-control flat" /></p>
-        </div>
-
-      </div>
-      <!-- /row -->
-    </div>
-    <!-- /container -->
-  </div>
-  <!-- /Footer -->
-
-  <div id="copyrights">
-    <div class="container">
-      <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-
-      </p>
-      <div class="credits">
-        
-      </div>
-    </div>
-  </div>
-  <!-- / copyrights -->
-
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/php-mail-form/validate.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+<!-- Template Main Javascript File -->
+<script src="js/main.js"></script>
 
 </body>
 </html>

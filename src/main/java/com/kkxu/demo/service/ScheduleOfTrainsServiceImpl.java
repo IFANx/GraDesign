@@ -1,5 +1,7 @@
 package com.kkxu.demo.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.kkxu.demo.common.domain.Schedule_Of_Trains;
 import com.kkxu.demo.common.domain.Schedule_Of_TrainsExample;
 import com.kkxu.demo.common.domain.Seat;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.awt.print.Book;
 import java.util.Iterator;
 import java.util.List;
 
@@ -80,5 +83,16 @@ public class ScheduleOfTrainsServiceImpl implements ScheduleOfTrainsService{
         schedule_of_trainsExample.setOrderByClause("tarin_no asc,departure_time asc,use_time asc ");
         List<Schedule_Of_Trains> trains =schedule_of_trainsMapper.selectByExample(schedule_of_trainsExample);
         return trains;
+    }
+
+    @Override
+    public PageInfo<Schedule_Of_Trains> findtrains(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        Schedule_Of_TrainsExample schedule_of_trainsExample = new Schedule_Of_TrainsExample();
+        schedule_of_trainsExample.setOrderByClause("tarin_no asc,departure_time asc,use_time asc");
+        schedule_of_trainsExample.createCriteria().andDepartureStationLike("北京西");
+        List<Schedule_Of_Trains> schedule_of_trains=schedule_of_trainsMapper.selectByExample(schedule_of_trainsExample);
+        PageInfo<Schedule_Of_Trains> trainsPageInfo = new PageInfo<>(schedule_of_trains);
+        return trainsPageInfo;
     }
 }

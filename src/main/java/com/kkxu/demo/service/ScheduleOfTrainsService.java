@@ -1,5 +1,6 @@
 package com.kkxu.demo.service;
 
+import com.github.pagehelper.PageInfo;
 import com.kkxu.demo.common.domain.Schedule_Of_Trains;
 import com.kkxu.demo.common.domain.Seat;
 
@@ -21,5 +22,7 @@ public interface ScheduleOfTrainsService {
     List<Schedule_Of_Trains> selectbytrainno(String train_no);
 
     List<Schedule_Of_Trains> TrainPassBy(String departure_station, String end_station);
+
+    public PageInfo<Schedule_Of_Trains> findtrains(int pageNo, int pageSize);
     //列出所有列车信息
 }

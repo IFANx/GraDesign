@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/User")
+//@RequestMapping("/User")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -29,38 +29,42 @@ public class UserController {
 
     @RequestMapping("/register")
     //用户注册  <参数列表user_phone_number，user_password1，user_password2>
-    public Object userregister(HttpSession session, ModelMap modelMap, String user_phone_number,
+    public String userregister(HttpSession session, ModelMap modelMap, String user_phone_number,
                                String user_password1, String user_password2) {
-        if (user_password1.equals(user_password2)) {
-            boolean flag = userService.register(user_phone_number, user_password1);
-            if (flag) {
-                modelMap.addAttribute("message", "注册成功");
+        boolean exist=userService.selectprimary(user_phone_number);
+        if(!exist)
+        {
+            modelMap.addAttribute("message", "注册失败,您的电话已注册");
+            return "register";
+        }
+        else if (user_password1.equals(user_password2)) {
+                userService.register(user_phone_number,user_password1);
+                modelMap.addAttribute("message", "注册成功,请点击Login登录");
                 session.setAttribute("user_phone_number", user_phone_number);
-            } else {
-                modelMap.addAttribute("message", "注册失败");
-                return "result";
-            }
-        } else
-            modelMap.addAttribute("message", "密码不一致");
-        return "result";
+                return "login";
+
+        } else {
+            modelMap.addAttribute("message", "密码不一致，请重新输入");
+            return "register";
+        }
     }
 
 
     @RequestMapping("/login")
-    public Object userlogin(ModelMap modelMap, String user_phone_number,
+    public String userlogin(ModelMap modelMap, String user_phone_number,
                             String user_password) {
         boolean flag = userService.login(user_phone_number, user_password);
         if (flag==true) {
             modelMap.addAttribute("message", "登录成功");
-            return "result";
+            return "trainlist";
         } else {
             modelMap.addAttribute("message", "登录失败");
-            return "result";
+            return "login";
         }
     }
 
     @RequestMapping("/update")
-    public Object userupdate(HttpSession session, ModelMap modelMap,String user_password,
+    public String userupdate(HttpSession session, ModelMap modelMap,String user_password,
                              String user_email,String user_real_name,String user_id_number,int user_gender,
                              String user_address
                              ) {

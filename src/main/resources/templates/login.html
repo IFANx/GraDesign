@@ -1,14 +1,134 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Good - Bootstrap Corporate Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap CSS File -->
+
+    <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css"
+          th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-<form action="/User/login">
-    用户名：<input type="text" required="required" name="user_phone_number">
-    密码：<input type="password" required="required" name="user_password">
-    <input type="submit" value="登录">
-</form>
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/index}">12307</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown active">
+                    <a th:href="@{../index}">首页</a>
+                </li>
+                <li><a th:href="@{about.html}">关于 </a></li>
+                <li><a th:href="@{../contact}">用户中心 </a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/services}">Services</a></li>
+                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
+                        <li><a th:href="@{/faq}">FAQ</a></li>
+                        <li><a th:href="@{/404}">404</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<!-- Headerwrap -->
+<div id="headerwrap-2">
+    <div class="container">
+        <div class="row">
+            <!--下载表格组件-->
+            <div class="login-box-body" style="margin-left: 70%;margin-bottom: 30%; width: 400px" >
+                <p class="login-box-msg"><h5 style="color: #48c9b0;font-weight: bold;">Login/Register</h5></p>
+                <form action="/login" method="get">
+                    <div class="form-group has-feedback" >
+                        <input type="text" name="user_phone_number" class="form-control" style="width: 300px;margin-left: 50px;border-color: #48c9b0;border-width: 4px" placeholder="Phone_Number" required="required">
+                        <span class="fa fa-address-card-o form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback" >
+                        <input type="password" name="user_password" class="form-control"style="width: 300px;margin-left: 50px;border-color: #48c9b0;border-width: 4px" placeholder="Password" required="required">
+                        <span class="fa fa-key form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-block btn-primary btn-lg" style="margin-left: 50px" onclick="tishi()">Login</button>
+
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-xs-4">
+                            <a th:href = "@{/toregister}" class="btn btn-block btn-primary btn-lg" style="margin-left:90px">Register</a>
+                        </div>
+
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <div style="font-size: 20px;color: #ffc468;font-family: 楷体">[[${message}]]</div>
+            </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function tishi() {
+        if([[${message}]]!=null){
+            alert([[${message}]])
+        }
+    }
+</script>
+    <!-- /Headerwrap -->
+    <!-- Call To Action -->
+    <div id="cta">
+        <div class="container centered">
+            <h3>Welcome to our new corporate site.</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book.</p>
+            <br>
+            <a href="about.html" th:href="@{/about.html}" f>
+                <button class="btn btn-embossed btn-primary">Meet Our History</button>
+            </a>
+        </div>
+        <!--    href="../static/css/style.css" th:href="@{/css/style.css}"-->
+        <!-- /container -->
+    </div>
+    <!-- /cta -->
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/php-mail-form/validate.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+
 </body>
 </html>
