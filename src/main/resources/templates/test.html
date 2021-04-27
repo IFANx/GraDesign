@@ -1,312 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>12307</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-    <link rel="stylesheet" href="css/bootstrap.min.css"
-          th:href="@{/static/css/bootstrap.min.css}">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css"
-          th:href="@{/css/font-awesome.min.css}">
-    <link rel="stylesheet" href="static/css/ionicons.min.css"
-          th:href="@{/static/css/ionicons.min.css}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="static/css/AdminLTE.min.css" th:href="@{/static/css/AdminLTE.min.css}">
-
-    <link rel="stylesheet" href="/static/css/_all-skins.min.css" th:href="@{/static/css/_all-skins.min.css}">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css"
-          th:href="@{static/css/bootstrap.min.css}"/>
-    <!-- JavaScript Libraries -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/php-mail-form/validate.js"></script>
-    <!-- Template Main Javascript File -->
-    <script src="js/main.js"></script>
-    <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-    <!-- Bootstrap CSS File -->
-    <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
-    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css"
-          th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
-    <!-- Libraries CSS Files -->
-    <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
-    <!-- Main Stylesheet File -->
-    <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>no</th>
+        <th>cno</th>
+        <th>type</th>
+        <th>cnt</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s:${trainlist}">
+        <td th:text="${s.getId()}"></td>
+        <td th:text="${s.getTarinNo}"></td>
+        <td th:text="${s.getDepartureStation()}"></td>
+        <td th:text="${s.getEndStation()}"></td>
 
 
-<body class="hold-transition skin-purple sidebar-mini">
-<div class="wrapper">
-    <div class="content-wrapper">
-        <section class="content container-fluid">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-body">
-                            <table id="table1" class="table table-bordered table-hover">
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-    </div>
-
-</div>
-<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">GOOD</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown active">
-                    <a th:href="@{/index}">首页</a>
-                </li>
-                <li><a th:href="@{about}">关于 </a></li>
-                <li><a th:href="@{/contact}">用户中心 </a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a th:href="@{/services}">Services</a></li>
-                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
-                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
-                        <li><a th:href="@{/faq}">FAQ</a></li>
-                        <li><a th:href="@{/404}">404</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</div>
-<!-- Headerwrap -->
-<div id="headerwrap-2">
-    <div class="container">
-        <div class="row">
-<!--            <tbody style="shape-outside: inherit" >-->
-<!--            </tbody>-->
-
-        </div>
-    </div>
-
-</div>
-
-<!-- /Headerwrap -->
-<!-- Call To Action -->
-<div id="cta">
-    <div class="container centered">
-        <h3>Welcome to our new corporate site.</h3>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-            scrambled it to make a type specimen book.</p>
-        <br>
-        <a href="about.html" th:href="@{/about.html}" f>
-            <button class="btn btn-embossed btn-primary">Meet Our History</button>
-        </a>
-    </div>
-</div>
-
-<!-- /cta -->
-
-<script>
-    $(function () {
-
-        window.operateEvents = {
-            // 更改操作的方法
-            'click .btn_update': function (e, value, row, index) {
-                alert('更改');
-            },
-            //删除 单行/
-            'click .btn_del': function (e, value, row, index) {
-                var id = row.id;
-                layer.confirm("确认删除: " + row.name + "  ?", {icon: 3, title: '删除操作'}, function (index) {
-                    //do something
-                    $.ajax({
-                        type: "delete",
-                        url: "/deleteBook",
-                        contentType: "application/json",
-                        data: JSON.stringify({"id": id}),
-                        success: function (msg) {
-                            if (msg["success"]) {
-                                $('#table1').bootstrapTable('remove', {
-                                    field: 'id',
-                                    values: [id]
-                                });
-                                layer.msg("操作成功", {time: 700});
-                            }
-                        }
-                    });
-                    layer.close(index);
-                });
-            }
-        };
-
-        $('#table1').bootstrapTable('destroy').bootstrapTable({
-            method: 'get',
-            url: "/gettrains",
-            striped: true,
-            dataField: "list",
-            totalField: "total",
-            pageNumber: 1,
-            pageSize: 10,
-            pagination: true,
-            queryParamsType: 'limit',
-            // search: true,
-            queryParams: function (params) {
-                return {
-                    pageSize: params.limit,
-                    pageNo: params.offset / params.limit + 1
-                }
-            },
-            sidePagination: 'server',
-            pageList: "[10, 25, 50, 100, all]",
-            showRefresh: true,
-            clickToSelect: true,
-            toolbarAlign: 'left',
-            buttonsAlign: 'right',
-            toolbar: '#toolbar',
-            showColumns: false,
-            paginationLoop: false,
-            columns: [
-                {
-                    title: 'ID',
-                    field: 'id',
-                    visible: false,
-                    width: 160
-                },
-                {
-                    //  title: '全选/反选',
-                    checkbox: true
-                }
-                ,
-                {
-                    title: 'tarin_no',
-                    field: 'tarinNo',
-                    visible: true,
-                    width: 160
-                },
-                {
-                    title: 'train_number',
-                    field: 'trainNumber',
-                    width: 160,
-                    align: 'center'
-                },
-                {
-                    title: 'departure_station',
-                    field: 'departureStation',
-                    width: 160,
-                    align: 'left'
-                }, {
-                    title: 'toStation',
-                    field: 'toStation',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: 'departureTime',
-                    field: 'departureTime',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: 'seatless',
-                    field: 'seatless',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: 'arrivalTime',
-                    field: 'arrivalTime',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: 'useTime',
-                    field: 'useTime',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: 'businessSeat',
-                    field: 'businessSeat',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: 'firstClassSeats',
-                    field: 'firstClassSeats',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: 'secondClassSeats',
-                    field: 'secondClassSeats',
-                    visible: true,
-                    width: 160
-                },
-                {
-                    title: '操作',
-                    width: 80,
-                    align: 'center',
-                    formatter: function (value, row, index) {
-                        return [
-                            '<button  type="button" style="font-family: 楷体" class="btn btn-danger btn-xs btn_del">',
-                            '删除',
-                            '</button>',
-                            ' <button  type="button" style="font-family: 楷体" class="btn btn-primary btn-xs btn_update">',
-                            '更改',
-                            '</button>',
-                        ].join('')
-                    },
-                    events: window.operateEvents
-                }
-            ],
-            locale: 'zh-CN',
-            responseHandler: function (data) {
-                return data['data'];
-            }
-
-        });
-
-
-        $(".remove-batch").click(function () {
-            var rows = $('#table1').bootstrapTable('getSelections');
-            var ids = $.map(rows, function (row) {
-                return row.id;
-            });
-
-            if (ids.length > 0) {
-                layer.confirm("确认删除", {icon: 3, title: '删除操作'}, function (index) {
-                    //do something
-                    $.ajax({
-                        type: "delete",
-                        url: "/deleteBooks",
-                        contentType: "application/json",
-                        data: JSON.stringify(ids),
-                        success: function (msg) {
-                            if (msg["success"]) {
-                                $('#table1').bootstrapTable('refresh');
-                                layer.msg("批量操作成功", {time: 700});
-                                /*   $('#table1').bootstrapTable('remove', {
-                                     field: 'id',
-                                     values: ids
-                                   });*/
-
-                            }
-                        }
-                    });
-                    layer.close(index);
-                });
-            } else {
-                layer.msg("未选中行", {time: 700});
-            }
-
-        });
-    })
-</script>
+        <td ><form action="/Order/insertorder" >
+<!--            <input th:value="${s.getTrainNo()}" name="train_no" type="hidden">-->
+            <!--            <input th:value="${s}" name="traininfo" type="hidden">-->
+            <!--            <input name="PassengerPhoneNumber" type="text" required="required">-->
+            <input type="submit" value="预定">
+        </form></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

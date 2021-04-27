@@ -1,36 +1,290 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>列车表</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="css/ionicons.min.css"
+          th:href="@{/css/ionicons.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css" th:href="@{/css/AdminLTE.min.css}">
+
+    <link rel="stylesheet" href="css/_all-skins.min.css" th:href="@{/css/_all-skins.min.css}">
+    <!--          th:href="@{css/bootstrap.min.css}"/>-->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap CSS File -->
+
+    <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css"
+          th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
-<table>
-    <thead>
-    <tr>
-        <th>no</th>
-        <th>cno</th>
-        <th>type</th>
-        <th>cnt</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="s:${seats}">
-        <td th:text="${s.getTrainNo()}"></td>
-        <td th:text="${s.getCarriageNo()}"></td>
-        <td th:text="${s.getSeatType()}"></td>
-        <td th:text="${s.getSeatCount()}"></td>
+<body class="hold-transition skin-purple sidebar-mini">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/listtrains}" >10307票务</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/index}" >系统首页</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >订单中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <!--                        <li><a th:href="@{/tologin}" >全部订单</a></li>-->
+                        <li><a th:href="@{/lookorder}" th:method="get" th:type="hidden" th:name="UserPhonenumber"th:value="17361048086">全部订单</a></li>
+                        <!--                            <input type="hidden" name="UserPhonenumber" value="17361048086">全部订单</a></li>-->
+                        <li><a th:href="@{/toregister}">已完成订单</a></li>
+                        <li><a th:href="@{/touserinfo}">待完成订单</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >用户中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/tologin}" >用户登录</a></li>
+                        <li><a th:href="@{/toregister}">用户注册</a></li>
+                        <li><a th:href="@{/touserinfo}">用户信息</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >其他 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/services}">Services</a></li>
+                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
+                        <li><a th:href="@{/faq}">FAQ</a></li>
+                        <li><a th:href="@{/404}">404</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
 
 
-        <td ><form action="/Order/insertorder" >
-            <input th:value="${s.getTrainNo()}" name="train_no" type="hidden">
-            <!--            <input th:value="${s}" name="traininfo" type="hidden">-->
-            <!--            <input name="PassengerPhoneNumber" type="text" required="required">-->
-            <input type="submit" value="预定">
-        </form></td>
-    </tr>
-    </tbody>
-</table>
+<div class="wrapper">
+    <!-- Main Header -->
+    <div th:replace="~{include/menu :: menu}"></div>
+    <div class="content-wrapper">
+        <section class="content container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <table id="table1" class="table table-bordered table-hover">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div id="copyrights">
+            <div class="container">
+                <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - scu xukang
+                </p>
+                <div class="credits">
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- jQuery 3 -->
+        <script src="js/jquery.min.js"
+                th:src="@{/js/jquery.min.js}"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="js/bootstrap.min.js"
+                th:src="@{/js/bootstrap.min.js}"></script>
+        <!-- AdminLTE App -->
+        <script src="js/adminlte.min.js" th:src="@{/js/adminlte.min.js}"></script>
+
+        <script src="js/bootstrap-table.js"
+                th:src="@{/js/bootstrap-table.js}"></script>
+        <script src="js/bootstrap-table-zh-CN.js"
+                th:src="@{/js/bootstrap-table-zh-CN.js}"></script>
+
+        <script src="js/layer.js"
+                th:src="@{/js/layer.js}"></script>
 </body>
 </html>
+
+<script>
+    $(function () {
+
+        window.operateEvents = {
+            //预定/
+            'click .btn_del': function (e, value, row, index) {
+                var train_number = row.train_number;
+                layer.confirm("确认预定: " + row.name + "  ?", {icon: 3, title: '预定操作'}, function (index) {
+                    //do something
+                    $.ajax({
+                        type: "post",
+                        url: "/yuding",
+                        contentType: "application/json",
+                        data: JSON.stringify({"train_number": train_number}),
+                        success: function (msg) {
+                            if (msg["success"]) {
+                                $('#table1').bootstrapTable('destroy', {
+                                    field: 'train_number',
+                                    values: [train_number]
+                                });
+                                layer.msg("操作成功", {time: 700});
+                            }
+                        }
+                    });
+                    layer.close(index);
+                });
+            }
+        };
+
+        $('#table1').bootstrapTable('destroy').bootstrapTable({
+            method: 'get',
+            url: "/getseats",
+            striped: true,
+            dataField: "list",
+            totalField: "total",
+            pageNumber: 1,
+            pageSize: 10,
+            pagination: true,
+            queryParamsType: 'limit',
+            // search: true,
+            queryParams: function (params) {
+                return {
+                    pageSize: params.limit,
+                    pageNo: params.offset / params.limit + 1
+                }
+            },
+            sidePagination: 'server',
+            pageList: "[10, 25, 50, 100, all]",
+            showRefresh: true,
+            clickToSelect: true,
+            toolbarAlign: 'left',
+            buttonsAlign: 'right',
+            toolbar: '#toolbar',
+            showColumns: false,
+            paginationLoop: false,
+            columns: [
+                {
+                    title: 'ID',
+                    field: 'id',
+                    visible: false,
+                    width: 160
+                },
+                {
+                    //  title: '全选/反选',
+                    checkbox: true
+                }
+                ,
+                {
+                    title: '列车号',
+                    field: 'trainNo',
+                    visible: true,
+                    width: 160,
+                },
+                {
+                    title: '车厢号码',
+                    field: 'carriageNo',
+                    width: 160,
+                    align: 'center'
+                },
+                {
+                    title: '座位类型',
+                    field: 'seatType',
+                    width: 160,
+                    align: 'left'
+                }, {
+                    title: '剩余数目',
+                    field: 'seatCount',
+                    visible: true,
+                    width: 160
+                },
+                {
+                    title: '操作',
+                    width: 80,
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        return [
+                            '<form action="/insertorder" method="get">',
+                            // '<input type="hidden" name="train_no" value="240000D9010F">',
+                            '<input type="hidden" name="train_no" value="',
+                            row.trainNo,
+                            '">',
+                            '<input type="submit" class="btn btn-danger btn-xs btn_del">',
+                            '</input>',
+                            '</form>'
+
+                        ].join('')
+                    },
+                    events: window.operateEvents
+                }
+            ],
+            locale: 'zh-CN',
+            responseHandler: function (data) {
+                return data['data'];
+            }
+
+        });
+
+
+        $(".remove-batch").click(function () {
+            var rows = $('#table1').bootstrapTable('getSelections');
+            var ids = $.map(rows, function (row) {
+                return row.id;
+            });
+
+            if (ids.length > 0) {
+                layer.confirm("确认删除", {icon: 3, title: '删除操作'}, function (index) {
+                    //do something
+                    $.ajax({
+                        type: "delete",
+                        url: "/deleteBooks",
+                        contentType: "application/json",
+                        data: JSON.stringify(ids),
+                        success: function (msg) {
+                            if (msg["success"]) {
+                                $('#table1').bootstrapTable('refresh');
+                                layer.msg("批量操作成功", {time: 700});
+                                /*   $('#table1').bootstrapTable('remove', {
+                                     field: 'id',
+                                     values: ids
+                                   });*/
+
+                            }
+                        }
+                    });
+                    layer.close(index);
+                });
+            } else {
+                layer.msg("未选中行", {time: 700});
+            }
+
+        });
+    })
+</script>

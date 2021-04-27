@@ -14,10 +14,10 @@ public class AlipayConfig {
     public static String ALIPAY_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjZufka4ya9rH6xLRe+sSdDPQtkys9zKJl5H4czu3GHqzALX2v/QYXafRHF7tZSd3xu6vNi+Rwa1UQMbjsYYGdy8cjd037b1TyhDTNb8gFzL4hM5uOSbvgkMwysER2CkoS/SXxI49fkqaNwx49DeFHBGWGHCXZEtTsDTfl6ylkzZWPnNU6w/NHt1pVKYZXQjd8WcogCSQ1GhjPgxgPMF3vP7dQQr6EXNWI0zDvwdwmzPdsjonOVGO9JNAc1erCfuJ6jmPa/MQoEzTzz49Z5e0JdzpaxUfP5Rzgaof4Kz0vdyfdWm5HEcM5d5qpHRNME06FNFXSR5+JOy2jBQj0fQRYwIDAQAB";
 
     // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://www.baidu.com";
+    public static String notify_url = "http://localhost:8989";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问(其实就是支付成功后返回的页面)
-    public static String return_url = "http://www.baidu.com";
+    public static String return_url = "http://localhost:8989/";
 //    public static String return_url = "button";
 
     // 签名方式

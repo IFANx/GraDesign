@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 //@RequestMapping("/Trains")
@@ -57,11 +59,20 @@ public class ScheduleOfTrainsController {
     }
 
     //求出途径所有站点
-    @RequestMapping("/scheduleOfTrainPassBy")
-    public Object scheduleOfTrainPassBy(ModelMap modelMap,String departure_station,String end_station) {
-        List<Schedule_Of_Trains> trains = scheduleOfTrainsService.TrainPassBy(departure_station,end_station);
-        modelMap.addAttribute("trainlist", trains);
-        return "trainlist";
+    @RequestMapping("/scheduleOfTrainfromstationtotostation")
+    @ResponseBody
+    public List<Schedule_Of_Trains> scheduleOfTrainPassBy(ModelMap modelMap, String from_station, String to_station) {
+        List<Schedule_Of_Trains> trains = scheduleOfTrainsService.fromstation(from_station);
+        Iterator<Schedule_Of_Trains> iterator = trains.iterator();
+        List<Schedule_Of_Trains> possibletrain=new LinkedList<>();
+        while(iterator.hasNext())
+        {
+            if(iterator.next().getToStation().equals(to_station)){
+                possibletrain.add(iterator.next());
+            }
+        }
+        modelMap.addAttribute("trainlist", possibletrain);
+        return possibletrain;
     }
 
     //分页
@@ -74,6 +85,6 @@ public class ScheduleOfTrainsController {
     @GetMapping("/listtrains")
     public String toTrainListPage(){
 
-        return "test";
+        return "trainlist";
     }
 }

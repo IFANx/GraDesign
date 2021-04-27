@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<aside class="main-sidebar" th:fragment="menu">
-
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
-
-
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">HEADER</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-            <li class="treeview active">
-                <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-                    <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#" th:href="@{/listbooks}">查询图书</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                </ul>
-            </li>
-        </ul>
-        <!-- /.sidebar-menu -->
+<!--<aside class="main-sidebar" th:fragment="menu">-->
+    <section class="sidebar" style="position:fixed;width: 15%" th:fragment="menu">
+            <form action="/scheduleOfTrainfromstationtotostation" method="get" class="sidebar-form" style="font-size: large;">请输入站点查询车次信息
+                    <input type="text" name="from_station" class="form-control" placeholder="起点站">
+                    <input type="text" name="to_station" class="form-control" placeholder="终点站">
+                <button class="btn btn-block btn-primary btn-lg">查询</button>
+            </form>
+<!--        </ul>-->
     </section>
     <!-- /.sidebar -->
-</aside>
+
+<!--</aside>-->
 </html>

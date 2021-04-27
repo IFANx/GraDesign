@@ -23,6 +23,8 @@ public interface ScheduleOfTrainsService {
 
     List<Schedule_Of_Trains> TrainPassBy(String departure_station, String end_station);
 
-    public PageInfo<Schedule_Of_Trains> findtrains(int pageNo, int pageSize);
+    PageInfo<Schedule_Of_Trains> findtrains(int pageNo, int pageSize);
+
+    List<Schedule_Of_Trains> fromstation(String from_station);
     //列出所有列车信息
 }

@@ -1,5 +1,7 @@
 package com.kkxu.demo.common.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Order_List {
@@ -27,6 +29,7 @@ public class Order_List {
 
     private String orderMoney;
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date orderCreateTime;
 
     private String orderStatus;

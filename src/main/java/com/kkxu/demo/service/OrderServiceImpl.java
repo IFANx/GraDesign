@@ -1,5 +1,7 @@
 package com.kkxu.demo.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.kkxu.demo.common.domain.Order_List;
 import com.kkxu.demo.common.domain.Order_ListExample;
 import com.kkxu.demo.mapper.Order_ListMapper;
@@ -37,5 +39,15 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void deleteorder(Integer maxID) {
         order_listMapper.deleteByPrimaryKey(maxID);
+    }
+
+    @Override
+    public PageInfo findorder(String userPhonenumber, int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        Order_ListExample order_listExample=new Order_ListExample();
+        order_listExample.createCriteria().andUserPhoneNumberEqualTo(userPhonenumber);
+        List<Order_List> order_lists = order_listMapper.selectByExample(order_listExample);
+        PageInfo<Order_List> order_listPageInfo =new PageInfo<>(order_lists);
+        return order_listPageInfo;
     }
 }

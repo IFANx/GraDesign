@@ -1,5 +1,6 @@
 package com.kkxu.demo.service;
 
+import com.github.pagehelper.PageInfo;
 import com.kkxu.demo.common.domain.Order_List;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface OrderService {
     List<Order_List> lookorder(String  userPhonenumber);
 
     void deleteorder(Integer maxID);
+
+    PageInfo findorder(String userPhonenumber, int pageNo, int pageSize);
 }
