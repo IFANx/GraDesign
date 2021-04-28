@@ -32,8 +32,9 @@ public class ScheduleOfTrainsController {
     @RequestMapping("/scheduleOfTrainsbytrain_number")
     public Object scheduleOfTrainsbytrain_number(ModelMap modelMap,String train_number) {
         List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.Trainsbytrain_number(train_number);
-        modelMap.addAttribute("trainlist", trainlist);
-        return "trainlist";
+        Schedule_Of_Trains schedule_of_trains = trainlist.get(0);
+        modelMap.addAttribute("schedule_of_trains", schedule_of_trains);
+        return "pricing";
     }
 
     @RequestMapping("/scheduleOfTrainsbyid")

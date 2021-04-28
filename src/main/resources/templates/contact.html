@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Good - Bootstrap Corporate Template</title>
+    <title>用户信息中心</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -79,68 +79,77 @@
 <div class="container">
     <div class="row sinfo">
         <div class="col-lg-4">
-            <h4>Our Information</h4>
+            <h4>Your Information</h4>
             <br>
             <div class="cinfo">
                 <img src="img/icons/clocks.svg" alt="">
             </div>
             <p>
-                Monday to Friday / 7:00 - 18:00<br/> Saturday / 9:00 - 15:00
+                姓名: <a style="color: #00a65a;font-weight: bold;">[[${user.userRealName}]]</a>
+                <br/>
+                联系电话: <a style="color: #00a65a;font-weight: bold;">[[${user.userPhoneNumber}]]</a>
             </p>
             <hr>
             <div class="cinfo">
                 <img src="img/icons/rss.svg" alt="">
             </div>
             <p>
-                Richardson Ave. 984<br/> London, UK.
+                会员等级: <a style="color: #e09018;font-weight: bold;">[[${user.userLeixing}]]</a>
+                <br/>
+                邮寄地址: <a style="color:  #e09018;font-weight: bold;">[[${user.userAddress}]]</a>
             </p>
             <hr>
             <div class="cinfo">
                 <img src="img/icons/android.svg" alt="">
             </div>
             <p>
-                +44 9845-4343<br/> good@goodagency.com
+                邮箱地址: <a style="color: #4d28e0;font-weight: bold">[[${user.userEmail}]]</a>
+                <br/>
+                账号密码: <a style="color: #4d28e0;font-weight: bold" >[[${user.userPassword}]]</a>
+
             </p>
             <hr>
         </div>
         <!-- col-lg-4 -->
 
         <div class="col-lg-8">
-            <h4>Need To Contact Us?</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s.</p>
+            <h4>如果您需要修改您的个人信息，请填写下表</h4>
+            <p>If you need to modify your personal information, please fill in the form below.(Phone numbers are not allowed to be modified)</p>
             <br>
 
-            <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">
+            <form action="/update" class="contact-form php-mail-form" role="form"   method="POST">
 
                 <div class="form-group">
-                    <input type="name" name="name" class="form-control" id="contact-name" placeholder="Your Name"
-                           data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <a>真实姓名</a>
+                    <input type="name" name="user_real_name" class="form-control" id="contact-name" placeholder="Your RealName" required="required"
+                           data-rule="minlen:2" data-msg="Please enter at least 4 chars">
                     <div class="validate"></div>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" id="contact-email" placeholder="Your Email"
+                    <a>邮箱地址</a>
+                    <input type="email" name="user_email" class="form-control" id="contact-email" placeholder="Your Email"
                            data-rule="email" data-msg="Please enter a valid email">
                     <div class="validate"></div>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="subject" class="form-control" id="contact-subject" placeholder="Subject"
-                           data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                    <a>车票邮寄地址</a>
+                    <input type="text" name="user_address" class="form-control" id="contact-subject" placeholder="Mailing Address"
+                           data-msg="Please enter at least 8 chars of subject">
                     <div class="validate"></div>
                 </div>
-
                 <div class="form-group">
-                    <textarea class="form-control" name="message" id="contact-message" placeholder="Your Message"
-                              rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+                    <a>身份证号码</a>
+                    <input type="text" name="user_id_number" class="form-control"  placeholder="Id Number"
+                           data-msg="Please enter at least 8 chars of subject">
                     <div class="validate"></div>
                 </div>
-
-                <div class="loading"></div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+<!--                <div class="loading"></div>-->
+<!--                <div class="error-message"></div>-->
+<!--                <div class="sent-message">Your information has been updated. Thank you!</div>-->
 
                 <div class="form-send">
-                    <button type="submit" class="btn btn-large">Send Message</button>
+                    <button type="submit" class="btn btn-large">Update Information</button>
+                    <a style="color: #e05c1b;filter: alpha(opacity=50);" >[[${message}]]</a>
                 </div>
 
             </form>
@@ -187,17 +196,17 @@
 <!--  </div>-->
 <!--  &lt;!&ndash; /Footer &ndash;&gt;-->
 
-<!--  <div id="copyrights">-->
-<!--    <div class="container">-->
-<!--      <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>-->
+  <div id="copyrights">
+    <div class="container">
+        <p> &copy; Copyrights <strong>12307</strong>. All Rights Reserved - 四川大学 许康</p>
 
-<!--      </p>-->
-<!--      <div class="credits">-->
+      </p>
+      <div class="credits">
 
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; / copyrights &ndash;&gt;-->
+      </div>
+    </div>
+  </div>
+  <!-- / copyrights -->
 
 <!-- JavaScript Libraries -->
 <script src="lib/jquery/jquery.min.js"></script>

@@ -77,326 +77,225 @@
     </div>
 </div>
 
-
-<!-- Pricing intro -->
-<div class="container sinfo">
-    <div class="row centered">
-        <div class="col-lg-10 col-lg-offset-1">
-            <h3>Pricing Lists</h3>
-
-        </div>
-
-    </div>
-</div>
-<!-- /pricing intro -->
-
-
-<!-- Price Section -->
-<!-- STYLE 1 -->
-<div class="container">
-    <br><br>
-    <div class="row">
-        <div class="col-md-9 span-centered">
-            <div class="row">
-                <div class="col-md-4 pricing-table turquoise bordered plain">
-                    <ul class="centered">
-                        <li class="title">
-                            Basic
-                        </li>
-                        <li class="price">
-                            <span class="currency-symbol">$</span>
-                            <strong>4</strong>
-                            <sup>99</sup>
-                            <em>/mo</em>
-                        </li>
-                        <li>
-                            1 GB Diskspace
-                        </li>
-                        <li>
-                            10 GB Bandwidth
-                        </li>
-                        <li>
-                            1 Domain
-                        </li>
-                        <li>
-                            3 Subdomain
-                        </li>
-                        <li>
-                            5 Email Accounts
-                        </li>
-                        <li class="button">
-                            <button class="btn btn-large">
-                                <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                            </button>
-                        </li>
-                    </ul>
+<div id="faqwrap">
+    <div class="container">
+        <div class="row">
+            <h5 style="color: #ffffff; font-weight: bold"
+                th:text="中国铁路+${schedule_of_trains.getTrainNumber()}+---车次余座详情"></h5>
+            <div class="container">
+                <br><br>
+                <div class="row">
+                    <div class="col-md-9 span-centered">
+                        <div class="row">
+                            <div class="col-md-4 pricing-table turquoise bordered hover-animation">
+                                <ul class="centered">
+                                    <li class="title">
+                                        商务座
+                                    </li>
+                                    <li class="price">
+                                        <strong th:text="${schedule_of_trains.getBusinessSeat()}"
+                                                th:default="已售空"></strong>
+                                        <em>/人次</em>
+                                    </li>
+                                    <li>
+                                        1 GB Diskspace
+                                    </li>
+                                    <li>
+                                        10 GB Bandwidth
+                                    </li>
+                                    <li>
+                                        1 Domain
+                                    </li>
+                                    <li class="button">
+                                        <button class="btn btn-large">
+                                            <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 pricing-table turquoise bordered hover-animation">
+                                <ul class="centered alt">
+                                    <li class="title">
+                                        一等座
+                                    </li>
+                                    <li class="price">
+                                        <strong th:text="${schedule_of_trains.getFirstClassSeats()}"></strong>
+                                        
+                                        <em>/人次</em>
+                                    </li>
+                                    <li>
+                                        25 GB Diskspace
+                                    </li>
+                                    <li>
+                                        500 GB Bandwidth
+                                    </li>
+                                    <li>
+                                        5 Domain
+                                    </li>
+                                    <li class="button">
+                                        <button class="btn btn-large">
+                                            <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 pricing-table turquoise bordered hover-animation">
+                                <ul class="centered">
+                                    <li class="title">
+                                        二等座
+                                    </li>
+                                    <li class="price">
+                                        <strong th:text="${schedule_of_trains.getSecondClassSeats()}"></strong>
+                                        <em>/人次</em>
+                                    </li>
+                                    <li>
+                                        100 GB Diskspace
+                                    </li>
+                                    <li>
+                                        <strong>Unlimited</strong> Bandwidth
+                                    </li>
+                                    <li>
+                                        25 Domain
+                                    </li>
+                                    <li class="button">
+                                        <button class="btn btn-large">
+                                            <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4 pricing-table turquoise bordered plain">
-                    <ul class="centered alt">
-                        <li class="title">
-                            Standard
-                        </li>
-                        <li class="price">
-                            <span class="currency-symbol">$</span>
-                            <strong>19</strong>
-                            <sup>99</sup>
-                            <em>/mo</em>
-                        </li>
-                        <li>
-                            25 GB Diskspace
-                        </li>
-                        <li>
-                            500 GB Bandwidth
-                        </li>
-                        <li>
-                            5 Domain
-                        </li>
-                        <li>
-                            25 Subdomain
-                        </li>
-                        <li>
-                            100 Email Accounts
-                        </li>
-                        <li class="button">
-                            <button class="btn btn-large">
-                                <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                            </button>
-                        </li>
-                    </ul>
+                <br><br><br><br>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                        <ul>
+                            <li class="title">
+                                一等软卧
+                            </li>
+                            <li class="price">
+                                <strong th:text="${schedule_of_trains.getSoftBedFirstClassBed()}"></strong>
+                                
+                                <em>/人次</em>
+                            </li>
+                            <li>
+                                <span class="pull-right">1 GB</span>Diskspace
+                            </li>
+                            <li>
+                                <span class="pull-right">10 GB</span>Bandwidth
+                            </li>
+                            <li>
+                                <span class="pull-right">1</span>Domain
+                            </li>
+                            <li class="button">
+                                <button class="btn btn-large">
+                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                        <ul>
+                            <li class="title">
+                                二等硬卧
+                            </li>
+                            <li class="price">
+                                <strong th:text="${schedule_of_trains.getHardSecondClassBed()}"></strong>
+                                
+                                <em>/人次</em>
+                            </li>
+                            <li>
+                                <span class="pull-right">25 GB</span>Diskspace
+                            </li>
+                            <li>
+                                <span class="pull-right">500 GB</span>Bandwidth
+                            </li>
+                            <li>
+                                <span class="pull-right">5</span>Domain
+                            </li>
+                            <li class="button">
+                                <button class="btn btn-large">
+                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                        <ul>
+                            <li class="title">
+                                硬座
+                            </li>
+                            <li class="price">
+                                <strong th:text="${schedule_of_trains.getHardSeat()}"></strong>
+                                
+                                <em>/人次</em>
+                            </li>
+                            <li>
+                                <span class="pull-right"><i class="icon-ok"></i></span>
+                                <strong>Unlimited</strong> Diskspace
+                            </li>
+                            <li>
+                                <span class="pull-right"><i class="icon-ok"></i></span>
+                                <strong>Unlimited</strong> Bandwidth
+                            </li>
+                            <li>
+                                <span class="pull-right"><i class="icon-ok"></i></span>
+                                <strong>Unlimited</strong> Domain
+                            </li>
+                            <li class="button">
+                                <button class="btn btn-large">
+                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                        <ul>
+                            <li class="title">
+                                无座
+                            </li>
+                            <li class="price">
+                                <strong th:text="${schedule_of_trains.getSeatless()}"></strong>
+                                
+                                <em>/人次</em>
+                            </li>
+                            <li>
+                                <span class="pull-right"><i class="icon-ok"></i></span>
+                                <strong>Unlimited</strong> Diskspace
+                            </li>
+                            <li>
+                                <span class="pull-right"><i class="icon-ok"></i></span>
+                                <strong>Unlimited</strong> Bandwidth
+                            </li>
+                            <li>
+                                <span class="pull-right"><i class="icon-ok"></i></span>
+                                <strong>Unlimited</strong> Domain
+                            </li>
+                            <li class="button">
+                                <button class="btn btn-large">
+                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-4 pricing-table turquoise bordered plain">
-                    <ul class="centered alt-dark">
-                        <li class="title">
-                            Advance
-                        </li>
-                        <li class="price">
-                            <span class="currency-symbol">$</span>
-                            <strong>49</strong>
-                            <sup>99</sup>
-                            <em>/mo</em>
-                        </li>
-                        <li>
-                            100 GB Diskspace
-                        </li>
-                        <li>
-                            <strong>Unlimited</strong> Bandwidth
-                        </li>
-                        <li>
-                            25 Domain
-                        </li>
-                        <li>
-                            100 Subdomain
-                        </li>
-                        <li>
-                            500 Email Accounts
-                        </li>
-                        <li class="button">
-                            <button class="btn btn-large">
-                                <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+                <br><br><br><br>
             </div>
         </div>
     </div>
-    <br><br><br><br>
+</div>
+<div id="copyrights">
+    <div class="container">
+        <p> &copy; Copyrights <strong>12307</strong>. All Rights Reserved - 四川大学 许康</p>
+        <div class="credits"></div>
+    </div>
+
 </div>
 
-
-<!--  &lt;!&ndash; STYLE 2 &ndash;&gt;-->
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-3 pricing-table turquoise bordered hover-animation">-->
-<!--        <ul>-->
-<!--          <li class="title">-->
-<!--            Basic-->
-<!--          </li>-->
-<!--          <li class="price">-->
-<!--            <span class="currency-symbol">$</span>-->
-<!--            <strong>4</strong>-->
-<!--            <sup>99</sup>-->
-<!--            <em>/mo</em>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">1 GB</span>Diskspace-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">10 GB</span>Bandwidth-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">1</span>Domain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">3</span>Subdomain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">5</span>Email Accounts-->
-<!--          </li>-->
-<!--          <li class="button">-->
-<!--            <button class="btn btn-large">-->
-<!--							<i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up-->
-<!--						</button>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--      <div class="col-md-3 pricing-table turquoise bordered hover-animation">-->
-<!--        <ul>-->
-<!--          <li class="title">-->
-<!--            Standard-->
-<!--          </li>-->
-<!--          <li class="price">-->
-<!--            <span class="currency-symbol">$</span>-->
-<!--            <strong>19</strong>-->
-<!--            <sup>99</sup>-->
-<!--            <em>/mo</em>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">25 GB</span>Diskspace-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">500 GB</span>Bandwidth-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">5</span>Domain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">25</span>Subdomain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">100</span>Email Accounts-->
-<!--          </li>-->
-<!--          <li class="button">-->
-<!--            <button class="btn btn-large">-->
-<!--							<i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up-->
-<!--						</button>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--      <div class="col-md-3 pricing-table turquoise bordered standout hover-animation">-->
-<!--        <ul>-->
-<!--          <li class="title">-->
-<!--            Advance-->
-<!--          </li>-->
-<!--          <li class="price">-->
-<!--            <span class="currency-symbol">$</span>-->
-<!--            <strong>49</strong>-->
-<!--            <sup>99</sup>-->
-<!--            <em>/mo</em>-->
-<!--          </li>-->
-<!--          <li class="label">-->
-<!--            Most Popular!-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">100 GB</span>Diskspace-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right"><strong>Unlimited</strong></span>Bandwidth-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">25</span>Domain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">100</span>Subdomain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right">500</span>Email Accounts-->
-<!--          </li>-->
-<!--          <li class="button">-->
-<!--            <button class="btn btn-large">-->
-<!--							<i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up-->
-<!--						</button>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--      <div class="col-md-3 pricing-table turquoise bordered hover-animation">-->
-<!--        <ul>-->
-<!--          <li class="title">-->
-<!--            Professional-->
-<!--          </li>-->
-<!--          <li class="price">-->
-<!--            <span class="currency-symbol">$</span>-->
-<!--            <strong>99</strong>-->
-<!--            <sup>99</sup>-->
-<!--            <em>/mo</em>-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right"><i class="icon-ok"></i></span>-->
-<!--            <strong>Unlimited</strong> Diskspace-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right"><i class="icon-ok"></i></span>-->
-<!--            <strong>Unlimited</strong> Bandwidth-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right"><i class="icon-ok"></i></span>-->
-<!--            <strong>Unlimited</strong> Domain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right"><i class="icon-ok"></i></span>-->
-<!--            <strong>Unlimited</strong> Subdomain-->
-<!--          </li>-->
-<!--          <li>-->
-<!--            <span class="pull-right"><i class="icon-ok"></i></span>-->
-<!--            <strong>Unlimited</strong> Email Accounts-->
-<!--          </li>-->
-<!--          <li class="button">-->
-<!--            <button class="btn btn-large">-->
-<!--							<i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up-->
-<!--						</button>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <br><br><br><br>-->
-<!--  </div>-->
-
-
-<!--  &lt;!&ndash; FOOTER &ndash;&gt;-->
-<!--  <div id="f">-->
-<!--    <div class="container">-->
-<!--      <div class="row">-->
-<!--        <h5 class="centered">Contact Information</h5>-->
-<!--        <br>-->
-
-<!--        <div class="col-lg-4">-->
-<!--          <p>ABOUT <b>GOOD</b> STUDIO</p>-->
-<!--          <p><small>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</small></p>-->
-<!--        </div>-->
-
-<!--        <div class="col-lg-4">-->
-<!--          <p>MAIN OFFICE</p>-->
-<!--          <p><small>-->
-<!--						Richardson Ave. 984<br/>-->
-<!--						London, UK.<br/>-->
-<!--						+44 3893-4904-->
-<!--					</small></p>-->
-<!--        </div>-->
-
-<!--        <div class="col-lg-4">-->
-<!--          <p>OUR NEWSLETTER</p>-->
-<!--          <p><small>Each month we collect the best stuff around the design world and share it with you.</small></p>-->
-<!--          <p><input type="text" placeholder="Add your email here" class="form-control flat" /></p>-->
-<!--        </div>-->
-
-<!--      </div>-->
-<!--      &lt;!&ndash; /row &ndash;&gt;-->
-<!--    </div>-->
-<!--    &lt;!&ndash; /container &ndash;&gt;-->
-<!--  </div>-->
-<!--  &lt;!&ndash; /Footer &ndash;&gt;-->
-
-<!--  <div id="copyrights">-->
-<!--    <div class="container">-->
-<!--      <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>-->
-
-<!--      </p>-->
-<!--      <div class="credits">-->
-<!--        -->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  &lt;!&ndash; / copyrights &ndash;&gt;-->
 
 <!-- JavaScript Libraries -->
 <script src="lib/jquery/jquery.min.js"></script>

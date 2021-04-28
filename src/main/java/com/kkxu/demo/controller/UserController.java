@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -65,25 +66,31 @@ public class UserController {
     }
 
     @RequestMapping("/update")
-    public String userupdate(HttpSession session, ModelMap modelMap,String user_password,
-                             String user_email,String user_real_name,String user_id_number,int user_gender,
+    public String userupdate(HttpSession session, ModelMap modelMap,@RequestParam(defaultValue = "123") String user_password,
+                             String user_email,String user_real_name,String user_id_number,@RequestParam(defaultValue = "1") int user_gender,
                              String user_address
                              ) {
         User user=new User();
         user.setUserIdNumber(user_id_number);
         user.setUserRealName(user_real_name);
+        user.setUserPassword(user_password);
         user.setUserLeixing(0);
         user.setUserGender(user_gender);
         user.setUserEmail(user_email);
         user.setUserAddress(user_address);
-        boolean flag = userService.update((String)session.getAttribute("user_phone_number"),user);
-        if (flag) {
-            modelMap.addAttribute("message", "登录成功");
-            return "result";
-        } else {
-            modelMap.addAttribute("message", "登录失败");
-            return "result";
+        String userphone="17361048086";
+//        boolean flag = userService.update((String)session.getAttribute("userPhoneNumber"),user);
+        userService.update(userphone,user);
+            modelMap.addAttribute("message", "您的用户信息已更新，请刷新查看！");
+            return "contact";
         }
+
+    @RequestMapping("/userinfo")
+    public String userinfo(HttpSession session,ModelMap modelMap){
+        session.setAttribute("userPhoneNumber","17361048086");
+        User user=userService.userinfo((String)session.getAttribute("userPhoneNumber"));
+        modelMap.addAttribute(user);
+        return "contact";
     }
 
 //    添加乘客

@@ -34,6 +34,6 @@ public class SeatController {
     @GetMapping("/listseats")
     public String toSeatListPage(){
 
-        return "seatinfo";
+        return "pricing";
     }
 }

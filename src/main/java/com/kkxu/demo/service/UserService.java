@@ -11,9 +11,11 @@ public interface UserService {
 
     boolean login(String user_phone_number, String user_password);
 
-    boolean update(String user_phone_number, User user);
+    void update(String user_phone_number, User user);
 
     Integer MaxID();
 
     boolean selectprimary(String user_phone_number);
+
+    User userinfo(String userPhoneNumber);
 }

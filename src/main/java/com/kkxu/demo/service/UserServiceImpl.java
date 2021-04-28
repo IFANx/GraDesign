@@ -50,11 +50,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean update(String user_phone_number, User user) {
-        int i = userMapper.insertSelective(user);
-        if (i == 0)
-            return false;
-        return true;
+    public void update(String user_phone_number, User user) {
+        user.setUserPhoneNumber(user_phone_number);
+        userMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override
@@ -72,5 +70,11 @@ public class UserServiceImpl implements UserService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public User userinfo(String userPhoneNumber) {
+        User user = userMapper.selectByPrimaryKey(userPhoneNumber);
+        return user;
     }
 }

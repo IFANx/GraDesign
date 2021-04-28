@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>列车表</title>
+    <title>座次信息表</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}">
@@ -68,7 +68,7 @@
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/tologin}" >用户登录</a></li>
                         <li><a th:href="@{/toregister}">用户注册</a></li>
-                        <li><a th:href="@{/touserinfo}">用户信息</a></li>
+                        <li><a th:href="@{/userinfo}">用户信息</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -97,7 +97,8 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-                            <table id="table1" class="table table-bordered table-hover">
+                            <a STYLE="font-size: large;font-weight: bold;margin-left:5%;margin-top: 5% " >座次信息</a>
+                            <table id="table1" class="table table-bordered table-hover" >
                             </table>
                         </div>
                     </div>
