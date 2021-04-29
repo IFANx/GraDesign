@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>用户信息中心</title>
+    <title>订单信息填写</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -38,37 +38,38 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" th:href="@{/index}">12307 Tickets</a>
+            <a class="navbar-brand" th:href="@{/listtrains}">大厅</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a th:href="@{/index}">首页</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">订单中心 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a th:href="@{/displayorder}">全部订单</a></li>
-                        <li><a th:href="@{/payedorder1}">已支付订单</a></li>
-                        <li><a th:href="@{/notpayedorder1}">待支付订单</a></li>
-                    </ul>
+                    <a th:href="@{/index}">Home</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a th:href="@{/tologin}">用户登录</a></li>
-                        <li><a th:href="@{/toregister}">用户注册</a></li>
-                        <li><a th:href="@{/userinfo}">用户信息</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b></a>
+                <li><a th:href="@{/about}">About</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/services}">Services</a></li>
                         <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+                        <!--              <li><a th:href="@{/testimonials}">Testimonials</a></li>-->
+                        <!--              <li><a th:href="@{/team}">Our Team</a></li>-->
+                        <!--              <li><a th:href="@{/blog}">Blog</a></li>-->
                         <li><a th:href="@{/blogsingle}">Blog Article</a></li>
                         <li><a th:href="@{/faq}">FAQ</a></li>
                         <li><a th:href="@{/404}">404</a></li>
                     </ul>
                 </li>
+                <!--          <li class="dropdown">-->
+                <!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolios <b class="caret"></b></a>-->
+                <!--            <ul class="dropdown-menu">-->
+                <!--              <li><a href="portfolio.html">Portfolio</a></li>-->
+                <!--              <li><a href="portfolio4.html">Portfolio 4 Columns</a></li>-->
+                <!--              <li><a href="project-single.html">Single Project</a></li>-->
+                <!--            </ul>-->
+                <!--          </li>-->
+            </ul>
+            </li>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -142,9 +143,9 @@
                            data-msg="Please enter at least 8 chars of subject">
                     <div class="validate"></div>
                 </div>
-<!--                <div class="loading"></div>-->
-<!--                <div class="error-message"></div>-->
-<!--                <div class="sent-message">Your information has been updated. Thank you!</div>-->
+                <!--                <div class="loading"></div>-->
+                <!--                <div class="error-message"></div>-->
+                <!--                <div class="sent-message">Your information has been updated. Thank you!</div>-->
 
                 <div class="form-send">
                     <button type="submit" class="btn btn-large">Update Information</button>
@@ -195,17 +196,17 @@
 <!--  </div>-->
 <!--  &lt;!&ndash; /Footer &ndash;&gt;-->
 
-  <div id="copyrights">
+<div id="copyrights">
     <div class="container">
         <p> &copy; Copyrights <strong>12307</strong>. All Rights Reserved - 四川大学 许康</p>
 
-      </p>
-      <div class="credits">
+        </p>
+        <div class="credits">
 
-      </div>
+        </div>
     </div>
-  </div>
-  <!-- / copyrights -->
+</div>
+<!-- / copyrights -->
 
 <!-- JavaScript Libraries -->
 <script src="lib/jquery/jquery.min.js"></script>

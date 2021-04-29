@@ -44,13 +44,7 @@ public class ScheduleOfTrainsController {
         return "index";
     }
 
-    @RequestMapping("/scheduleOfTrainsbydepartureandend")
-    public Object scheduleOfTrainsbydepartureandend(ModelMap modelMap,String departure_station,String end_station) {
-        List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.Trainsbybydepartureandend(departure_station,end_station);
-        modelMap.addAttribute("trainlist", trainlist);
-        return "trainlist";
-//        return "index";
-    }
+
     @RequestMapping("/seatTrainsbyno")
     @ResponseBody
     public Object seatTrainsbyno(ModelMap modelMap,String train_no) {
@@ -64,16 +58,16 @@ public class ScheduleOfTrainsController {
     @ResponseBody
     public List<Schedule_Of_Trains> scheduleOfTrainPassBy(ModelMap modelMap, String from_station, String to_station) {
         List<Schedule_Of_Trains> trains = scheduleOfTrainsService.fromstation(from_station);
-        Iterator<Schedule_Of_Trains> iterator = trains.iterator();
         List<Schedule_Of_Trains> possibletrain=new LinkedList<>();
-        while(iterator.hasNext())
-        {
-            if(iterator.next().getToStation().equals(to_station)){
-                possibletrain.add(iterator.next());
-            }
-        }
         modelMap.addAttribute("trainlist", possibletrain);
         return possibletrain;
+    }
+
+    @RequestMapping("/scheduleOfTrainsbydepartureandend")
+    public Object scheduleOfTrainsbydepartureandend(ModelMap modelMap,String departure_station,String end_station) {
+        List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.Trainsbybydepartureandend(departure_station,end_station);
+        modelMap.addAttribute("trainlist", trainlist);
+        return "trainlist";
     }
 
     //分页
@@ -88,4 +82,16 @@ public class ScheduleOfTrainsController {
 
         return "trainlist";
     }
+    @GetMapping("/scheduleOfTrainsbydepartureandend")
+    @ResponseBody
+    public Object scheduleOfTrainsbydepartureandend(String departure_station,String end_station, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
+        return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend(departure_station,end_station,pageNo,pageSize),"分页 查询trains 对象");
+    }
+
+    @GetMapping("/scheduleOfTrainsbydepartureandend1")
+    public String scheduleOfTrainsbydepartureandendPage(){
+        return "trainlist2";
+    }
+
+
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>订单中心-12307 Tickets</title>
+    <title>车次详情 12307-Tickets</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}">
@@ -48,13 +48,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" th:href="@{/listtrains}" >10307票务</a>
+            <a class="navbar-brand" th:href="@{/listtrains}">10307 Tickets</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a th:href="@{/index}" >系统首页</a></li>
+                <li><a th:href="@{/index}">首页</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >订单中心 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">订单中心 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/displayorder}">全部订单</a></li>
                         <li><a th:href="@{/payedorder1}">已支付订单</a></li>
@@ -62,18 +62,18 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >用户中心 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/tologin}" >用户登录</a></li>
+                        <li><a th:href="@{/tologin}">用户登录</a></li>
                         <li><a th:href="@{/toregister}">用户注册</a></li>
-                        <li><a th:href="@{/touserinfo}">用户信息</a></li>
+                        <li><a th:href="@{/userinfo}">用户信息</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >其他 <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/services}">Services</a></li>
-                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+                        <li><a th:href="@{/pricing}">车次价格</a></li>
                         <li><a th:href="@{/blogsingle}">Blog Article</a></li>
                         <li><a th:href="@{/faq}">FAQ</a></li>
                         <li><a th:href="@{/404}">404</a></li>
@@ -88,14 +88,14 @@
 
 <div class="wrapper">
     <!-- Main Header -->
-<!--    <div th:replace="~{include/menu :: menu}"></div>-->
-<!--    <div class="content-wrapper">-->
+    <div th:replace="~{include/menu :: menu}"></div>
+    <div class="content-wrapper">
         <section class="content container-fluid">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-                            <table id="table1" class="table table-bordered table-hover" th:name="订单详情">
+                            <table id="table1" class="table table-bordered table-hover">
                             </table>
                         </div>
                     </div>
@@ -105,11 +105,8 @@
         </section>
         <div id="copyrights">
             <div class="container">
-                <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - scu xukang
-                </p>
-                <div class="credits">
-
-                </div>
+                <p> &copy; Copyrights <strong>12307</strong>. All Rights Reserved - 四川大学 许康</p>
+                <div class="credits"></div>
             </div>
 
         </div>
@@ -130,7 +127,6 @@
 
         <script src="js/layer.js"
                 th:src="@{/js/layer.js}"></script>
-
 </body>
 </html>
 
@@ -165,7 +161,7 @@
 
         $('#table1').bootstrapTable('destroy').bootstrapTable({
             method: 'get',
-            url: "/getorderlist",
+            url: "/scheduleOfTrainsbydepartureandend",
             striped: true,
             dataField: "list",
             totalField: "total",
@@ -191,72 +187,51 @@
             paginationLoop: false,
             columns: [
                 {
-                    title: '订单号',
-                    field: 'orderId',
+                    title: 'ID',
+                    field: 'id',
                     visible: false,
                     width: 160
                 },
-                // {
-                //     //  title: '全选/反选',
-                //     checkbox: true
-                // }
-                // ,
                 {
-                    title: '用户电话',
-                    field: 'userPhoneNumber',
+                    //  title: '全选/反选',
+                    checkbox: true
+                }
+                ,
+                {
+                    title: '列车号',
+                    field: 'tarinNo',
                     visible: true,
-                    width: 160
+                    width: 160,
                 },
-                // {
-                //     title: '乘客电话',
-                //     field: 'passengerPhoneNumber',
-                //     width: 160,
-                //     align: 'center'
-                // },
                 {
-                    title: '乘客身份证号',
-                    field: 'passengerIdNumber',
+                    title: '列车编码',
+                    field: 'trainNumber',
+                    width: 160,
+                    align: 'center'
+                },
+                {
+                    title: '始发站',
+                    field: 'departureStation',
                     width: 160,
                     align: 'left'
                 }, {
-                    title: '起点站',
-                    field: 'startStationName',
+                    title: '到达站',
+                    field: 'toStation',
                     visible: true,
                     width: 160
                 }, {
-                    title: '终点站',
-                    field: 'endStationName',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: '车厢号',
-                    field: 'carriageNo',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: '座位号',
-                    field: 'seatNo',
-                    visible: true,
-                    width: 160
-                }, {
-                    title: '价格/元',
-                    field: 'orderMoney',
-                    visible: true,
-                    width: 160
-                },{
-                    title: '订单创建时间',
-                    field: 'orderCreateTime',
-                    visible: true,
-                    width: 160
-                },{
                     title: '发车时间',
-                    field: 'trainStartDate',
+                    field: 'departureTime',
                     visible: true,
                     width: 160
-                },
-                {
-                    title: '订单状态',
-                    field: 'orderStatus',
+                }, {
+                    title: '到站时间',
+                    field: 'arrivalTime',
+                    visible: true,
+                    width: 160
+                }, {
+                    title: '历时',
+                    field: 'useTime',
                     visible: true,
                     width: 160
                 },
@@ -266,18 +241,10 @@
                     align: 'center',
                     formatter: function (value, row, index) {
                         return [
-                            '<form action="/pay"  method="post">',
-                            '<input type="hidden" name="WIDout_trade_no" value="',
-                            row.orderId,
-                            '">','<input type="hidden" name="WIDsubject" value="',
-                            row.endStationName,
-                            '">','<input type="hidden" name="WIDtotal_amount" value="',
-                            row.orderMoney,
-                            '">','<input type="hidden" name="WIDbody" value="',
-                            row.passengerIdNumber,
-                            '">',
-                            '<input type="hidden" name="orderId" value="',
-                            row.orderId,
+                            '<form action="/scheduleOfTrainsbytrain_number" method="get">',
+                            // '<input type="hidden" name="train_no" value="240000D9010F">',
+                            '<input type="hidden" name="train_number" value="',
+                            row.trainNumber,
                             '">',
                             '<input type="submit" class="btn btn-danger btn-xs btn_del">',
                             '</input>',

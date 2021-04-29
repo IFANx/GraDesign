@@ -26,5 +26,7 @@ public interface ScheduleOfTrainsService {
     PageInfo<Schedule_Of_Trains> findtrains(int pageNo, int pageSize);
 
     List<Schedule_Of_Trains> fromstation(String from_station);
+
+    PageInfo scheduleOfTrainsbydepartureandend(String departure_station, String end_station, int pageNo, int pageSize);
     //列出所有列车信息
 }

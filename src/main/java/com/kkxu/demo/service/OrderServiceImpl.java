@@ -50,4 +50,30 @@ public class OrderServiceImpl implements OrderService{
         PageInfo<Order_List> order_listPageInfo =new PageInfo<>(order_lists);
         return order_listPageInfo;
     }
+
+    @Override
+    public void updateorder(Integer orderId) {
+        Order_List order_list=order_listMapper.selectByPrimaryKey(orderId);
+        order_list.setOrderStatus("已支付");
+        order_listMapper.updateByPrimaryKey(order_list);
+    }
+
+    @Override
+    public PageInfo payedorder(String userPhoneNumber, int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        Order_ListExample order_listExample=new Order_ListExample();
+        order_listExample.createCriteria().andUserPhoneNumberEqualTo(userPhoneNumber).andOrderStatusEqualTo("已支付");
+        List<Order_List> order_lists = order_listMapper.selectByExample(order_listExample);
+        PageInfo<Order_List> order_listPageInfo =new PageInfo<>(order_lists);
+        return order_listPageInfo;
+    }
+    @Override
+    public PageInfo notpayedorder(String userPhoneNumber, int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        Order_ListExample order_listExample=new Order_ListExample();
+        order_listExample.createCriteria().andUserPhoneNumberEqualTo(userPhoneNumber).andOrderStatusEqualTo("未支付");
+        List<Order_List> order_lists = order_listMapper.selectByExample(order_listExample);
+        PageInfo<Order_List> order_listPageInfo =new PageInfo<>(order_lists);
+        return order_listPageInfo;
+    }
 }

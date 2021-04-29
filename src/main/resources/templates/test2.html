@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" value="  导  入Excel  " οnclick="addModelMeter()">弹出dialog</button>
+
+<div hidden="true">
+            <div id="dialogExp"  >
+                 <form id="formDetil" class="easyui-form"   method="POST" >
+                     <div class="table-responsive">
+                        <tr>
+                            <td style="border: none; padding-left: 0;">
+                                姓名:
+                                <input type="text" name="name"  required="true" >
+                            </td><br /><br />
+                            <td style="border: none;padding-left: 20px;">
+                                年龄:
+                                <input type="text" name="age"  required="true">
+                            </td><br /><br />
+                            <td style="border: none; padding-left: 10px;">
+                                    生日:
+                                <input id="beginDate" type="text" name="birthDate"
+                                       onFocus="WdatePicker({isShowToday:false,skin:'whyGreen'});" style="width: 95px"  required="true"/>
+                                </td><br /><br />
+                        </tr>
+                    </div>
+                </form>
+            </div>
+
+    </div>
+
+
+<script>
+    function addModelMeter(){
+        $('#dialogExp').dialog({
+            title:'我的dialog',
+            width: 750,
+            height: 200,
+            cache: false,
+            modal:true,
+            closed:true,
+            buttons:[{
+                text : '取消',
+                handler : function(){
+                    $('#dialogExp').dialog('close');
+                }
+            }],
+            });
+            $('#dialogExp').dialog('open');
+        }
+        
+        function searchModel(){
+        if($("#formDetil").val()==""){
+            alert("数据为空！");
+        }else{
+            $('#formDetil').form('submit',{
+                url : '要转发的后台路径',
+                success : function(string) {
+                         if (0==string){    
+                                    esop.web.pdsmartPopMessage.showMessage("修改失败！");
+                                }else if (1==string){
+                                    esop.web.pdsmartPopMessage.showMessage("修改成功！");
+                                }else if(2==string){
+                                    esop.web.pdsmartPopMessage.showMessage("请补充完数据！");
+                                }else{
+                                    esop.web.pdsmartPopMessage.showMessage("程序异常请刷新页面后重试！");
+                                }
+                    }
+                });
+        }
+        $("#formDetil  input").val("");//清空form表单的数据
+    }
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Good - Bootstrap Corporate Template</title>
+  <title>错误 12307 Tickets</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -32,36 +32,37 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="index.html">GOOD</a>
+        <a class="navbar-brand" th:href="@{/listtrains}" >10307票务</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
+          <li><a th:href="@{/index}" >系统首页</a></li>
           <li class="dropdown">
-            <a href="index.html">Home</a>
-          </li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li class="dropdown active">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >订单中心 <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="services.html">Services</a></li>
-              <li><a href="pricing.html">Pricing Tables</a></li>
-              <!--              <li><a th:href="@{/testimonials}">Testimonials</a></li>-->
-              <!--              <li><a th:href="@{/team}">Our Team</a></li>-->
-              <!--              <li><a th:href="@{/blog}">Blog</a></li>-->
-              <li><a href="blogsingle.html">Blog Article</a></li>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="404.html">404</a></li>
+              <li><a th:href="@{/displayorder}">全部订单</a></li>
+              <li><a th:href="@{/payedorder1}">已支付订单</a></li>
+              <li><a th:href="@{/notpayedorder1}">待支付订单</a></li>
             </ul>
           </li>
-<!--          <li class="dropdown">-->
-<!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolios <b class="caret"></b></a>-->
-<!--            <ul class="dropdown-menu">-->
-<!--              <li><a href="portfolio.html">Portfolio</a></li>-->
-<!--              <li><a href="portfolio4.html">Portfolio 4 Columns</a></li>-->
-<!--              <li><a href="project-single.html">Single Project</a></li>-->
-<!--            </ul>-->
-<!--          </li>-->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >用户中心 <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a th:href="@{/tologin}" >用户登录</a></li>
+              <li><a th:href="@{/toregister}">用户注册</a></li>
+              <li><a th:href="@{/touserinfo}">用户信息</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >其他 <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a th:href="@{/services}">Services</a></li>
+              <li><a th:href="@{/pricing}">Pricing Tables</a></li>
+              <li><a th:href="@{/blogsingle}">Blog Article</a></li>
+              <li><a th:href="@{/faq}">FAQ</a></li>
+              <li><a th:href="@{/404}">404</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
       <!--/.nav-collapse -->

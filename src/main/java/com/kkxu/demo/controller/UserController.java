@@ -57,7 +57,7 @@ public class UserController {
         boolean flag = userService.login(user_phone_number, user_password);
         if (flag==true) {
             modelMap.addAttribute("message", "登录成功");
-            session.setAttribute("user_phone_number",user_phone_number);
+            session.setAttribute("UserPhoneNumber",user_phone_number);
             return "trainlist";
         } else {
             modelMap.addAttribute("message", "登录失败");

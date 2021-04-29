@@ -15,4 +15,10 @@ public interface OrderService {
     void deleteorder(Integer maxID);
 
     PageInfo findorder(String userPhonenumber, int pageNo, int pageSize);
+
+    void updateorder(Integer orderId);
+
+    PageInfo payedorder(String userPhoneNumber, int pageNo, int pageSize);
+
+    PageInfo notpayedorder(String userPhoneNumber, int pageNo, int pageSize);
 }

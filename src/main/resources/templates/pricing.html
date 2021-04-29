@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Good - Bootstrap Corporate Template</title>
+    <title>位次信息-12307 Tickets</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -39,255 +39,246 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">GOOD</a>
+            <a class="navbar-brand" th:href="@{/index}">12307 Tickets</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li><a th:href="@{/index}">首页</a></li>
                 <li class="dropdown">
-                    <a th:href="@{/index}">Home</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">订单中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/displayorder}">全部订单</a></li>
+                        <li><a th:href="@{/payedorder1}">已支付订单</a></li>
+                        <li><a th:href="@{/notpayedorder1}">待支付订单</a></li>
+                    </ul>
                 </li>
-                <li><a th:href="@{/about}">About</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-                <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/tologin}">用户登录</a></li>
+                        <li><a th:href="@{/toregister}">用户注册</a></li>
+                        <li><a th:href="@{/userinfo}">用户信息</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/services}">Services</a></li>
                         <li><a th:href="@{/pricing}">Pricing Tables</a></li>
-                        <!--              <li><a th:href="@{/testimonials}">Testimonials</a></li>-->
-                        <!--              <li><a th:href="@{/team}">Our Team</a></li>-->
-                        <!--              <li><a th:href="@{/blog}">Blog</a></li>-->
                         <li><a th:href="@{/blogsingle}">Blog Article</a></li>
                         <li><a th:href="@{/faq}">FAQ</a></li>
                         <li><a th:href="@{/404}">404</a></li>
                     </ul>
                 </li>
-                <!--          <li class="dropdown">-->
-                <!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolios <b class="caret"></b></a>-->
-                <!--            <ul class="dropdown-menu">-->
-                <!--              <li><a href="portfolio.html">Portfolio</a></li>-->
-                <!--              <li><a href="portfolio4.html">Portfolio 4 Columns</a></li>-->
-                <!--              <li><a href="project-single.html">Single Project</a></li>-->
-                <!--            </ul>-->
-                <!--          </li>-->
-            </ul>
-            </li>
             </ul>
         </div>
         <!--/.nav-collapse -->
     </div>
 </div>
-
-<div id="faqwrap">
+<div id="faqwrap" style="transform:translateY(-10%);">
     <div class="container">
-        <div class="row">
-            <h5 style="color: #ffffff; font-weight: bold"
-                th:text="中国铁路+${schedule_of_trains.getTrainNumber()}+---车次余座详情"></h5>
-            <div class="container">
-                <br><br>
-                <div class="row">
-                    <div class="col-md-9 span-centered">
-                        <div class="row">
-                            <div class="col-md-4 pricing-table turquoise bordered hover-animation">
-                                <ul class="centered">
-                                    <li class="title">
-                                        商务座
-                                    </li>
-                                    <li class="price">
-                                        <strong th:text="${schedule_of_trains.getBusinessSeat()}"
-                                                th:default="已售空"></strong>
-                                        <em>/人次</em>
-                                    </li>
-                                    <li>
-                                        1 GB Diskspace
-                                    </li>
-                                    <li>
-                                        10 GB Bandwidth
-                                    </li>
-                                    <li>
-                                        1 Domain
-                                    </li>
-                                    <li class="button">
-                                        <button class="btn btn-large">
-                                            <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 pricing-table turquoise bordered hover-animation">
-                                <ul class="centered alt">
-                                    <li class="title">
-                                        一等座
-                                    </li>
-                                    <li class="price">
-                                        <strong th:text="${schedule_of_trains.getFirstClassSeats()}"></strong>
-                                        
-                                        <em>/人次</em>
-                                    </li>
-                                    <li>
-                                        25 GB Diskspace
-                                    </li>
-                                    <li>
-                                        500 GB Bandwidth
-                                    </li>
-                                    <li>
-                                        5 Domain
-                                    </li>
-                                    <li class="button">
-                                        <button class="btn btn-large">
-                                            <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 pricing-table turquoise bordered hover-animation">
-                                <ul class="centered">
-                                    <li class="title">
-                                        二等座
-                                    </li>
-                                    <li class="price">
-                                        <strong th:text="${schedule_of_trains.getSecondClassSeats()}"></strong>
-                                        <em>/人次</em>
-                                    </li>
-                                    <li>
-                                        100 GB Diskspace
-                                    </li>
-                                    <li>
-                                        <strong>Unlimited</strong> Bandwidth
-                                    </li>
-                                    <li>
-                                        25 Domain
-                                    </li>
-                                    <li class="button">
-                                        <button class="btn btn-large">
-                                            <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
+        <h5 style="color: #ffffff; font-weight: bold;font-family: 楷体"
+            th:text="中国铁路+${schedule_of_trains.getTrainNumber()}+---车次余座详情"></h5>
+        <!--        <div class="row">-->
+        <div class="container">
+            <br><br>
+            <div class="row">
+                <div class="col-md-9 span-centered">
+                    <div class="row">
+                        <div class="col-md-4 pricing-table turquoise bordered hover-animation">
+                            <ul class="centered">
+                                <li class="title">
+                                    商务座
+                                </li>
+                                <li class="price">
+                                    <strong th:text="${schedule_of_trains.getBusinessSeat()}"></strong>
+                                    <em>/人次</em>
+                                </li>
+                                <li>
+                                    起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                                </li>
+                                <li>
+                                    终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
+                                </li>
+                                <li class="button">
+                                    <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                                        <i class="icon-shopping-cart"></i>&nbsp;&nbsp;
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 pricing-table turquoise bordered hover-animation">
+                            <ul class="centered alt">
+                                <li class="title">
+                                    一等座
+                                </li>
+                                <li class="price">
+                                    <strong th:text="${schedule_of_trains.getFirstClassSeats()}"></strong>
+
+                                    <em>/人次</em>
+                                </li>
+                                <li>
+                                    起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                                </li>
+                                <li>
+                                    终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
+                                </li>
+                                <li class="button">
+                                    <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 pricing-table turquoise bordered hover-animation">
+                            <ul class="centered">
+                                <li class="title">
+                                    二等座
+                                </li>
+                                <li class="price">
+                                    <strong th:text="${schedule_of_trains.getSecondClassSeats()}"></strong>
+                                    <em>/人次</em>
+                                </li>
+                                <li>
+                                    起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                                </li>
+                                <li>
+                                    终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
+                                </li>
+                                <li class="button">
+                                        <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <br><br><br><br>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
-                        <ul>
-                            <li class="title">
-                                一等软卧
-                            </li>
-                            <li class="price">
-                                <strong th:text="${schedule_of_trains.getSoftBedFirstClassBed()}"></strong>
-                                
-                                <em>/人次</em>
-                            </li>
-                            <li>
-                                <span class="pull-right">1 GB</span>Diskspace
-                            </li>
-                            <li>
-                                <span class="pull-right">10 GB</span>Bandwidth
-                            </li>
-                            <li>
-                                <span class="pull-right">1</span>Domain
-                            </li>
-                            <li class="button">
-                                <button class="btn btn-large">
-                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
-                        <ul>
-                            <li class="title">
-                                二等硬卧
-                            </li>
-                            <li class="price">
-                                <strong th:text="${schedule_of_trains.getHardSecondClassBed()}"></strong>
-                                
-                                <em>/人次</em>
-                            </li>
-                            <li>
-                                <span class="pull-right">25 GB</span>Diskspace
-                            </li>
-                            <li>
-                                <span class="pull-right">500 GB</span>Bandwidth
-                            </li>
-                            <li>
-                                <span class="pull-right">5</span>Domain
-                            </li>
-                            <li class="button">
-                                <button class="btn btn-large">
-                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
-                        <ul>
-                            <li class="title">
-                                硬座
-                            </li>
-                            <li class="price">
-                                <strong th:text="${schedule_of_trains.getHardSeat()}"></strong>
-                                
-                                <em>/人次</em>
-                            </li>
-                            <li>
-                                <span class="pull-right"><i class="icon-ok"></i></span>
-                                <strong>Unlimited</strong> Diskspace
-                            </li>
-                            <li>
-                                <span class="pull-right"><i class="icon-ok"></i></span>
-                                <strong>Unlimited</strong> Bandwidth
-                            </li>
-                            <li>
-                                <span class="pull-right"><i class="icon-ok"></i></span>
-                                <strong>Unlimited</strong> Domain
-                            </li>
-                            <li class="button">
-                                <button class="btn btn-large">
-                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3 pricing-table turquoise bordered hover-animation">
-                        <ul>
-                            <li class="title">
-                                无座
-                            </li>
-                            <li class="price">
-                                <strong th:text="${schedule_of_trains.getSeatless()}"></strong>
-                                
-                                <em>/人次</em>
-                            </li>
-                            <li>
-                                <span class="pull-right"><i class="icon-ok"></i></span>
-                                <strong>Unlimited</strong> Diskspace
-                            </li>
-                            <li>
-                                <span class="pull-right"><i class="icon-ok"></i></span>
-                                <strong>Unlimited</strong> Bandwidth
-                            </li>
-                            <li>
-                                <span class="pull-right"><i class="icon-ok"></i></span>
-                                <strong>Unlimited</strong> Domain
-                            </li>
-                            <li class="button">
-                                <button class="btn btn-large">
-                                    <i class="icon-shopping-cart"></i>&nbsp;&nbsp;Sign Up
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+            <br><br><br><br>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                    <ul>
+                        <li class="title">
+                            一等软卧
+                        </li>
+                        <li class="price">
+                            <strong th:text="${schedule_of_trains.getSoftBedFirstClassBed()}"></strong>
+                            <em>/人次</em>
+                        </li>
+                        <li>
+                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                        </li>
+                        <li>
+                            终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
+                        </li>
+                        <li class="button">
+                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-                <br><br><br><br>
+                <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                    <ul>
+                        <li class="title">
+                            二等硬卧
+                        </li>
+                        <li class="price">
+                            <strong th:text="${schedule_of_trains.getHardSecondClassBed()}"></strong>
+                            <em>/人次</em>
+                        </li>
+                        <li>
+                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                        </li>
+                        <li>
+                            终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
+                        </li>
+                        <li class="button">
+                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                    <ul>
+                        <li class="title">
+                            硬座
+                        </li>
+                        <li class="price">
+                            <strong th:text="${schedule_of_trains.getHardSeat()}"></strong>
+                            <em>/人次</em>
+                        </li>
+                        <li>
+                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                        </li>
+                        <li>
+                            终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
+                        </li>
+                        <li class="button">
+                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 pricing-table turquoise bordered hover-animation">
+                    <ul>
+                        <li class="title">
+                            无座
+                        </li>
+                        <li class="price">
+                            <strong th:text="${schedule_of_trains.getSeatless()}"></strong>
+                            <em>/人次</em>
+                        </li>
+                        <li>
+                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                        </li>
+                        <li>
+                            终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
+                        </li>
+                        <li class="button">
+                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <br><br><br><br>
         </div>
     </div>
+    <!--    </div>-->
 </div>
+
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" style="width:100%;text-align: center;margin-right: 30%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel1">
+                        请填写订单信息(Please fill in the order information)
+                    </h4>
+                </div>
+                <div class="modal-body" >
+
+                    <form class="form-inline" th:action="@{/insertorder}">
+                        <h5> <strong>PassengerIdNumber：</strong></h5>
+                        <input type="hidden" th:name="train_no" th:value="${schedule_of_trains.getTarinNo()}">
+                        <input class="form-control" type="text" th:name="passenger_id_number" placeholder="电话">
+                        <h5> <strong>PassengerPhoneNumber：</strong></h5>
+                        <input class="form-control" type="text" th:name="passenger_phone_number" placeholder="电话">
+                        <input type="submit" class="btn btn-primary" value="预定">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <input type="submit" class="btn btn-primary" value="预定">
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+
 <div id="copyrights">
     <div class="container">
         <p> &copy; Copyrights <strong>12307</strong>. All Rights Reserved - 四川大学 许康</p>
@@ -295,6 +286,168 @@
     </div>
 
 </div>
+
+<!--<script>-->
+<!--    $('#myModal').on('show.bs.modal', function (event) {-->
+<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
+<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
+<!--        var modal = $(this);  //当前模态框-->
+<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
+<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
+<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
+<!--    });-->
+
+<!--    function   submit(){-->
+<!--        document.form1.method= "post ";-->
+<!--        document.form1.action= "insertorder";-->
+<!--        document.form1.submit();-->
+<!--        return   true;-->
+<!--    }-->
+
+<!--    // $('#test1').on('click', function(){-->
+<!--    //     layer.open({-->
+<!--    //         content: '确定删除吗？',-->
+<!--    //         btn: ['确认', '取消'],-->
+<!--    //         yes: function(index, layero) {-->
+<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
+<!--    //         },-->
+<!--    //         btn2: function(index, layero) {-->
+<!--    //-->
+<!--    //         }-->
+<!--    //         ,-->
+<!--    //         cancel: function() {-->
+<!--    //             //右上角关闭回调-->
+<!--    //         }-->
+<!--    //     });-->
+<!--    // });-->
+
+<!--</script> = function(){-->
+<!--<script>-->
+<!--    $('#myModal').on('show.bs.modal', function (event) {-->
+<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
+<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
+<!--        var modal = $(this);  //当前模态框-->
+<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
+<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
+<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
+<!--    });-->
+
+<!--    function   del(){-->
+<!--        document.form1.method= "post ";-->
+<!--        document.form1.action= "deletecarts";-->
+<!--        document.form1.submit();-->
+<!--        return   true;-->
+<!--    }-->
+
+<!--    function   sub(){-->
+<!--        document.form1.method= "post ";-->
+<!--        document.form1.action= "sbmt ";-->
+<!--        document.form1.submit();-->
+<!--        return   true;-->
+<!--    }-->
+
+<!--    // $('#test1').on('click', function(){-->
+<!--    //     layer.open({-->
+<!--    //         content: '确定删除吗？',-->
+<!--    //         btn: ['确认', '取消'],-->
+<!--    //         yes: function(index, layero) {-->
+<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
+<!--    //         },-->
+<!--    //         btn2: function(index, layero) {-->
+<!--    //-->
+<!--    //         }-->
+<!--    //         ,-->
+<!--    //         cancel: function() {-->
+<!--    //             //右上角关闭回调-->
+<!--    //         }-->
+<!--    //     });-->
+<!--    // });-->
+
+<!--</script>-->
+<!--<script>-->
+<!--    $('#myModal').on('show.bs.modal', function (event) {-->
+<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
+<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
+<!--        var modal = $(this);  //当前模态框-->
+<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
+<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
+<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
+<!--    });-->
+
+<!--    function   del(){-->
+<!--        document.form1.method= "post ";-->
+<!--        document.form1.action= "deletecarts";-->
+<!--        document.form1.submit();-->
+<!--        return   true;-->
+<!--    }-->
+
+<!--    function   sub(){-->
+<!--        document.form1.method= "post ";-->
+<!--        document.form1.action= "sbmt ";-->
+<!--        document.form1.submit();-->
+<!--        return   true;-->
+<!--    }-->
+
+<!--    // $('#test1').on('click', function(){-->
+<!--    //     layer.open({-->
+<!--    //         content: '确定删除吗？',-->
+<!--    //         btn: ['确认', '取消'],-->
+<!--    //         yes: function(index, layero) {-->
+<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
+<!--    //         },-->
+<!--    //         btn2: function(index, layero) {-->
+<!--    //-->
+<!--    //         }-->
+<!--    //         ,-->
+<!--    //         cancel: function() {-->
+<!--    //             //右上角关闭回调-->
+<!--    //         }-->
+<!--    //     });-->
+<!--    // });-->
+
+<!--</script>-->
+<!--<script>-->
+<!--    $('#myModal').on('show.bs.modal', function (event) {-->
+<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
+<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
+<!--        var modal = $(this);  //当前模态框-->
+<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
+<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
+<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
+<!--    });-->
+
+<!--    function   del(){-->
+<!--        document.form1.method= "post ";-->
+<!--        document.form1.action= "deletecarts";-->
+<!--        document.form1.submit();-->
+<!--        return   true;-->
+<!--    }-->
+
+<!--    function   sub(){-->
+<!--        document.form1.method= "post ";-->
+<!--        document.form1.action= "sbmt ";-->
+<!--        document.form1.submit();-->
+<!--        return   true;-->
+<!--    }-->
+
+<!--    // $('#test1').on('click', function(){-->
+<!--    //     layer.open({-->
+<!--    //         content: '确定删除吗？',-->
+<!--    //         btn: ['确认', '取消'],-->
+<!--    //         yes: function(index, layero) {-->
+<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
+<!--    //         },-->
+<!--    //         btn2: function(index, layero) {-->
+<!--    //-->
+<!--    //         }-->
+<!--    //         ,-->
+<!--    //         cancel: function() {-->
+<!--    //             //右上角关闭回调-->
+<!--    //         }-->
+<!--    //     });-->
+<!--    // });-->
+
+<!--</script>-->
 
 
 <!-- JavaScript Libraries -->
@@ -304,6 +457,7 @@
 
 <!-- Template Main Javascript File -->
 <script src="js/main.js"></script>
+
 
 </body>
 </html>

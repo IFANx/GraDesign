@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <!--<aside class="main-sidebar" th:fragment="menu">-->
     <section class="sidebar" style="position:fixed;width: 15%" th:fragment="menu">
-            <form action="/scheduleOfTrainfromstationtotostation" method="get" class="sidebar-form" style="font-size: large;">请输入站点查询车次信息
-                    <input type="text" name="from_station" class="form-control" placeholder="起点站">
-                    <input type="text" name="to_station" class="form-control" placeholder="终点站">
+            <form action="/scheduleOfTrainfromstationtotostation1" method="get" style="font-size: large;">
+                    <p style="color: #00a65a">请输入站点查询车次信息</p>
+                    <input type="text" name="departure_station" class="form-control" placeholder="起点站">
+                    <input type="text" name="end_station" class="form-control" placeholder="终点站">
                 <button class="btn btn-block btn-primary btn-lg">查询</button>
             </form>
 <!--        </ul>-->

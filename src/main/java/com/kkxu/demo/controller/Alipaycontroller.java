@@ -4,6 +4,8 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.kkxu.demo.common.utils.AlipayConfig;
+import com.kkxu.demo.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +14,13 @@ import java.io.IOException;
 
 @Controller
 public class Alipaycontroller {
+    @Autowired
+    private OrderService orderService;
     @RequestMapping("/pay")
     public void payController(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //与支付无关，将订单状态改为已支付状态
+        Integer orderId = new Integer(request.getParameter("orderId"));
+        orderService.updateorder(orderId);
         //获得初始化的AlipayClient
         AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.APP_ID, AlipayConfig.APP_PRIVATE_KEY, "json", AlipayConfig.CHARSET, AlipayConfig.ALIPAY_PUBLIC_KEY, AlipayConfig.sign_type);
 

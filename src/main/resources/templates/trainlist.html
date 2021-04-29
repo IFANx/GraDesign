@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>列车表</title>
+    <title>12307 Tickets</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}">
@@ -48,20 +48,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" th:href="@{/listtrains}">10307票务</a>
+            <a class="navbar-brand" th:href="@{/listtrains}">10307 Tickets</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a th:href="@{/index}">系统首页</a></li>
+                <li><a th:href="@{/index}">首页</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">订单中心 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <!--                        <li><a th:href="@{/tologin}" >全部订单</a></li>-->
-                        <li><a th:href="@{/lookorder}" th:method="get" th:type="hidden" th:name="UserPhonenumber"
-                               th:value="17361048086">全部订单</a></li>
-                        <!--                            <input type="hidden" name="UserPhonenumber" value="17361048086">全部订单</a></li>-->
-                        <li><a th:href="@{/finishorder}">已完成订单</a></li>
-                        <li><a th:href="@{/notfinishorder}">待完成订单</a></li>
+                        <li><a th:href="@{/displayorder}">全部订单</a></li>
+                        <li><a th:href="@{/payedorder1}">已支付订单</a></li>
+                        <li><a th:href="@{/notpayedorder1}">待支付订单</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -244,7 +241,7 @@
                     align: 'center',
                     formatter: function (value, row, index) {
                         return [
-                            '<form action="/scheduleOfTrainsbytrain_number" method="get">',
+                            '<form action="/scheduleOfTrainsbytrain_numbe" method="get">',
                             // '<input type="hidden" name="train_no" value="240000D9010F">',
                             '<input type="hidden" name="train_number" value="',
                             row.trainNumber,

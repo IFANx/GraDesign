@@ -22,7 +22,7 @@ public interface Order_ListMapper extends Order_ListMapperExtend {
 
     List<Order_List> selectByExample(Order_ListExample example);
 
-    Order_List selectByPrimaryKey(Integer orderId);
+    Order_List selectByPrimaryKey(int orderId);
 
     int updateByExampleSelective(@Param("record") Order_List record, @Param("example") Order_ListExample example);
 

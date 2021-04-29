@@ -44,6 +44,10 @@ public class htmljump {
     public String test() {
         return "test";
 
+    }@RequestMapping("/test2")
+    public String test2() {
+        return "test2";
+
     }
 
     @RequestMapping("/Portfolio")

@@ -27,13 +27,12 @@ public class SeatController {
     }
     @GetMapping("/getseats")
     @ResponseBody
-    public Object getseats(@RequestParam(defaultValue = "2400000G710S") String train_no,@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
+    public Object getseats(@RequestParam(defaultValue = "3300000K560A") String train_no,@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
         return Result.success(seatService.findseats(train_no,pageNo,pageSize),"分页 查询trains 对象");
     }
 
     @GetMapping("/listseats")
     public String toSeatListPage(){
-
         return "pricing";
     }
 }
