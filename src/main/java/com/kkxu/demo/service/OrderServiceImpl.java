@@ -45,6 +45,7 @@ public class OrderServiceImpl implements OrderService{
     public PageInfo findorder(String userPhonenumber, int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         Order_ListExample order_listExample=new Order_ListExample();
+        order_listExample.setOrderByClause("order_create_time desc");
         order_listExample.createCriteria().andUserPhoneNumberEqualTo(userPhonenumber);
         List<Order_List> order_lists = order_listMapper.selectByExample(order_listExample);
         PageInfo<Order_List> order_listPageInfo =new PageInfo<>(order_lists);
@@ -62,6 +63,7 @@ public class OrderServiceImpl implements OrderService{
     public PageInfo payedorder(String userPhoneNumber, int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         Order_ListExample order_listExample=new Order_ListExample();
+        order_listExample.setOrderByClause("order_create_time desc");
         order_listExample.createCriteria().andUserPhoneNumberEqualTo(userPhoneNumber).andOrderStatusEqualTo("已支付");
         List<Order_List> order_lists = order_listMapper.selectByExample(order_listExample);
         PageInfo<Order_List> order_listPageInfo =new PageInfo<>(order_lists);
@@ -71,6 +73,7 @@ public class OrderServiceImpl implements OrderService{
     public PageInfo notpayedorder(String userPhoneNumber, int pageNo, int pageSize) {
         PageHelper.startPage(pageNo,pageSize);
         Order_ListExample order_listExample=new Order_ListExample();
+        order_listExample.setOrderByClause("order_create_time desc");
         order_listExample.createCriteria().andUserPhoneNumberEqualTo(userPhoneNumber).andOrderStatusEqualTo("未支付");
         List<Order_List> order_lists = order_listMapper.selectByExample(order_listExample);
         PageInfo<Order_List> order_listPageInfo =new PageInfo<>(order_lists);

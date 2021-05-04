@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -63,33 +64,30 @@ public class ScheduleOfTrainsController {
         return possibletrain;
     }
 
-    @RequestMapping("/scheduleOfTrainsbydepartureandend")
-    public Object scheduleOfTrainsbydepartureandend(ModelMap modelMap,String departure_station,String end_station) {
-        List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.Trainsbybydepartureandend(departure_station,end_station);
-        modelMap.addAttribute("trainlist", trainlist);
-        return "trainlist";
-    }
-
     //分页
     @GetMapping("/gettrains")
     @ResponseBody
     public Object gettrains(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
         return Result.success(scheduleOfTrainsService.findtrains(pageNo,pageSize),"分页 查询trains 对象");
     }
-
     @GetMapping("/listtrains")
     public String toTrainListPage(){
-
         return "trainlist";
     }
+
+
+
     @GetMapping("/scheduleOfTrainsbydepartureandend")
     @ResponseBody
-    public Object scheduleOfTrainsbydepartureandend(String departure_station,String end_station, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
-        return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend(departure_station,end_station,pageNo,pageSize),"分页 查询trains 对象");
+    public Object scheduleOfTrainsbydepartureandend(HttpSession session, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
+//        return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend(departure_station, end_station, pageNo, pageSize), "分页 查询trains 对象");
+        return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend((String) session.getAttribute("departure_station"), (String) session.getAttribute("end_station"), pageNo, pageSize), "分页 查询trains 对象");
+//        return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend("北京","广州",pageNo,pageSize),"分页 查询trains 对象");
     }
-
     @GetMapping("/scheduleOfTrainsbydepartureandend1")
-    public String scheduleOfTrainsbydepartureandendPage(){
+    public String scheduleOfTrainsbydepartureandendPage(HttpSession session,String departure_station, String end_station){
+        session.setAttribute("departure_station",departure_station);
+        session.setAttribute("end_station",end_station);
         return "trainlist2";
     }
 

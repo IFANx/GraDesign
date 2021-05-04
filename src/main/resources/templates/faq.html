@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Good - Bootstrap Corporate Template</title>
+    <title>公告 12307 Tickets</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -38,38 +38,35 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" th:href="@{/listtrains}">大厅</a>
+            <a class="navbar-brand" th:href="@{/listtrains}">10307 Tickets</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li><a th:href="@{/index}">首页</a></li>
                 <li class="dropdown">
-                    <a th:href="@{/index}">Home</a>
-                </li>
-                <li><a th:href="@{/about}">About</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-                <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">订单中心 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/services}">Services</a></li>
-                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
-                        <!--              <li><a th:href="@{/testimonials}">Testimonials</a></li>-->
-                        <!--              <li><a th:href="@{/team}">Our Team</a></li>-->
-                        <!--              <li><a th:href="@{/blog}">Blog</a></li>-->
-                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
-                        <li><a th:href="@{/faq}">FAQ</a></li>
+                        <!--                        <li><a th:href="@{/tologin}" >全部订单</a></li>-->
+                        <li><a th:href="@{/displayorder}">全部订单</a></li>
+                        <li><a th:href="@{/payedorder1}">已支付订单</a></li>
+                        <li><a th:href="@{/notpayedorder1}">待支付订单</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/tologin}">用户登录</a></li>
+                        <li><a th:href="@{/toregister}">用户注册</a></li>
+                        <li><a th:href="@{/userinfo}">用户信息</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/notice}">公告</a></li>
                         <li><a th:href="@{/404}">404</a></li>
                     </ul>
                 </li>
-                <!--          <li class="dropdown">-->
-                <!--            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolios <b class="caret"></b></a>-->
-                <!--            <ul class="dropdown-menu">-->
-                <!--              <li><a href="portfolio.html">Portfolio</a></li>-->
-                <!--              <li><a href="portfolio4.html">Portfolio 4 Columns</a></li>-->
-                <!--              <li><a href="project-single.html">Single Project</a></li>-->
-                <!--            </ul>-->
-                <!--          </li>-->
-            </ul>
-            </li>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -81,207 +78,132 @@
 <div id="faqwrap">
     <div class="container">
         <div class="row">
-            <h1>Frequently Asked<br/> <b>Questions</b></h1>
+            <h1>12307 Tickets公告</h1>
+        </div>
+        <div class="container sinfo">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseOne">
+                                        <span class="fui-plus"></span>[[${notice0.title}]]------[[${notice0.createtime}]]
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p>[[${notice0.content}]]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseTwo">
+                                        <span class="fui-plus"></span> [[${notice1.title}]]------[[${notice1.createtime}]]
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>[[${notice1.content}]]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseThree">
+                                        <span class="fui-plus"></span> [[${notice2.title}]]------[[${notice2.createtime}]]
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>[[${notice2.content}]]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseFour">
+                                        <span class="fui-plus"></span> [[${notice3.title}]]------[[${notice3.createtime}]]
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>[[${notice3.content}]]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseFive">
+                                        <span class="fui-plus"></span> [[${notice4.title}]]------[[${notice4.createtime}]]
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>[[${notice4.content}]]</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- panel-group -->
+                </div>
+                <!-- col-lg-8 -->
+
+                <div class="col-lg-4">
+                    <div class="alert alert-success">
+                        <h4>最新通知</h4>
+                        <p>尊敬的用户您好：
+
+                            为更好的为您提供服务，微信在线购票系统已于2021年4月17日进行系统升级维护，现购票系统已正常运行，如有购票异常现象，请您清除微信缓存后再尝试购票。
+
+                            演出场馆自助取票机已升级完毕，可以正常取票。其他场馆自助取票机将在2021年5月1日恢复取票服务。由此给您带来的不便，我们深表歉意，衷心的感谢您对我们的理解与支持！
+
+                            票务咨询热线：400-0471-109
+
+                            12307 Tickets
+
+                            2019年04月18日.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 </div>
 <!-- /faqwrap -->
 
 
-<!-- Intro Section -->
-<div class="container sinfo">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 centered">
-            <img src="img/icons/safe.svg" alt="">
-            <br><br>
-            <h3>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                alteration in some form.</h3>
-        </div>
-    </div>
-    <!-- /row -->
-</div>
 <!-- /container -->
 
 
-<!-- Service List -->
-<div class="container sinfo">
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                               href="#collapseOne">
-                                <span class="fui-plus"></span> Does Good work on small projects?
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <p>Generally speaking, no project is too small. We may however refer some extremely small
-                                projects to a contemporary or affiliate. Some projects might be too big. But they would
-                                have to be really, really gigantic for us to consider them too
-                                big. We’ll be honest. Always the best result.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                               href="#collapseTwo">
-                                <span class="fui-plus"></span> What is a digital agency?
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <p>We call Good a digital agency because we work predominantly in the digital world. While
-                                we do occasionally enjoy a great analog experience, most of our work is digital, digital
-                                and even more digital.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                               href="#collapseThree">
-                                <span class="fui-plus"></span> Can I look at the Good portfolio online
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <p>We provide portfolios to prospective clients on a limited basis to protect the privacy of
-                                our clients. So, the answer is yes…</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                               href="#collapseFour">
-                                <span class="fui-plus"></span> What does it cost to hire Good?
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseFour" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <p>All projects are different. We provide a full analysis of the project and no work is
-                                executed without a clear price that is agreed upon by you and Good.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"
-                               href="#collapseFive">
-                                <span class="fui-plus"></span> When can Good start my project?
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseFive" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <p>Projects start on a first come, first serve basis. We do limit the number of projects we
-                                take on at one time. We do not believe in starting several projects just to lock down a
-                                client..not our style.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- panel-group -->
-        </div>
-        <!-- col-lg-8 -->
-
-        <div class="col-lg-4">
-            <div class="alert alert-success">
-                <h4>More About Us?</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Contrary to popular
-                    belief, Lorem Ipsum is not simply random text.</p>
-                <a href="#" class="btn btn-primary btn-wide"><i class="fui-link"></i> Get It Now!</a>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-<!-- /container -->
-
-
-<!-- Spacer Section -->
-<div id="sp1">
-    <div class="container">
-        <div class="row">
-            <br>
-            <h3>Need more information? Call us totally free +34 9854-3432.<br/> We are 24/7 all year.</h3>
-            <br>
-        </div>
-    </div>
-    <!-- /container -->
-</div>
-<!-- /sp1 -->
-
-
-<!-- FOOTER -->
-<div id="f">
-    <div class="container">
-        <div class="row">
-            <h5 class="centered">Contact Information</h5>
-            <br>
-
-            <div class="col-lg-4">
-                <p>ABOUT <b>GOOD</b> STUDIO</p>
-                <p>
-                    <small>There are many variations of passages of Lorem Ipsum available, but the majority have
-                        suffered alteration in some form, by injected humour, or randomised words which don't look even
-                        slightly believable.
-                    </small>
-                </p>
-            </div>
-
-            <div class="col-lg-4">
-                <p>MAIN OFFICE</p>
-                <p>
-                    <small>
-                        Richardson Ave. 984<br/>
-                        London, UK.<br/>
-                        +44 3893-4904
-                    </small>
-                </p>
-            </div>
-
-            <div class="col-lg-4">
-                <p>OUR NEWSLETTER</p>
-                <p>
-                    <small>Each month we collect the best stuff around the design world and share it with you.</small>
-                </p>
-                <p><input type="text" placeholder="Add your email here" class="form-control flat"/></p>
-            </div>
-
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
-<!-- /Footer -->
 
 <div id="copyrights">
     <div class="container">
-        <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - More Templates <a
-                href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
-                href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-
+        <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - scu xukang
         </p>
         <div class="credits">
 
         </div>
     </div>
+
 </div>
 <!-- / copyrights -->
 

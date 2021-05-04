@@ -146,7 +146,7 @@ public class ScheduleOfTrainsServiceImpl implements ScheduleOfTrainsService {
     }
 
     @Override
-    public PageInfo scheduleOfTrainsbydepartureandend(String departure_station, String end_station, int pageNo, int pageSize) {
+    public PageInfo<Schedule_Of_Trains> scheduleOfTrainsbydepartureandend(String departure_station, String end_station, int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
         Schedule_Of_TrainsExample schedule_of_trainsExample = new Schedule_Of_TrainsExample();
         schedule_of_trainsExample.setOrderByClause("tarin_no asc,departure_time asc,use_time asc");

@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -32,8 +33,21 @@ public class OrderController {
         //获取订单最大编号，新建一个编号加一的新订单
         int MaxID = orderService.MaxID();
         //根据当前选择的车次的train_no信息，查询当前车次的其余有关订票的信息，并组合成一个order实体类
-        Schedule_Of_Trains trains = scheduleOfTrainsService.selectbytrainno(train_no).get(1);
+        Schedule_Of_Trains trains = scheduleOfTrainsService.selectbytrainno(train_no).get(0);
         Date now = new Date();
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+//   设置时间为7天后
+// 1. 得到当前时间的毫秒数
+        long time = date.getTime();
+// 2. 计算间隔时间的毫秒数
+        long n=7*24*60*60*1000;
+// 3. 相加/减得到目标时间的毫秒数
+        time=time+n;
+// 4. 通过构造方法生成一个新的Date对象，该对象的时间值即使目标值
+        date=new Date(time);
+        System.out.println("七天后的时间："+format.format(date));
+
         Random rand = new Random();
         Order_List order_list = new Order_List();
         order_list.setOrderId(MaxID + 1);
@@ -48,13 +62,13 @@ public class OrderController {
         order_list.setEndStationName(trains.getToStation());
         order_list.setCarriageNo("S"+(rand.nextInt(500 - 20 + 1) + 20));
         order_list.setSeatNo("N"+(rand.nextInt(500 - 20 + 1) + 20));
-        order_list.setOrderMoney("￥"+(rand.nextInt(500 - 20 + 1) + 20));
+        order_list.setOrderMoney(String.valueOf((rand.nextInt(500 - 20 + 1) + 20)));
         order_list.setOrderCreateTime(now);
         order_list.setOrderStatus("未支付");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
         calendar.add(Calendar.DAY_OF_MONTH,3);
-        order_list.setTrainStartDate(now);
+        order_list.setTrainStartDate(date);
         boolean flag = orderService.insertorder(order_list);
         if (flag == true)
             modelMap.addAttribute("message", "预定成功");
@@ -71,44 +85,12 @@ public class OrderController {
     }
 
     @RequestMapping("/deleteorder")
-
     public String deleteorder(HttpSession session,ModelMap modelMap){
         Integer maxID = orderService.MaxID();
         orderService.deleteorder(maxID);
         modelMap.addAttribute("message","删除订单成功");
         return "result";
     }
-
-
-//    @DeleteMapping("/yuding")
-//    @ResponseBody
-//    public Object yuding(@RequestBody String train_no){
-//        //获取订单最大编号，新建一个编号加一的新订单
-//        int MaxID = orderService.MaxID();
-//
-//        //根据当前选择的车次的train_no信息，查询当前车次的其余有关订票的信息，并组合成一个order实体类
-//        Schedule_Of_Trains trains = scheduleOfTrainsService.selectbytrainno(train_no).get(1);
-//        Date now = new Date();
-//        Order_List order_list = new Order_List();
-//        order_list.setOrderId(MaxID + 1);
-//        order_list.setUserPhoneNumber("17361048086");
-//        order_list.setPassengerIdNumber("510521");
-//        order_list.setPassengerPhoneNumber("17361040886");
-//        order_list.setTrainNo(trains.getTarinNo());
-//        order_list.setStartStationNo(trains.getDepartureStation());
-//        order_list.setEndStationNo(trains.getEndStation());
-//        order_list.setStartStationName(trains.getFromStation());
-//        order_list.setEndStationNo("123");
-//        order_list.setEndStationName(trains.getToStation());
-//        order_list.setCarriageNo("4");
-//        order_list.setSeatNo("444");
-//        order_list.setOrderMoney("123");
-//        order_list.setOrderCreateTime(now);
-//        order_list.setOrderStatus("正常");
-//        order_list.setTrainStartDate(now);
-//       // boolean flag = orderService.insertorder(order_list);
-//        return Result.success(orderService.MaxID());
-//    }
 
     //分页
     @GetMapping("/getorderlist")

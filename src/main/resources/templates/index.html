@@ -73,10 +73,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/services}">Services</a></li>
-                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
-                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
-                        <li><a th:href="@{/faq}">FAQ</a></li>
+                        <li><a th:href="@{/notice}">公告</a></li>
                         <li><a th:href="@{/404}">404</a></li>
                     </ul>
                 </li>
@@ -134,32 +131,6 @@
 <script>
     $(function () {
 
-        window.operateEvents = {
-            //预定/
-            'click .btn_del': function (e, value, row, index) {
-                var train_number = row.train_number;
-                layer.confirm("确认预定: " + row.name + "  ?", {icon: 3, title: '预定操作'}, function (index) {
-                    //do something
-                    $.ajax({
-                        type: "post",
-                        url: "/yuding",
-                        contentType: "application/json",
-                        data: JSON.stringify({"train_number": train_number}),
-                        success: function (msg) {
-                            if (msg["success"]) {
-                                $('#table1').bootstrapTable('destroy', {
-                                    field: 'train_number',
-                                    values: [train_number]
-                                });
-                                layer.msg("操作成功", {time: 700});
-                            }
-                        }
-                    });
-                    layer.close(index);
-                });
-            }
-        };
-
         $('#table1').bootstrapTable('destroy').bootstrapTable({
             method: 'get',
             url: "/gettrains",
@@ -170,6 +141,8 @@
             pageSize: 10,
             pagination: true,
             queryParamsType: 'limit',
+            departure_station:this.departure_station,
+            end_station:this.end_station,
             // search: true,
             queryParams: function (params) {
                 return {
@@ -263,39 +236,5 @@
 
         });
 
-
-        $(".remove-batch").click(function () {
-            var rows = $('#table1').bootstrapTable('getSelections');
-            var ids = $.map(rows, function (row) {
-                return row.id;
-            });
-
-            if (ids.length > 0) {
-                layer.confirm("确认删除", {icon: 3, title: '删除操作'}, function (index) {
-                    //do something
-                    $.ajax({
-                        type: "delete",
-                        url: "/deleteBooks",
-                        contentType: "application/json",
-                        data: JSON.stringify(ids),
-                        success: function (msg) {
-                            if (msg["success"]) {
-                                $('#table1').bootstrapTable('refresh');
-                                layer.msg("批量操作成功", {time: 700});
-                                /*   $('#table1').bootstrapTable('remove', {
-                                     field: 'id',
-                                     values: ids
-                                   });*/
-
-                            }
-                        }
-                    });
-                    layer.close(index);
-                });
-            } else {
-                layer.msg("未选中行", {time: 700});
-            }
-
-        });
     })
 </script>

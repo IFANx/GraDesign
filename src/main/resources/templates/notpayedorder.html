@@ -72,10 +72,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" >其他 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/services}">Services</a></li>
-                        <li><a th:href="@{/pricing}">Pricing Tables</a></li>
-                        <li><a th:href="@{/blogsingle}">Blog Article</a></li>
-                        <li><a th:href="@{/faq}">FAQ</a></li>
+                        <li><a th:href="@{/notice}">公告</a></li>
                         <li><a th:href="@{/404}">404</a></li>
                     </ul>
                 </li>
@@ -94,6 +91,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        <h3 style="font-weight: bold;text-align: center">未支付订单</h3>
                         <div class="box-body">
                             <table id="table1" class="table table-bordered table-hover" th:name="订单详情">
                             </table>

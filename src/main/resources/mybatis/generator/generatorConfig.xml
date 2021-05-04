@@ -45,6 +45,7 @@
 <!--            <table tableName="train_info" domainObjectName="Train_Info"/>-->
 <!--            <table tableName="train_parking_station" domainObjectName="Train_Parking_Station"/>-->
 <!--            <table tableName="user" domainObjectName="User"/>-->
+<!--            <table tableName="notice" domainObjectName="Notice"/>-->
 
 
         <!--  <table schema="DB2ADMIN" tableName="ALLTYPES" domainObjectName="Customer" >
