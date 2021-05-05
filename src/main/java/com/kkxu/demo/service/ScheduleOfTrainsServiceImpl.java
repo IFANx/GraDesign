@@ -139,8 +139,16 @@ public class ScheduleOfTrainsServiceImpl implements ScheduleOfTrainsService {
     @Override
     public List<Schedule_Of_Trains> fromstation(String from_station) {
         Schedule_Of_TrainsExample schedule_of_trainsExample = new Schedule_Of_TrainsExample();
-        schedule_of_trainsExample.setDistinct(true);
-        schedule_of_trainsExample.createCriteria().andFromStationLike("%" + from_station + "%");
+//        schedule_of_trainsExample.setDistinct(true);
+        schedule_of_trainsExample.createCriteria().andToStationLike("%" + from_station + "%");
+        List<Schedule_Of_Trains> trains = schedule_of_trainsMapper.selectByExample(schedule_of_trainsExample);
+        return trains;
+    }
+    @Override
+    public List<Schedule_Of_Trains> tostation(String to_station) {
+        Schedule_Of_TrainsExample schedule_of_trainsExample = new Schedule_Of_TrainsExample();
+//        schedule_of_trainsExample.setDistinct(true);
+        schedule_of_trainsExample.createCriteria().andToStationLike("%" + to_station + "%");
         List<Schedule_Of_Trains> trains = schedule_of_trainsMapper.selectByExample(schedule_of_trainsExample);
         return trains;
     }

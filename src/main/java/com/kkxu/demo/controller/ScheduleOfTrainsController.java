@@ -25,13 +25,14 @@ public class ScheduleOfTrainsController {
     private ScheduleOfTrainsService scheduleOfTrainsService;
 
     @RequestMapping("/schedulepart")
-    public Object schedulepart(ModelMap modelMap,String train_number) {
+    public Object schedulepart(ModelMap modelMap, String train_number) {
         List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.listpart();
         modelMap.addAttribute("trainlist", trainlist);
         return "trainlist";
     }
+
     @RequestMapping("/scheduleOfTrainsbytrain_number")
-    public Object scheduleOfTrainsbytrain_number(ModelMap modelMap,String train_number) {
+    public Object scheduleOfTrainsbytrain_number(ModelMap modelMap, String train_number) {
         List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.Trainsbytrain_number(train_number);
         Schedule_Of_Trains schedule_of_trains = trainlist.get(0);
         modelMap.addAttribute("schedule_of_trains", schedule_of_trains);
@@ -39,7 +40,7 @@ public class ScheduleOfTrainsController {
     }
 
     @RequestMapping("/scheduleOfTrainsbyid")
-    public Object scheduleOfTrainsbyid(ModelMap modelMap,int train_id) {
+    public Object scheduleOfTrainsbyid(ModelMap modelMap, int train_id) {
         List<Schedule_Of_Trains> schedule_of_trains = scheduleOfTrainsService.Trainsbytrain_id(train_id);
         modelMap.addAttribute("trainlist", schedule_of_trains);
         return "index";
@@ -48,20 +49,29 @@ public class ScheduleOfTrainsController {
 
     @RequestMapping("/seatTrainsbyno")
     @ResponseBody
-    public Object seatTrainsbyno(ModelMap modelMap,String train_no) {
+    public Object seatTrainsbyno(ModelMap modelMap, String train_no) {
         List<Seat> seats = scheduleOfTrainsService.seatTrainsbyno(train_no);
         modelMap.addAttribute("seatlist", seats);
         return seats;
     }
 
-    //求出途径所有站点
+    //给定起点终点求出途径所有站点 换乘
     @RequestMapping("/scheduleOfTrainfromstationtotostation")
     @ResponseBody
-    public List<Schedule_Of_Trains> scheduleOfTrainPassBy(ModelMap modelMap, String from_station, String to_station) {
-        List<Schedule_Of_Trains> trains = scheduleOfTrainsService.fromstation(from_station);
-        List<Schedule_Of_Trains> possibletrain=new LinkedList<>();
-        modelMap.addAttribute("trainlist", possibletrain);
-        return possibletrain;
+    public Object scheduleOfTrainPassBy(ModelMap modelMap, String start, String stop) {
+        List<String> fromstations = new LinkedList<>();
+        List<Schedule_Of_Trains> result=new LinkedList<>();
+        //获得以start为起点的所有终点站
+        List<Schedule_Of_Trains> startstation = scheduleOfTrainsService.tostation(start);
+        Iterator<Schedule_Of_Trains> iterator = startstation.iterator();
+        Schedule_Of_Trains s;
+        while(iterator.hasNext()){
+            s=iterator.next();
+            if(s.getToStation().equals(stop)&&!result.contains(s));
+            result.add(s);
+        }
+        return  result;
+
     }
 
     //分页
@@ -90,6 +100,7 @@ public class ScheduleOfTrainsController {
         session.setAttribute("end_station",end_station);
         return "trainlist2";
     }
+
 
 
 }

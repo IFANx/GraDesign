@@ -27,6 +27,8 @@ public interface ScheduleOfTrainsService {
 
     List<Schedule_Of_Trains> fromstation(String from_station);
 
+    List<Schedule_Of_Trains> tostation(String to_station);
+
     PageInfo<Schedule_Of_Trains> scheduleOfTrainsbydepartureandend(String departure_station, String end_station, int pageNo, int pageSize);
     //列出所有列车信息
 }

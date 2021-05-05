@@ -30,51 +30,59 @@ public class OrderController {
     @RequestMapping("/insertorder")
 //    HttpSession session,String passengeridnumber,String money
     public String insertorder(String train_no, String passenger_id_number,String passenger_phone_number,ModelMap modelMap,HttpSession session) {
-        //获取订单最大编号，新建一个编号加一的新订单
-        int MaxID = orderService.MaxID();
-        //根据当前选择的车次的train_no信息，查询当前车次的其余有关订票的信息，并组合成一个order实体类
         Schedule_Of_Trains trains = scheduleOfTrainsService.selectbytrainno(train_no).get(0);
-        Date now = new Date();
-        Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+        if(session.getAttribute("UserPhoneNumber")!=null) {
+            //获取订单最大编号，新建一个编号加一的新订单
+            int MaxID = orderService.MaxID();
+            //根据当前选择的车次的train_no信息，查询当前车次的其余有关订票的信息，并组合成一个order实体类
+            Date now = new Date();
+            Date date = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
 //   设置时间为7天后
 // 1. 得到当前时间的毫秒数
-        long time = date.getTime();
+            long time = date.getTime();
 // 2. 计算间隔时间的毫秒数
-        long n=7*24*60*60*1000;
+            long n = 7 * 24 * 60 * 60 * 1000;
 // 3. 相加/减得到目标时间的毫秒数
-        time=time+n;
+            time = time + n;
 // 4. 通过构造方法生成一个新的Date对象，该对象的时间值即使目标值
-        date=new Date(time);
-        System.out.println("七天后的时间："+format.format(date));
+            date = new Date(time);
+            System.out.println("七天后的时间：" + format.format(date));
 
-        Random rand = new Random();
-        Order_List order_list = new Order_List();
-        order_list.setOrderId(MaxID + 1);
-        order_list.setUserPhoneNumber((String)session.getAttribute("UserPhoneNumber"));
-        order_list.setPassengerIdNumber(passenger_id_number);
-        order_list.setPassengerPhoneNumber(passenger_phone_number);
-        order_list.setTrainNo(trains.getTarinNo());
-        order_list.setStartStationNo(trains.getDepartureStation());
-        order_list.setEndStationNo(trains.getEndStation());
-        order_list.setStartStationName(trains.getFromStation());
-        order_list.setEndStationNo(train_no);
-        order_list.setEndStationName(trains.getToStation());
-        order_list.setCarriageNo("S"+(rand.nextInt(500 - 20 + 1) + 20));
-        order_list.setSeatNo("N"+(rand.nextInt(500 - 20 + 1) + 20));
-        order_list.setOrderMoney(String.valueOf((rand.nextInt(500 - 20 + 1) + 20)));
-        order_list.setOrderCreateTime(now);
-        order_list.setOrderStatus("未支付");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(now);
-        calendar.add(Calendar.DAY_OF_MONTH,3);
-        order_list.setTrainStartDate(date);
-        boolean flag = orderService.insertorder(order_list);
-        if (flag == true)
-            modelMap.addAttribute("message", "预定成功");
+            Random rand = new Random();
+            Order_List order_list = new Order_List();
+            order_list.setOrderId(MaxID + 1);
+            order_list.setUserPhoneNumber((String) session.getAttribute("UserPhoneNumber"));
+            order_list.setPassengerIdNumber(passenger_id_number);
+            order_list.setPassengerPhoneNumber(passenger_phone_number);
+            order_list.setTrainNo(trains.getTarinNo());
+            order_list.setStartStationNo(trains.getDepartureStation());
+            order_list.setEndStationNo(trains.getEndStation());
+            order_list.setStartStationName(trains.getFromStation());
+            order_list.setEndStationNo(train_no);
+            order_list.setEndStationName(trains.getToStation());
+            order_list.setCarriageNo("S" + (rand.nextInt(500 - 20 + 1) + 20));
+            order_list.setSeatNo("N" + (rand.nextInt(500 - 20 + 1) + 20));
+            order_list.setOrderMoney(String.valueOf((rand.nextInt(500 - 20 + 1) + 20)));
+            order_list.setOrderCreateTime(now);
+            order_list.setOrderStatus("未支付");
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(now);
+            calendar.add(Calendar.DAY_OF_MONTH, 3);
+            order_list.setTrainStartDate(date);
+            boolean flag = orderService.insertorder(order_list);
+            if (flag == true)
+                modelMap.addAttribute("message", "预定成功");
+            else
+                modelMap.addAttribute("message", "预定失败");
+            return "orderlist";
+        }
         else
-            modelMap.addAttribute("message", "预定失败");
-        return "orderlist";
+        {
+             modelMap.addAttribute("message","预定失败，请先登录！");
+             modelMap.addAttribute("schedule_of_trains",trains);
+             return "pricing";
+    }
     }
 
     @RequestMapping("/lookorder")

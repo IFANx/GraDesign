@@ -77,6 +77,7 @@
         <h5 style="color: #ffffff; font-weight: bold;font-family: 楷体"
             th:text="中国铁路+${schedule_of_trains.getTrainNumber()}+---车次余座详情"></h5>
         <!--        <div class="row">-->
+        <h4 style="color: #ff4418">[[${message}]]</h4>
         <div class="container">
             <br><br>
             <div class="row">
@@ -263,12 +264,17 @@
                         <h5> <strong>PassengerPhoneNumber：</strong></h5>
                         <input class="form-control" type="text" th:name="passenger_phone_number" placeholder="电话">
                         <br>
-                        <input type="submit" class="btn btn-primary" value="预定">
+                        <input  type="submit" class="btn btn-primary" value="预定">
                     </form>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
     </div>
+</div>
+<div>
+    <tbody>
+    <a th:value="${stations}"></a>
+    </tbody>
 </div>
 
 
@@ -279,168 +285,6 @@
     </div>
 
 </div>
-
-<!--<script>-->
-<!--    $('#myModal').on('show.bs.modal', function (event) {-->
-<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
-<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
-<!--        var modal = $(this);  //当前模态框-->
-<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
-<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
-<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
-<!--    });-->
-
-<!--    function   submit(){-->
-<!--        document.form1.method= "post ";-->
-<!--        document.form1.action= "insertorder";-->
-<!--        document.form1.submit();-->
-<!--        return   true;-->
-<!--    }-->
-
-<!--    // $('#test1').on('click', function(){-->
-<!--    //     layer.open({-->
-<!--    //         content: '确定删除吗？',-->
-<!--    //         btn: ['确认', '取消'],-->
-<!--    //         yes: function(index, layero) {-->
-<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
-<!--    //         },-->
-<!--    //         btn2: function(index, layero) {-->
-<!--    //-->
-<!--    //         }-->
-<!--    //         ,-->
-<!--    //         cancel: function() {-->
-<!--    //             //右上角关闭回调-->
-<!--    //         }-->
-<!--    //     });-->
-<!--    // });-->
-
-<!--</script> = function(){-->
-<!--<script>-->
-<!--    $('#myModal').on('show.bs.modal', function (event) {-->
-<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
-<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
-<!--        var modal = $(this);  //当前模态框-->
-<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
-<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
-<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
-<!--    });-->
-
-<!--    function   del(){-->
-<!--        document.form1.method= "post ";-->
-<!--        document.form1.action= "deletecarts";-->
-<!--        document.form1.submit();-->
-<!--        return   true;-->
-<!--    }-->
-
-<!--    function   sub(){-->
-<!--        document.form1.method= "post ";-->
-<!--        document.form1.action= "sbmt ";-->
-<!--        document.form1.submit();-->
-<!--        return   true;-->
-<!--    }-->
-
-<!--    // $('#test1').on('click', function(){-->
-<!--    //     layer.open({-->
-<!--    //         content: '确定删除吗？',-->
-<!--    //         btn: ['确认', '取消'],-->
-<!--    //         yes: function(index, layero) {-->
-<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
-<!--    //         },-->
-<!--    //         btn2: function(index, layero) {-->
-<!--    //-->
-<!--    //         }-->
-<!--    //         ,-->
-<!--    //         cancel: function() {-->
-<!--    //             //右上角关闭回调-->
-<!--    //         }-->
-<!--    //     });-->
-<!--    // });-->
-
-<!--</script>-->
-<!--<script>-->
-<!--    $('#myModal').on('show.bs.modal', function (event) {-->
-<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
-<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
-<!--        var modal = $(this);  //当前模态框-->
-<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
-<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
-<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
-<!--    });-->
-
-<!--    function   del(){-->
-<!--        document.form1.method= "post ";-->
-<!--        document.form1.action= "deletecarts";-->
-<!--        document.form1.submit();-->
-<!--        return   true;-->
-<!--    }-->
-
-<!--    function   sub(){-->
-<!--        document.form1.method= "post ";-->
-<!--        document.form1.action= "sbmt ";-->
-<!--        document.form1.submit();-->
-<!--        return   true;-->
-<!--    }-->
-
-<!--    // $('#test1').on('click', function(){-->
-<!--    //     layer.open({-->
-<!--    //         content: '确定删除吗？',-->
-<!--    //         btn: ['确认', '取消'],-->
-<!--    //         yes: function(index, layero) {-->
-<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
-<!--    //         },-->
-<!--    //         btn2: function(index, layero) {-->
-<!--    //-->
-<!--    //         }-->
-<!--    //         ,-->
-<!--    //         cancel: function() {-->
-<!--    //             //右上角关闭回调-->
-<!--    //         }-->
-<!--    //     });-->
-<!--    // });-->
-
-<!--</script>-->
-<!--<script>-->
-<!--    $('#myModal').on('show.bs.modal', function (event) {-->
-<!--        $("textarea[name = refuseTextareaContext]").innerHTML = "";-->
-<!--        var btnThis = $(event.relatedTarget); //触发事件的按钮-->
-<!--        var modal = $(this);  //当前模态框-->
-<!--        var modalId = btnThis.data('id');   //解析出data-id的内容-->
-<!--        currentDataId = btnThis.closest('tr').find('td').eq(7).text();//获取a标签所在行的某一列的内容,eq括号里面的数值表示列数-->
-<!--        $("#goodsid").val(currentDataId);////设置模态框里id为cId的组件的值为currentDataId-->
-<!--    });-->
-
-<!--    function   del(){-->
-<!--        document.form1.method= "post ";-->
-<!--        document.form1.action= "deletecarts";-->
-<!--        document.form1.submit();-->
-<!--        return   true;-->
-<!--    }-->
-
-<!--    function   sub(){-->
-<!--        document.form1.method= "post ";-->
-<!--        document.form1.action= "sbmt ";-->
-<!--        document.form1.submit();-->
-<!--        return   true;-->
-<!--    }-->
-
-<!--    // $('#test1').on('click', function(){-->
-<!--    //     layer.open({-->
-<!--    //         content: '确定删除吗？',-->
-<!--    //         btn: ['确认', '取消'],-->
-<!--    //         yes: function(index, layero) {-->
-<!--    //             window.location.href="/deletecarts?"+"goodsIds="+currentDataId;-->
-<!--    //         },-->
-<!--    //         btn2: function(index, layero) {-->
-<!--    //-->
-<!--    //         }-->
-<!--    //         ,-->
-<!--    //         cancel: function() {-->
-<!--    //             //右上角关闭回调-->
-<!--    //         }-->
-<!--    //     });-->
-<!--    // });-->
-
-<!--</script>-->
 
 
 <!-- JavaScript Libraries -->

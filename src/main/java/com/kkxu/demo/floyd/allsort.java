@@ -37,7 +37,7 @@ public class allsort {
 	    	return n*jiecheng(n-1);
 	    	return 1;
 	    }
-	    
+
 	    public static void main(String[] args) {
 	    	int num[]= {1,2,5,3};
 	    	int length=num.length;
@@ -45,7 +45,7 @@ public class allsort {
 	    	System.out.println(width+" "+length);
 	    	allsort a=new allsort();
 	    	Integer k;int cnt=0,i,j;
-	    	int[][] res=new int[width][length]; 
+	    	int[][] res=new int[width][length];
 	    	List<List<Integer>> L= a.permute(num);
 	    	i=0;
 	    	for (List<Integer> li:L) {
@@ -81,10 +81,9 @@ public class allsort {
 					i++;
 	    	}
 			return res;
-	    	
+
 	    }
 	}
 
 
 
-	

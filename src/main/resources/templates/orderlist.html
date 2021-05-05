@@ -135,32 +135,6 @@
 <script>
     $(function () {
 
-        window.operateEvents = {
-            //预定/
-            'click .btn_del': function (e, value, row, index) {
-                var train_number = row.train_number;
-                layer.confirm("确认预定: " + row.name + "  ?", {icon: 3, title: '预定操作'}, function (index) {
-                    //do something
-                    $.ajax({
-                        type: "post",
-                        url: "/yuding",
-                        contentType: "application/json",
-                        data: JSON.stringify({"train_number": train_number}),
-                        success: function (msg) {
-                            if (msg["success"]) {
-                                $('#table1').bootstrapTable('destroy', {
-                                    field: 'train_number',
-                                    values: [train_number]
-                                });
-                                layer.msg("操作成功", {time: 700});
-                            }
-                        }
-                    });
-                    layer.close(index);
-                });
-            }
-        };
-
         $('#table1').bootstrapTable('destroy').bootstrapTable({
             method: 'get',
             url: "/getorderlist",
@@ -205,12 +179,6 @@
                     visible: true,
                     width: 160
                 },
-                // {
-                //     title: '乘客电话',
-                //     field: 'passengerPhoneNumber',
-                //     width: 160,
-                //     align: 'center'
-                // },
                 {
                     title: '乘客身份证号',
                     field: 'passengerIdNumber',
@@ -293,39 +261,5 @@
 
         });
 
-
-        $(".remove-batch").click(function () {
-            var rows = $('#table1').bootstrapTable('getSelections');
-            var ids = $.map(rows, function (row) {
-                return row.id;
-            });
-
-            if (ids.length > 0) {
-                layer.confirm("确认删除", {icon: 3, title: '删除操作'}, function (index) {
-                    //do something
-                    $.ajax({
-                        type: "delete",
-                        url: "/deleteBooks",
-                        contentType: "application/json",
-                        data: JSON.stringify(ids),
-                        success: function (msg) {
-                            if (msg["success"]) {
-                                $('#table1').bootstrapTable('refresh');
-                                layer.msg("批量操作成功", {time: 700});
-                                /*   $('#table1').bootstrapTable('remove', {
-                                     field: 'id',
-                                     values: ids
-                                   });*/
-
-                            }
-                        }
-                    });
-                    layer.close(index);
-                });
-            } else {
-                layer.msg("未选中行", {time: 700});
-            }
-
-        });
     })
 </script>
