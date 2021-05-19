@@ -4,6 +4,16 @@
     <title>Title</title>
 </head>
 <body>
-<p> [[${message}]]</p>
+<tbody>
+<tr th:each="s:${start}">
+    <td th:text="${s.getTrainNumber()}"></td>
+</tr>
+</tbody>
+<br>
+<tbody>
+<tr th:each="e:${end}">
+    <td th:text="${e.getTrainNumber()}"></td>
+</tr>
+</tbody>
 </body>
 </html>

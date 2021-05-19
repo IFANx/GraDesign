@@ -68,6 +68,7 @@
                         <li><a th:href="@{/tologin}">用户登录</a></li>
                         <li><a th:href="@{/toregister}">用户注册</a></li>
                         <li><a th:href="@{/userinfo}">用户信息</a></li>
+                        <li><a th:href="@{/showPassengers}">旅客信息</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -220,7 +221,10 @@
                             '<input type="hidden" name="train_number" value="',
                             row.trainNumber,
                             '">',
-                            '<input type="submit" class="btn btn-danger btn-xs btn_del">',
+                            '<input type="hidden" name="tostation" value="',
+                            row.toStation,
+                            '">',
+                            '<input type="submit" style="color: #00bdef">',
                             '</input>',
                             '</form>'
 

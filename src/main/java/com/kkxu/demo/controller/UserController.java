@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/User")
 public class UserController {
     @Autowired
     private UserService userService;

@@ -32,9 +32,22 @@ public class ScheduleOfTrainsController {
     }
 
     @RequestMapping("/scheduleOfTrainsbytrain_number")
-    public Object scheduleOfTrainsbytrain_number(ModelMap modelMap, String train_number) {
+    public Object scheduleOfTrainsbytrain_number(ModelMap modelMap, String train_number, String tostation) {
         List<Schedule_Of_Trains> trainlist = scheduleOfTrainsService.Trainsbytrain_number(train_number);
-        Schedule_Of_Trains schedule_of_trains = trainlist.get(0);
+        Schedule_Of_Trains schedule_of_trains = null;
+        List<String> stations = new LinkedList<>();
+        Schedule_Of_Trains s;
+        Iterator<Schedule_Of_Trains> iterator = trainlist.iterator();
+        while (iterator.hasNext()) {
+            s = iterator.next();
+            if (!stations.contains(s.getToStation())) {
+                stations.add(s.getToStation());
+            }
+            if (s.getToStation().equals(tostation)) {
+                schedule_of_trains = s;
+            }
+        }
+        modelMap.addAttribute("stations", stations);
         modelMap.addAttribute("schedule_of_trains", schedule_of_trains);
         return "pricing";
     }
@@ -56,51 +69,62 @@ public class ScheduleOfTrainsController {
     }
 
     //给定起点终点求出途径所有站点 换乘
-    @RequestMapping("/scheduleOfTrainfromstationtotostation")
-    @ResponseBody
-    public Object scheduleOfTrainPassBy(ModelMap modelMap, String start, String stop) {
+    @RequestMapping("/transfer")
+    public String scheduleOfTrainPassBy(HttpSession session, ModelMap modelMap) {
         List<String> fromstations = new LinkedList<>();
-        List<Schedule_Of_Trains> result=new LinkedList<>();
-        //获得以start为起点的所有终点站
-        List<Schedule_Of_Trains> startstation = scheduleOfTrainsService.tostation(start);
+        List<Schedule_Of_Trains> result = new LinkedList<>();
+
+
+        //利用session获得起点站和终点站
+        String departure_station = (String) session.getAttribute("departure_station");
+        String end_station = (String) session.getAttribute("end_station");
+
+        //获得经过departure_station的所有列车
+        List<Schedule_Of_Trains> startstation = scheduleOfTrainsService.tostation(departure_station);
         Iterator<Schedule_Of_Trains> iterator = startstation.iterator();
         Schedule_Of_Trains s;
-        while(iterator.hasNext()){
-            s=iterator.next();
-            if(s.getToStation().equals(stop)&&!result.contains(s));
+        modelMap.addAttribute("start",startstation);
+        //获得经过end_station的所有列车
+
+        List<Schedule_Of_Trains> endstation = scheduleOfTrainsService.tostation(end_station);
+        modelMap.addAttribute("end",endstation);
+        while (iterator.hasNext()) {
+            s = iterator.next();
+            if (s.getToStation().equals(end_station) && !result.contains(s)) ;
             result.add(s);
         }
-        return  result;
+        return "result";
 
     }
 
     //分页
     @GetMapping("/gettrains")
     @ResponseBody
-    public Object gettrains(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
-        return Result.success(scheduleOfTrainsService.findtrains(pageNo,pageSize),"分页 查询trains 对象");
+    public Object gettrains(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10") int pageSize) {
+        return Result.success(scheduleOfTrainsService.findtrains(pageNo, pageSize), "分页 查询trains 对象");
     }
+
     @GetMapping("/listtrains")
-    public String toTrainListPage(){
+    public String toTrainListPage() {
         return "trainlist";
     }
 
 
-
     @GetMapping("/scheduleOfTrainsbydepartureandend")
     @ResponseBody
-    public Object scheduleOfTrainsbydepartureandend(HttpSession session, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10")int pageSize){
+    public Object scheduleOfTrainsbydepartureandend(HttpSession session, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "10") int pageSize) {
 //        return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend(departure_station, end_station, pageNo, pageSize), "分页 查询trains 对象");
         return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend((String) session.getAttribute("departure_station"), (String) session.getAttribute("end_station"), pageNo, pageSize), "分页 查询trains 对象");
 //        return Result.success(scheduleOfTrainsService.scheduleOfTrainsbydepartureandend("北京","广州",pageNo,pageSize),"分页 查询trains 对象");
     }
+
     @GetMapping("/scheduleOfTrainsbydepartureandend1")
-    public String scheduleOfTrainsbydepartureandendPage(HttpSession session,String departure_station, String end_station){
-        session.setAttribute("departure_station",departure_station);
-        session.setAttribute("end_station",end_station);
+    public String scheduleOfTrainsbydepartureandendPage(HttpSession session, String departure_station, String end_station) {
+        session.setAttribute("departure_station", departure_station);
+        session.setAttribute("end_station", end_station);
+
         return "trainlist2";
     }
-
 
 
 }

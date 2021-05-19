@@ -29,4 +29,6 @@ public interface PassengerMapper {
     int updateByPrimaryKeySelective(Passenger record);
 
     int updateByPrimaryKey(Passenger record);
+
+    void deletePassengersByIds(@Param("ids")List<String> userIdnumbers);
 }

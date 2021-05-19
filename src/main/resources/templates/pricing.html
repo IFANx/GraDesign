@@ -58,6 +58,7 @@
                         <li><a th:href="@{/tologin}">用户登录</a></li>
                         <li><a th:href="@{/toregister}">用户注册</a></li>
                         <li><a th:href="@{/userinfo}">用户信息</a></li>
+                        <li><a th:href="@{/showPassengers}">旅客信息</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -72,12 +73,13 @@
         <!--/.nav-collapse -->
     </div>
 </div>
+
+
 <div id="faqwrap" style="transform:translateY(-10%);">
     <div class="container">
         <h5 style="color: #ffffff; font-weight: bold;font-family: 楷体"
             th:text="中国铁路+${schedule_of_trains.getTrainNumber()}+---车次余座详情"></h5>
         <!--        <div class="row">-->
-        <h4 style="color: #ff4418">[[${message}]]</h4>
         <div class="container">
             <br><br>
             <div class="row">
@@ -93,7 +95,7 @@
                                     <em>/人次</em>
                                 </li>
                                 <li>
-                                    起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                                    起点站:<strong th:text="${schedule_of_trains.getDepartureStation()}"></strong>
                                 </li>
                                 <li>
                                     终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
@@ -116,7 +118,7 @@
                                     <em>/人次</em>
                                 </li>
                                 <li>
-                                    起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                                    起点站:<strong th:text="${schedule_of_trains.getDepartureStation()}"></strong>
                                 </li>
                                 <li>
                                     终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
@@ -137,13 +139,13 @@
                                     <em>/人次</em>
                                 </li>
                                 <li>
-                                    起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                                    起点站:<strong th:text="${schedule_of_trains.getDepartureStation()}"></strong>
                                 </li>
                                 <li>
                                     终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
                                 </li>
                                 <li class="button">
-                                        <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                                    <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
                                     </button>
                                 </li>
                             </ul>
@@ -165,13 +167,13 @@
                             <em>/人次</em>
                         </li>
                         <li>
-                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                            起点站:<strong th:text="${schedule_of_trains.getDepartureStation()}"></strong>
                         </li>
                         <li>
                             终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
                         </li>
                         <li class="button">
-                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
                             </button>
                         </li>
                     </ul>
@@ -186,13 +188,13 @@
                             <em>/人次</em>
                         </li>
                         <li>
-                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                            起点站:<strong th:text="${schedule_of_trains.getDepartureStation()}"></strong>
                         </li>
                         <li>
                             终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
                         </li>
                         <li class="button">
-                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
                             </button>
                         </li>
                     </ul>
@@ -207,13 +209,13 @@
                             <em>/人次</em>
                         </li>
                         <li>
-                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                            起点站:<strong th:text="${schedule_of_trains.getDepartureStation()}"></strong>
                         </li>
                         <li>
                             终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
                         </li>
                         <li class="button">
-                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
                             </button>
                         </li>
                     </ul>
@@ -229,13 +231,13 @@
                             <em>/人次</em>
                         </li>
                         <li>
-                            起点站:<strong th:text="${schedule_of_trains.getFromStation()}"></strong>
+                            起点站:<strong th:text="${schedule_of_trains.getDepartureStation()}"></strong>
                         </li>
                         <li>
                             终点站:<strong th:text="${schedule_of_trains.getToStation()}"></strong>
                         </li>
                         <li class="button">
-                                <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
+                            <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">点击预定
                             </button>
                         </li>
                     </ul>
@@ -247,36 +249,38 @@
     <!--    </div>-->
 </div>
 
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-        <div class="modal-dialog" style="width:100%;text-align: center;margin-right: 30%">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel1">
-                        请填写订单信息(Please fill in the order information)
-                    </h4>
-                </div>
-                <div class="modal-body" >
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog" style="width:100%;text-align: center;margin-right: 30%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel1">
+                    请填写订单信息(Please fill in the order information)
+                </h4>
+            </div>
+            <div class="modal-body" >
 
-                    <form class="form-inline" th:action="@{/insertorder}">
-                        <h5> <strong>PassengerIdNumber：</strong></h5>
-                        <input type="hidden" th:name="train_no" th:value="${schedule_of_trains.getTarinNo()}">
-                        <input class="form-control" type="text" th:name="passenger_id_number" placeholder="电话">
-                        <h5> <strong>PassengerPhoneNumber：</strong></h5>
-                        <input class="form-control" type="text" th:name="passenger_phone_number" placeholder="电话">
-                        <br>
-                        <input  type="submit" class="btn btn-primary" value="预定">
-                    </form>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
-    </div>
+                <form class="form-inline" th:action="@{/insertorder}">
+                    <h5> <strong>PassengerIdNumber：</strong></h5>
+                    <input type="hidden" th:name="train_no" th:value="${schedule_of_trains.getTarinNo()}">
+                    <input class="form-control" type="text" th:name="passenger_id_number" placeholder="电话">
+                    <h5> <strong>PassengerPhoneNumber：</strong></h5>
+                    <input class="form-control" type="text" th:name="passenger_phone_number" placeholder="电话">
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="预定">
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
-<div>
-    <tbody>
-    <a th:value="${stations}"></a>
-    </tbody>
 </div>
 
+<label class="col-sm-3 control-label is-required" style="text-align: center">经停站点</label>
+<div class="col-sm-8">
+    <select name="level" id="level" lay-verify="required" class="form-control">
+        <option th:each="s:${stations}" th:value="${s}"
+                th:text="${s}"></option>
+    </select>
+</div>
 
 <div id="copyrights">
     <div class="container">

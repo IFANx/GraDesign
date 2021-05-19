@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>乘客中心-12307 Tickets</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="css/ionicons.min.css"
+          th:href="@{/css/ionicons.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css" th:href="@{/css/AdminLTE.min.css}">
+
+    <link rel="stylesheet" href="css/_all-skins.min.css" th:href="@{/css/_all-skins.min.css}">
+    <!--          th:href="@{css/bootstrap.min.css}"/>-->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap CSS File -->
+
+    <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css"
+          th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="hold-transition skin-purple sidebar-mini">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/listtrains}" >10307票务</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/index}" >系统首页</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >订单中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/displayorder}">全部订单</a></li>
+                        <li><a th:href="@{/payedorder1}">已支付订单</a></li>
+                        <li><a th:href="@{/notpayedorder1}">待支付订单</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >用户中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/tologin}" >用户登录</a></li>
+                        <li><a th:href="@{/toregister}">用户注册</a></li>
+                        <li><a th:href="@{/touserinfo}">用户信息</a></li>
+                        <li><a th:href="@{/showPassengers}">旅客信息</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >其他 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/notice}">公告</a></li>
+                        <li><a th:href="@{/404}">404</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="wrapper">
+    <!-- Main Header -->
+    <!--    <div th:replace="~{include/menu :: menu}"></div>-->
+    <!--    <div class="content-wrapper">-->
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <h3 style="font-weight: bold;text-align: center">乘客列表</h3>
+                    <div class="box-body">
+                        <table id="table1" class="table table-bordered table-hover" th:name="乘客列表">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button  class="btn btn-large" data-toggle="modal" data-target="#myModal1">新增旅客信息
+        </button>
+
+
+    </section>
+    <!--修改乘客信息弹窗-->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" style="width:100%;text-align: center;margin-right: 30%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel1">
+                        请更新乘客信息信息(Please Update the Passenger information)
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-inline" th:action="@{/addPassenger}">
+                        <h5> <strong>passengerRealName：</strong></h5>
+                        <input class="form-control" type="text" th:name="passengerRealName" placeholder="旅客姓名" >
+                        <h5> <strong>passengerIdNumber：</strong></h5>
+                        <input class="form-control" type="text" th:name="passengerIdNumber" placeholder="身份证号">
+                        <h5> <strong>passengerPhoneNumber：</strong></h5>
+                        <input class="form-control" type="text" th:name="passengerPhoneNumber" placeholder="旅客电话">
+                        <h5> <strong>passengerAddress：</strong></h5>
+                        <input class="form-control" type="text" th:name="passengerAddress" placeholder="邮寄地址">
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="新增旅客">
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div id="copyrights">
+        <div class="container">
+            <p> &copy; Copyrights <strong>Good</strong>. All Rights Reserved - scu xukang
+            </p>
+            <div class="credits">
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jQuery 3 -->
+    <script src="js/jquery.min.js"
+            th:src="@{/js/jquery.min.js}"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.min.js" th:src="@{/js/adminlte.min.js}"></script>
+
+    <script src="js/bootstrap-table.js"
+            th:src="@{/js/bootstrap-table.js}"></script>
+    <script src="js/bootstrap-table-zh-CN.js"
+            th:src="@{/js/bootstrap-table-zh-CN.js}"></script>
+
+    <script src="js/layer.js"
+            th:src="@{/js/layer.js}"></script>
+</div>
+</body>
+</html>
+
+
+
+
+<script>
+    $(function () {
+        window.operateEvents  = {
+            // 更改操作的方法
+            'click .btn_update': function (e, value, row, index) {
+                // $.ajax({
+                //     type: "post",
+                //     url: "/updatePassenger",
+                //     dataType: "json",
+                //     contentType: "application/json;charset=utf-8",
+                //     data: JSON.stringify({userName: loginapp.userName, userPassword: loginapp.userPassword}),
+                //     success: function(msg){
+                //         if(msg["success"]){
+                //             layer.msg("操作成功",{time:700});
+                //         }
+                //     }
+                // });
+                // layer.close(index);
+                alert("暂未完成");
+            },
+            //删除 单行/
+            'click .btn_del': function (e, value, row, index) {
+                var passengerPhoneNumber = row.passengerPhoneNumber;
+                layer.confirm("确认删除: 乘客"+row.passengerRealName+"--"+row.passengerPhoneNumber+ "信息?", {icon: 3, title:'删除操作'}, function(index){
+                    $.ajax({
+                        type: "delete",
+                        url: "/deletePassenger",
+                        contentType:"application/json",
+                        data:JSON.stringify({"passengerPhoneNumber":passengerPhoneNumber }),
+                        success: function(msg){
+                            if(msg["success"]){
+                                $('#table1').bootstrapTable('remove', {
+                                    field: 'passengerPhoneNumber',
+                                    values: [passengerPhoneNumber]
+                                });
+                                layer.msg("操作成功",{time:700});
+                            }
+                        }
+                    });
+                    layer.close(index);
+                });
+            }
+        };
+
+        $('#table1').bootstrapTable('destroy').bootstrapTable({
+            method: 'get',
+            url: "/getpassengers",
+            striped: true,
+            dataField: "list",
+            totalField: "total",
+            pageNumber: 1,
+            pageSize: 10,
+            pagination: true,
+            queryParamsType: 'limit',
+            // search: true,
+            queryParams: function (params) {
+                return {
+                    pageSize: params.limit,
+                    pageNo: params.offset / params.limit + 1
+                }
+            },
+            sidePagination: 'server',
+            pageList: "[10, 25, 50, 100, all]",
+            showRefresh: true,
+            clickToSelect: true,
+            toolbarAlign: 'left',
+            buttonsAlign: 'right',
+            toolbar: '#toolbar',
+            showColumns: false,
+            paginationLoop: false,
+            columns: [
+                {
+                    title: '乘客名',
+                    field: 'passengerRealName',
+                    visible: true,
+                    width: 160
+                },
+                {
+                    title: '乘客手机号码',
+                    field: 'passengerPhoneNumber',
+                    visible: true,
+                    width: 160
+                },
+                {
+                    title: '乘客身份证号',
+                    field: 'passengerIdNumber',
+                    width: 160,
+                    align: 'left'
+                }, {
+                    title: '乘客类型',
+                    field: 'passengerType',
+                    visible: false,
+                    width: 160
+                }, {
+                    title: '邮寄地址',
+                    field: 'passengerAddress',
+                    visible: true,
+                    width: 160,
+                },
+                {
+                    title: '操作',
+                    width: 80,
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        return [
+                            '<button  type="button" class="btn btn-danger btn-xs btn_del">',
+                            '删除',
+                            '</button>',
+                            ' <button  type="button" class="btn btn-primary btn-xs btn_update">',
+                            '更改',
+                            '</button>',
+                        ].join('')
+                    },
+                    events: window.operateEvents
+                }
+            ],
+            locale: 'zh-CN',
+            responseHandler: function (data) {
+                return data['data'];
+            }
+        });
+    })
+</script>
+
+
+

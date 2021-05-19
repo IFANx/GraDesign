@@ -226,4 +226,13 @@
       passenger_address = #{passengerAddress,jdbcType=VARCHAR}
     where passenger_phone_number = #{passengerPhoneNumber,jdbcType=VARCHAR}
   </update>
+
+<!--  自定义代码-->
+  <delete id="deletePassengersByIds">
+    delete from passenger where passengerIdNumber in
+    <foreach collection="ids" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+
+  </delete>
 </mapper>

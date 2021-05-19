@@ -67,6 +67,7 @@
                         <li><a th:href="@{/tologin}" >用户登录</a></li>
                         <li><a th:href="@{/toregister}">用户注册</a></li>
                         <li><a th:href="@{/touserinfo}">用户信息</a></li>
+                        <li><a th:href="@{/showPassengers}">旅客信息</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -165,7 +166,7 @@
                 {
                     title: '订单号',
                     field: 'orderId',
-                    visible: false,
+                    visible: true,
                     width: 160
                 },
                 // {
@@ -245,7 +246,7 @@
                             '<input type="hidden" name="orderId" value="',
                             row.orderId,
                             '">',
-                            '<input type="submit" class="btn btn-danger btn-xs btn_del">',
+                            '<input type="submit" class="btn btn-block btn-success btn-lg">',
                             '</input>',
                             '</form>'
 
