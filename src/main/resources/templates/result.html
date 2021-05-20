@@ -1,19 +1,179 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"><head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>位次信息-12307 Tickets</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <!-- Bootstrap CSS File -->
+
+    <link rel="stylesheet" href="../static/css/pricing-table-global.css" th:href="@{/css/pricing-table-global.css}">
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/lib/bootstrap/css/bootstrap.min.css"
+          th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap CSS File -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="lib/flat-ui/css/flat-ui.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="css/pricing-table-global.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-<tbody>
-<tr th:each="s:${start}">
-    <td th:text="${s.getTrainNumber()}"></td>
-</tr>
-</tbody>
-<br>
-<tbody>
-<tr th:each="e:${end}">
-    <td th:text="${e.getTrainNumber()}"></td>
-</tr>
-</tbody>
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/index}">12307 Tickets</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/index}">首页</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">订单中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/displayorder}">全部订单</a></li>
+                        <li><a th:href="@{/payedorder1}">已支付订单</a></li>
+                        <li><a th:href="@{/notpayedorder1}">待支付订单</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户中心 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/tologin}">用户登录</a></li>
+                        <li><a th:href="@{/toregister}">用户注册</a></li>
+                        <li><a th:href="@{/userinfo}">用户信息</a></li>
+                        <li><a th:href="@{/showPassengers}">旅客信息</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/notice}">公告</a></li>
+                        <li><a th:href="@{/404}">404</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+
+
+<!-- BLOG PAGE -->
+
+<div class="container">
+    <div class="row">
+        <!-- Content Section -->
+        <div class="col-lg-8 sinfo">
+
+            <div class="blogcontent">
+                <!-- First Post -->
+                <img class="img-responsive" src="img/blog-post02.jpg" alt="">
+                <h6>12307 Tickets 列车中转方案推荐</h6>
+                <small><span class="fui-user"></span> xukang scu | <span class="fui-calendar"></span>  Apr,25, 2021 | <span class="fui-chat"></span> 4 Comments</small>
+                <p class="lead">Suggestions for train transit times</p>
+                <p>[[${transfer}]].</p>
+                <a th:href="@{/scheduleOfTrainsbytrain_number(train_number=${line1},tostation=${transstation})}" >点击购买[[${line1}]]次列车.</a>
+                <a th:href="@{/scheduleOfTrainsbytrain_number(train_number=${line2},tostation=${end_station})}" >点击购买[[${line2}]]次列车.</a>
+            </div>
+
+
+
+        </div>
+        <!-- col-lg-8 / Content Section -->
+
+
+
+        <!-- Sidebar Section -->
+        <div class="col-lg-4 sidebar">
+            <h6><span class="fui-arrow-right"></span> Categories</h6>
+            <p>
+                <span class="fui-folder"></span> Wordpress<br/>
+                <span class="fui-folder"></span> Web Design<br/>
+                <span class="fui-folder"></span> Marketing<br/>
+                <span class="fui-folder"></span> Social Media<br/>
+                <span class="fui-folder"></span> Agency<br/>
+            </p>
+            <br>
+            <h6><span class="fui-arrow-right"></span> Popular Posts</h6>
+            <br>
+            <div class="pop-posts">
+                <p><img src="img/post-thumb02.jpg" width="70" height="70" alt=""> <b>GAME ON!</b> <br/> By: C. Alvarez <br/> 12 comments</p>
+            </div>
+            <div class="pop-posts">
+                <p><img src="img/post-thumb03.jpg" width="70" height="70" alt=""> <b>RED DIAMOND</b> <br/> By: C. Alvarez <br/> 12 comments</p>
+            </div>
+            <div class="pop-posts">
+                <p><img src="img/post-thumb01.jpg" width="70" height="70" alt=""> <b>FLAT DESIGN ALWAYS</b> <br/> By: C. Alvarez <br/> 12 comments</p>
+            </div>
+        </div>
+        <!-- col-lg-4 / Sidebar -->
+
+
+    </div>
+    <!-- /row -->
+</div>
+<!-- /container -->
+<!--<div>-->
+<!--    [[${message}]]-->
+<!--    <tr th:each="s:${start}">-->
+<!--        <td th:text="${s.getTrainNumber()}"></td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--    <br>-->
+<!--    &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--    <tbody>-->
+<!--    <tr th:each="e:${end}">-->
+<!--        <td th:text="${e.getTrainNumber()}"></td>-->
+<!--    </tr>-->
+<!--    <br>-->
+<!--    [[${test}]]-->
+<!--    <br>-->
+<!--    [[${s1}]]-->
+<!--    <br>-->
+<!--    [[${s2}]]-->
+
+<!--    <br>-->
+<!--    <p>[[${transfer}]]</p>-->
+<!--    </tbody>-->
+<!--</div>-->
+
+
+<div id="copyrights">
+    <div class="container">
+        <p> &copy; Copyrights <strong>12307</strong>. All Rights Reserved - 四川大学 许康</p>
+        <div class="credits"></div>
+    </div>
+
+</div>
+    </div>
+</div>
+<!-- / copyrights -->
+
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/php-mail-form/validate.js"></script>
+
+<!-- Template Main Javascript File -->
+<script src="js/main.js"></script>
+
 </body>
 </html>

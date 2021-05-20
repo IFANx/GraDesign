@@ -147,7 +147,7 @@ public class ScheduleOfTrainsServiceImpl implements ScheduleOfTrainsService {
     @Override
     public List<Schedule_Of_Trains> tostation(String to_station) {
         Schedule_Of_TrainsExample schedule_of_trainsExample = new Schedule_Of_TrainsExample();
-//        schedule_of_trainsExample.setDistinct(true);
+        schedule_of_trainsExample.setOrderByClause("tarin_no asc,departure_time asc,use_time asc");
         schedule_of_trainsExample.createCriteria().andToStationLike("%" + to_station + "%");
         List<Schedule_Of_Trains> trains = schedule_of_trainsMapper.selectByExample(schedule_of_trainsExample);
         return trains;

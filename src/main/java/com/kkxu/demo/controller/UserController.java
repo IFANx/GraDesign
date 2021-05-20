@@ -40,7 +40,7 @@ public class UserController {
         else if (user_password1.equals(user_password2)) {
                 userService.register(user_phone_number,user_password1);
                 modelMap.addAttribute("message", "注册成功,请点击Login登录");
-                session.setAttribute("user_phone_number", user_phone_number);
+                session.setAttribute("UserPhoneNumber", user_phone_number);
                 return "login";
 
         } else {
@@ -77,8 +77,7 @@ public class UserController {
         user.setUserGender(user_gender);
         user.setUserEmail(user_email);
         user.setUserAddress(user_address);
-        String userphone="17361048086";
-//        boolean flag = userService.update((String)session.getAttribute("userPhoneNumber"),user);
+        String userphone=(String)session.getAttribute("UserPhoneNumber");
         userService.update(userphone,user);
             modelMap.addAttribute("message", "您的用户信息已更新，请刷新查看！");
             return "contact";
@@ -86,14 +85,14 @@ public class UserController {
 
     @RequestMapping("/userinfo")
     public String userinfo(HttpSession session,ModelMap modelMap){
-        session.setAttribute("userPhoneNumber","17361048086");
-        User user=userService.userinfo((String)session.getAttribute("userPhoneNumber"));
-        modelMap.addAttribute(user);
+        if(session.getAttribute("UserPhoneNumber")==null)
+        session.setAttribute("UserPhoneNumber","17361048086");
+        else {
+            User user = userService.userinfo((String) session.getAttribute("UserPhoneNumber"));
+            modelMap.addAttribute(user);
+        }
         return "contact";
     }
 
-//    添加乘客
-//    购买车票
-//    查询订单
 }
 
